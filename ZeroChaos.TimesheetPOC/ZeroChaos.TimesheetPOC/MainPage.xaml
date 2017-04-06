@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ZeroChaos.TimesheetPOC"
+             x:Class="ZeroChaos.TimesheetPOC.MainPage">
+
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Orientation="Vertical" Padding="25" Opacity="10">
+        <Image Source="logo.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="200" WidthRequest="200"/>
+        <Button Text="United States" BackgroundColor="#3b5998" TextColor="White" CommandParameter="USButton" Clicked="OnButtonClick"></Button>
+        <Button Text="Europe" BackgroundColor="#3b5998" TextColor="White" CommandParameter="EUButton" Clicked="OnButtonClick"></Button>
+    </StackLayout>
+
+</ContentPage>
