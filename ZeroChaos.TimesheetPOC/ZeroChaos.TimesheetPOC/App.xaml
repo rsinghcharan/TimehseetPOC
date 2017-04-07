@@ -4,7 +4,61 @@
              x:Class="ZeroChaos.TimesheetPOC.App">
 	<Application.Resources>
 
-		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Style TargetType="ContentView" x:Key="navigationHeader">
+                <Setter Property="BackgroundColor" Value="#01446b">
+                </Setter>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="#FFFFFF" />
+            </Style>
+            <Style TargetType="Label" x:Key="header-label">
+                <Setter Property="TextColor" Value="#FFFFFF" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="22" Tablet="22" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="LineBreakMode" Value="TailTruncation">
+                </Setter>
+                <Setter Property="FontAttributes" Value="Bold">
+                </Setter>
+            </Style>
+            <Style TargetType="Label" x:Key="header-right-label">
+                <Setter Property="TextColor" Value="#FFFFFF" />
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="18" Tablet="24" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="LineBreakMode" Value="TailTruncation">
+                </Setter>
+                <Setter Property="FontAttributes" Value="Bold">
+                </Setter>
+            </Style>
+            <Style x:Key="form-label" TargetType="Label">
+                <Setter Property="TranslationX" Value="20">
+                </Setter>
+                <Setter Property="TranslationY" Value="10">
+                </Setter>
+                <Setter Property="FontSize" Value="16">
+                </Setter>
+                <Setter Property="TextColor" Value="#666666">
+                </Setter>
+                <Setter Property="FontAttributes" Value="Bold">
+                </Setter>
+            </Style>
+            <Style x:Key="data-label" TargetType="Label">
+                <Setter Property="TranslationX" Value="20">
+                </Setter>
+                <Setter Property="TranslationY" Value="10">
+                </Setter>
+                <Setter Property="FontSize" Value="16">
+                </Setter>
+                <Setter Property="TextColor" Value="#222222">
+                </Setter>
+            </Style>
+        </ResourceDictionary>
 
-	</Application.Resources>
+    </Application.Resources>
 </Application>

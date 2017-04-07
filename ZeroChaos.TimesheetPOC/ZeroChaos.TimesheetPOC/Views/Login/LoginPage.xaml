@@ -1,23 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ZeroChaos.TimesheetPOC.Controls"
              x:Class="ZeroChaos.TimesheetPOC.Views.Login.LoginPage">
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Orientation="Vertical" Padding="10">
-        <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Orientation="Vertical">
-            <Image Source="logo.png" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" HeightRequest="200" WidthRequest="200"/>
-            <Entry x:Name="txtUserName" Text="jon.flack@cox.com" Placeholder="Username" BackgroundColor="#c1eaf6" HorizontalOptions="Start" WidthRequest="200"></Entry>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <Entry x:Name="txtPassword" Text="Planet#9" Placeholder="Password" BackgroundColor="#c1eaf6" IsPassword="True" HorizontalOptions="FillAndExpand" WidthRequest="200"></Entry>
-                <Label x:Name="lblForgot" Text="Forgot?" />
+    <local:BusyIndicator x:Name="busyindicator">
+        <local:BusyIndicator.ContainerContent>
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Orientation="Vertical" Padding="10">
+
+
+                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Orientation="Vertical">
+                    <Image Source="logo.png" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" HeightRequest="200" WidthRequest="200"/>
+                    <Entry x:Name="txtUserName" Text="jon.flack@cox.com" Placeholder="Username" BackgroundColor="#c1eaf6" HorizontalOptions="Start" WidthRequest="200"></Entry>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Entry x:Name="txtPassword" Text="Planet#9" Placeholder="Password" BackgroundColor="#c1eaf6" IsPassword="True" HorizontalOptions="FillAndExpand" WidthRequest="200"></Entry>
+                        <Label x:Name="lblForgot" Text="Forgot?" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                        <Switch x:Name="RememberMeSwitch" HorizontalOptions="Start" VerticalOptions="StartAndExpand" Toggled="OnRemeberSwitchToggled"></Switch>
+                        <Label Text="Save Username" HorizontalOptions="Start" VerticalOptions="StartAndExpand" />
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="Start" VerticalOptions="Start" Orientation="Vertical">
+                        <Button Text="Login" BackgroundColor="#d25903" TextColor="White" CommandParameter="EUButton" Clicked="OnButtonClick"  WidthRequest="200"></Button>
+                        <Label x:Name="lblResponse" VerticalOptions="StartAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+
+
             </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
-                <Switch x:Name="RememberMeSwitch" HorizontalOptions="Start" VerticalOptions="StartAndExpand" Toggled="OnRemeberSwitchToggled"></Switch>
-                <Label Text="Save Username" HorizontalOptions="Start" VerticalOptions="StartAndExpand" />
-            </StackLayout>
-            <StackLayout HorizontalOptions="Start" VerticalOptions="Start" Orientation="Vertical">
-                <Button Text="Login" BackgroundColor="#d25903" TextColor="White" CommandParameter="EUButton" Clicked="OnButtonClick"  WidthRequest="200"></Button>
-                <Label x:Name="lblResponse" VerticalOptions="StartAndExpand" />
-            </StackLayout>
-        </StackLayout>
-    </StackLayout>
+        </local:BusyIndicator.ContainerContent>
+
+    </local:BusyIndicator>
 </ContentPage>

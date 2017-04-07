@@ -11,6 +11,8 @@ using ZeroChaos.TimesheetPOC.Models;
 using ZeroChaos.TimesheetPOC.Models.Request;
 using ZeroChaos.TimesheetPOC.Models.Response;
 using ZeroChaos.TimesheetPOC.Services;
+using ZeroChaos.TimesheetPOC.ViewModel;
+using ZeroChaos.TimesheetPOC.Views.MasterPages;
 #endregion
 
 namespace ZeroChaos.TimesheetPOC.Views.Login
@@ -56,8 +58,10 @@ namespace ZeroChaos.TimesheetPOC.Views.Login
         {
             IServiceCaller service = new ServiceCaller();
             var request = new LoginRequest { emailAddress = txtUserName.Text, password = txtPassword.Text };
+            busyindicator.IsBusy = true;
             service.CallHostService<LoginRequest, LoginResponse>(request, "loginrequest", (r) =>
             {
+                busyindicator.IsBusy = false;
                 var loggedonUser = new UserInfo
                 {
                     userCulture = r.UserCulture,
@@ -74,9 +78,11 @@ namespace ZeroChaos.TimesheetPOC.Views.Login
                 };
 
                 //  App.UserSession = new ZCMobileSystemConfiguration {LoggedonUser = loggedonUser };
+                Application.Current.MainPage = MasterDetailControl.Create<MasterDetail, MasterDetailViewModel>();
                 App.UserSession.LoggedonUser = loggedonUser;
                 App.UserSession.CurrentUserInfo = r;
-                Navigation.PushAsync(new SelectionPage());
+                
+               // Navigation.PushAsync(new SelectionPage());
             });
         }
 

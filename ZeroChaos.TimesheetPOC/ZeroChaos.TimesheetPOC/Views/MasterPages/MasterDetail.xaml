@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<masterDetail:MasterDetailControl xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:masterDetail="clr-namespace:ZeroChaos.TimesheetPOC.Views.MasterPages"
+             xmlns:ctrl="clr-namespace:ZeroChaos.TimesheetPOC.Controls"
+             x:Class="ZeroChaos.TimesheetPOC.Views.MasterPages.MasterDetail" BackgroundColor="#01446b">
+    <masterDetail:MasterDetailControl.SideContent>
+        <ctrl:Accordion x:Name="one" />
+    </masterDetail:MasterDetailControl.SideContent>
+</masterDetail:MasterDetailControl>

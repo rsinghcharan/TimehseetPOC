@@ -35,8 +35,8 @@ namespace ZeroChaos.TimesheetPOC
             {
                 App.UserSession.SelectedDataCenter = "http://devservices.zcdev.net/EU-21.0/json/reply/";
             }
-
-            Navigation.PushAsync(new LoginPage());
+            Application.Current.MainPage = new LoginPage();
+           // Navigation.PushAsync(new LoginPage());
         }
     }
 }

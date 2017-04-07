@@ -24,5 +24,6 @@ namespace ZeroChaos.TimesheetPOC.Models
         public UserInfo LoggedonUser { get; set; }
         public bool RememberUser { get; set; }
         public string RememberedUser { get; set; }
+        public bool SideContentVisibility { get; set; }
     }
 }
