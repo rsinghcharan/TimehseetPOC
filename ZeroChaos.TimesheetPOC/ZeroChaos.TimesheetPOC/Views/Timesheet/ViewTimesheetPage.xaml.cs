@@ -21,7 +21,7 @@ namespace ZeroChaos.TimesheetPOC.Views.Timesheet
             try
             {
                 InitializeComponent();
-
+				 //Detail = new TimesheetDetailsPage();
                 IServiceCaller service = new ServiceCaller();
                 //var request = new LoginRequest { emailAddress = txtUserName.Text, password = txtPassword.Text };
                 var request = new ViewTimesheetRequest

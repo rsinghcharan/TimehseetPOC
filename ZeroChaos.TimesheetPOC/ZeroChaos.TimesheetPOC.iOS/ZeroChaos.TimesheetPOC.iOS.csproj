@@ -114,6 +114,7 @@
     <None Include="packages.config" />
     <BundleResource Include="Resources\.DS_Store" />
     <Compile Include="Renderers\CustomButtonRenderer.cs" />
+    <Compile Include="Renderers\CustomeEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
