@@ -49,14 +49,21 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\DetailPage.cs" />
+    <Compile Include="Models\DropDownItem.cs" />
     <Compile Include="Models\EnrollmentDetails.cs" />
     <Compile Include="Models\PickerDataSource.cs" />
     <Compile Include="Models\Request\LoginRequest.cs" />
     <Compile Include="Models\Request\RequestBase.cs" />
+    <Compile Include="Models\Request\Timesheet\SaveOrSubmitTimesheetRequest.cs" />
+    <Compile Include="Models\Request\Timesheet\ViewTimesheetRequest.cs" />
     <Compile Include="Models\Response\LoginResponse.cs" />
     <Compile Include="Models\Response\ResponseBase.cs" />
     <Compile Include="Models\Request\Timesheet\TimesheetRequest.cs" />
+    <Compile Include="Models\Response\Timesheet\SaveOrSubmitTimesheetResponse.cs" />
+    <Compile Include="Models\Response\Timesheet\ViewTimesheetResponse.cs" />
+    <Compile Include="Models\TimesheetEntry.cs" />
     <Compile Include="Models\Response\Timesheet\TimesheetResponse.cs" />
+    <Compile Include="Models\UserDefinedFields.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Models\UserPermissions.cs" />
     <Compile Include="Models\ZCMobileSystemConfiguration.cs" />
@@ -207,7 +214,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="New Folder\" />
     <Folder Include="Views\Dossier\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

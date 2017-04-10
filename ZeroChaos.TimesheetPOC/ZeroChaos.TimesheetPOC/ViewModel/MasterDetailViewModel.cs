@@ -93,6 +93,10 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                                 Header = "DashBoard";
                                 RightButton = "";
                             }
+                            else if (label.Text == "View Timesheet")
+                            {
+                                Detail = new ViewTimesheetPage();
+                            }
                             else
                             {
                                 var obj = new ViewTimesheetPage();

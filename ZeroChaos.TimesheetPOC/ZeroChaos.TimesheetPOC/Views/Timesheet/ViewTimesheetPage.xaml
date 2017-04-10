@@ -1,45 +1,38 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<masterDetail:MasterDetailControl xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	xmlns:controls="clr-namespace:ZeroChaos.TimesheetPOC.Controls"
+             xmlns:masterDetail="clr-namespace:ZeroChaos.TimesheetPOC.Views.MasterPages"
+	         xmlns:controls="clr-namespace:ZeroChaos.TimesheetPOC.Controls"
              x:Class="ZeroChaos.TimesheetPOC.Views.Timesheet.ViewTimesheetPage">
-   <StackLayout  >
-	  <ContentView x:Name="PanelView"></ContentView>
-		<ScrollView VerticalOptions="StartAndExpand"  >
-		  <StackLayout Padding="10,0,0,0" HorizontalOptions="Start" VerticalOptions="Start">
-		        <StackLayout VerticalOptions="Start" HorizontalOptions="Start">
-		        <Label x:Name="lblResourceName" Style="{StaticResource form-label}"    Text="ResuceName" ></Label>
-				<Label x:Name="lblResourceNameValue" Style="{StaticResource data-label}"   TextColor="Black" Text="ResouceValue"></Label>	
-				<Label x:Name="lblProjectName" Style="{StaticResource form-label}"  Text="Project Name" ></Label>
-				<Label x:Name="lblProjectNameValue" Style="{StaticResource data-label}"   TextColor="Black" Text="Project Valeu"></Label>
-				<Label x:Name="lblEndDate" Style="{StaticResource form-label}"  Text="Timesheet Ending Date" ></Label>
-				<Label x:Name="lblEndValue" Style="{StaticResource data-label}"  TextColor="Black" Text="Date"></Label>
-					<Label x:Name="lblPo" Style="{StaticResource form-label}"   Text="Po Number" ></Label>
-				<Label x:Name="lblPoValue" Style="{StaticResource data-label}"   TextColor="Black" Text="Po Value"></Label>
-						<Label x:Name="sicktimebalanceLabel" Style="{StaticResource form-label}"  Text="sicktimebalanceLabel" ></Label>
-				<Label x:Name="sicktimebalanceValue" Style="{StaticResource data-label}"   TextColor="Black" Text="sicktimebalanceValue"></Label>
-					<Label x:Name="approvalManagerLabel" Style="{StaticResource form-label}"   Text="approvalManagerLabel" ></Label>
-				<Label x:Name="approvalManagerField" Style="{StaticResource data-label}"   TextColor="Black" Text="approvalManagerField"></Label>
-					<Label x:Name="lblID" Style="{StaticResource form-label}"   Text="TimeSheet ID" ></Label>
-				<Label x:Name="lblIDValue" Style="{StaticResource data-label}"   TextColor="Black" Text="ID"></Label>
-
-				</StackLayout>
-				<StackLayout VerticalOptions="Start" x:Name="stckPayCode" HorizontalOptions="Start">
-				<Label x:Name="lblHeader"  Style="{StaticResource header}"   Text="Reaguler Time " ></Label> 
-					<Grid x:Name="grdPayCode">
-						
-					</Grid>
-				 </StackLayout>
-		  </StackLayout>
-		</ScrollView>
-		<StackLayout Padding="10,0,10,5" Spacing="0" x:Name="buttonBar" HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="Center">
-			<ContentView  HorizontalOptions="FillAndExpand" HeightRequest="40">
-				 <controls:CustomButton Text="Save" Type="Orange" HorizontalOptions="Fill"/>
-			</ContentView>
-		 <ContentView  HorizontalOptions="FillAndExpand">
-				 <controls:CustomButton Text="Submit"  HeightRequest="40"  HorizontalOptions="Fill"/>
-		<!--  <Button  HeightRequest="40" Type HorizontalOptions="FillAndExpand"  BackgroundColor="#01446b" Text="submit"></Button> --></ContentView>
-		</StackLayout>
-	 <!--	<ContentView x:Name="ButtonBar" VerticalOptions="End" HorizontalOptions="Center" ></ContentView> -->
-	</StackLayout>
-</ContentPage>
+    
+        <ScrollView>
+            <ListView x:Name="lstView" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid x:Name="grid">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="AUTO" />
+                                    <RowDefinition Height="AUTO"/>
+                                    <RowDefinition Height="AUTO"/>
+                                    <RowDefinition Height="AUTO" />
+                                    <RowDefinition Height="AUTO"/>
+                                </Grid.RowDefinitions>
+                                <BoxView Grid.Row="0" BackgroundColor="Aqua" Color="#3c9ece">
+                                </BoxView>
+                                <Label Grid.Row="0" Text="{Binding periodEnding}" TextColor="#FFFFFF" VerticalTextAlignment="Center" TranslationX="10"/>
+                                <Label Grid.Row="1" Text="Project Name"  TextColor="#666666" FontSize="Large" Font="Bold" TranslationX="10"/>
+                                <Label Grid.Row="2" Text="{Binding projectName}" TextColor="#666666" FontSize="Small" TranslationX="10"/>
+                                <Label Grid.Row="3" Text="Status" TextColor="#666666" FontSize="Large" Font="Bold" TranslationX="10"/>
+                                <Label Grid.Row="4" Text="{Binding projStatus}" TextColor="#666666" FontSize="Small" TranslationX="10"/>
+                                <Label Grid.Row="5" Text="Pay Amount" TextColor="#666666" FontSize="Large" Font="Bold" TranslationX="10"/>
+                                <Label Grid.Row="6" Text="{Binding payAmount}" TextColor="#666666" FontSize="Small" TranslationX="10"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+    
+</masterDetail:MasterDetailControl>

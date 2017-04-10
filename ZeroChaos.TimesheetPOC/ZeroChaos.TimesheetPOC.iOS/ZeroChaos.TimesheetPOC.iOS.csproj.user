@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
-    <SelectedDevice>iPad Air iOS 10.2</SelectedDevice>
-    <DefaultDevice>iPad Air iOS 10.2</DefaultDevice>
+    <SelectedDevice>iPhone 6s iOS 9.3</SelectedDevice>
+    <DefaultDevice>iPhone 6s iOS 9.3</DefaultDevice>
   </PropertyGroup>
 </Project>
