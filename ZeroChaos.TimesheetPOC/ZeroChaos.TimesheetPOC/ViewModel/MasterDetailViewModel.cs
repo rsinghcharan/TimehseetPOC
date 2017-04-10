@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using ZeroChaos.TimesheetPOC.Controls;
+using ZeroChaos.TimesheetPOC.Views;
 using ZeroChaos.TimesheetPOC.Views.Dashboard;
 using ZeroChaos.TimesheetPOC.Views.Timesheet;
+using Zerochaos.Util.POC.Messages;
 #endregion
 namespace ZeroChaos.TimesheetPOC.ViewModel
 {
@@ -18,6 +20,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
         public MasterDetailViewModel()
         {
             Detail = new DashBoard();
+            MessagingCenter.Subscribe<object, string>(this, "NeedMoreInfoReply", NeedMoreInfoResponse);
         }
 
         private ICommand _NeedMoreInfo;
@@ -28,7 +31,14 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             {
                 return _NeedMoreInfo ?? (_NeedMoreInfo = new Command(() =>
           {
+              //var action = await DisplayActionSheet("More Information", "Cancel", null, "Notes", "Adjustment Track", "Track Codes", "Attachments", "Additional Information");
 
+              string title = "More Information";
+              List<string> Options = new List<string>() { "Notes", "Adjustment Track", "Track Codes", "Attachments", "Additional Information" };
+              NeedMoreInfo nm = new NeedMoreInfo("More Information",Options);
+             
+              MessagingCenter.Send<object, NeedMoreInfo>(this, "NeedMoreInfo", nm);
+              // Detail = new TimesheetActionList();
           }));
             }
             set { _NeedMoreInfo = value; }
@@ -230,6 +240,12 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             dummyData.Add(obj);
 
             return dummyData;
+        }
+
+        private void NeedMoreInfoResponse(object sender,string selectedaction)
+        {
+            if (selectedaction == "Track Codes")
+                Detail = new TimesheetTrackCode();
         }
     }
     public class SimpleObject

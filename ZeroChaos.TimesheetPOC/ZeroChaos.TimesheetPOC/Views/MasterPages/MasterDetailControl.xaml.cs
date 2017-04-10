@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Zerochaos.Util.POC.Messages;
 using ZeroChaos.TimesheetPOC.Models;
 using ZeroChaos.TimesheetPOC.ViewModel;
 #endregion
@@ -111,7 +112,13 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
             SetBinding(DetailProperty, new Binding("Detail", BindingMode.OneWay));
             SetBinding(TitleProperty, new Binding("Header", BindingMode.TwoWay));
             SetBinding(SideButtonProperty, new Binding("RightButton", BindingMode.TwoWay));
-            
+
+            MessagingCenter.Subscribe<object, NeedMoreInfo>(this, "NeedMoreInfo", async (sender, arg) =>
+            {
+                var nm = arg as NeedMoreInfo;
+                var action = await DisplayActionSheet(nm.Title, "Cancel",null,nm.Options.ToArray());
+                MessagingCenter.Send<object, string>(this, "NeedMoreInfoReply", action);
+            });
 
         }
         #endregion

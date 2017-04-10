@@ -30,7 +30,7 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
         protected override void OnAppearing()
         {
             var bc = BindingContext as MasterDetailViewModel;
-
+            
             one.DataSource = bc.GetSampleData();
             one.DataBind();
         }
