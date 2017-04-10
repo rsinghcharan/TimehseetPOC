@@ -41,6 +41,21 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                 }
             }
         }
+        private string _Header;
+
+        public string Header
+        {
+            get { return _Header; }
+            set { _Header = value; OnPropertyChanged(); }
+        }
+        private string _RightButton;
+
+        public string RightButton
+        {
+            get { return _RightButton; }
+            set { _RightButton = value;OnPropertyChanged(); }
+        }
+
         public Task<Page> PopAsync()
         {
             Page page = null;

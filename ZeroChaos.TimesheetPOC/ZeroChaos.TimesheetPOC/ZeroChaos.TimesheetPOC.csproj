@@ -82,10 +82,9 @@
     <Compile Include="Views\SelectionPage.xaml.cs">
       <DependentUpon>SelectionPage.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="Views\Timesheet\ViewTimesheetPage.xaml.cs">
       <DependentUpon>ViewTimesheetPage.xaml</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Views\Timesheet\TimesheetActionList.xaml.cs">
       <DependentUpon>TimesheetActionList.xaml</DependentUpon>
     </Compile>
@@ -111,6 +110,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Corcav.Behaviors, Version=2.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Corcav.Behaviors.2.3.6\lib\Corcav.Behaviors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -144,13 +147,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-
-    <Folder Include="Views\Dossier\" />
     <EmbeddedResource Include="Views\Timesheet\TimesheetActionList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Folder Include="New Folder\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Login\LoginPage.xaml">
@@ -165,7 +165,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-
     <EmbeddedResource Include="Controls\BusyIndicator.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -196,18 +195,21 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-       <EmbeddedResource Include="Views\Timesheet\TimesheetTrackCode.xaml">
+    <EmbeddedResource Include="Views\Timesheet\TimesheetTrackCode.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-      <EmbeddedResource Include="Views\Timesheet\ViewTimesheetPage.xaml">
+    <EmbeddedResource Include="Views\Timesheet\ViewTimesheetPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-
+  <ItemGroup>
+    <Folder Include="New Folder\" />
+    <Folder Include="Views\Dossier\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ZeroChaos.TimesheetPOC.Views.MasterPages.MasterDetailControl"
+             xmlns:b="clr-namespace:Corcav.Behaviors;assembly=Corcav.Behaviors"
              x:Name="Parent">
     <Grid>
         <Grid.RowDefinitions>
@@ -25,39 +26,34 @@
         
         <AbsoluteLayout AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" AbsoluteLayout.LayoutBounds="0,0,1,44" Margin="25,0,0,0" Grid.ColumnSpan="2">
             <AbsoluteLayout.HeightRequest>
-                <OnIdiom x:TypeArguments="x:Double" Phone="44" Tablet="88">
-                </OnIdiom>
+                <OnIdiom x:TypeArguments="x:Double" Phone="44" Tablet="88" />
             </AbsoluteLayout.HeightRequest>
-            <Image Source="menumedium.png"  HeightRequest="20" WidthRequest="20" HorizontalOptions="Start" Margin="25,0,0,0">
+            <Image Source="menumedium.png"  HeightRequest="20" WidthRequest="20" HorizontalOptions="Start" Margin="25,0,0,0" VerticalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                 </Image.GestureRecognizers>
             </Image>
-            <!--<Image Source="menumedium.png" AbsoluteLayout.LayoutFlags="PositionProportional" HeightRequest="20" WidthRequest="20" HorizontalOptions="Start">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                </Image.GestureRecognizers>
-                <Image.AbsoluteLayout.LayoutBounds>
-                    -->
-            <!-- Here -1 is act as equilent to AutoSize if you write AutoSize it will give compile error-->
-            <!--
-                    <OnIdiom x:TypeArguments="Rectangle" Phone="0,0.5,200,30" Tablet="0,0.5,-1,-1">
-                    </OnIdiom>
-                </Image.AbsoluteLayout.LayoutBounds>
-            </Image>-->
-            <Label x:Name="headerTitle" AbsoluteLayout.LayoutFlags="PositionProportional" Style="{StaticResource header-label}" Text="View TimeSheet" >
+            
+            <Label x:Name="headerTitle" AbsoluteLayout.LayoutFlags="PositionProportional" Style="{StaticResource header-label}"  >
                 <Label.AbsoluteLayout.LayoutBounds>
-                    <!-- Here -1 is act as equilent to AutoSize if you write AutoSize it will give compile error-->
                     <OnIdiom x:TypeArguments="Rectangle" Phone="0.5,0.5,200,30" Tablet="0.5,0.5,-1,-1">
                     </OnIdiom>
                 </Label.AbsoluteLayout.LayoutBounds>
             </Label>
-            <Label x:Name="rightButton" VerticalTextAlignment="Center" AbsoluteLayout.LayoutFlags="PositionProportional" Style="{StaticResource header-right-label}" Text="ADD NOTES" >
+            <Label x:Name="rightButton" VerticalTextAlignment="Center" AbsoluteLayout.LayoutFlags="PositionProportional" Style="{StaticResource header-right-label}" >
                 <Label.AbsoluteLayout.LayoutBounds>
-                    <!-- Here -1 is act as equilent to AutoSize if you write AutoSize it will give compile error-->
-                    <OnIdiom x:TypeArguments="Rectangle" Phone="0.95,0.5,80,30" Tablet="0.95,0.5,-1,-1">
-                    </OnIdiom>
+                    <OnIdiom x:TypeArguments="Rectangle" Phone="0.95,0.5,80,30" Tablet="0.95,0.5,-1,-1" />
                 </Label.AbsoluteLayout.LayoutBounds>
+                <!--<Label.GestureRecognizers>
+                    <TapGestureRecognizer>
+                        <b:Interaction.Behaviors>
+                            <b:BehaviorCollection>
+                                <b:EventToCommand Command="{Binding NeedMoreInfo,Source={x:Reference Name=Parent}}" EventName="Tapped" />
+                            </b:BehaviorCollection>
+                        </b:Interaction.Behaviors>
+                    </TapGestureRecognizer>
+                </Label.GestureRecognizers>-->
+                
             </Label>
         </AbsoluteLayout>
         <ContentView Grid.Column="1"  x:Name="DetailContainer" BackgroundColor="Green" Grid.Row="1"/>

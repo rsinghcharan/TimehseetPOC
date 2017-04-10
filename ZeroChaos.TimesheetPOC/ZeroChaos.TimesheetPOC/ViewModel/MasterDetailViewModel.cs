@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 using ZeroChaos.TimesheetPOC.Controls;
 using ZeroChaos.TimesheetPOC.Views.Dashboard;
@@ -18,6 +19,22 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
         {
             Detail = new DashBoard();
         }
+
+        private ICommand _NeedMoreInfo;
+
+        public ICommand NeedMoreInfo
+        {
+            get
+            {
+                return _NeedMoreInfo ?? (_NeedMoreInfo = new Command(() =>
+          {
+
+          }));
+            }
+            set { _NeedMoreInfo = value; }
+        }
+
+
         private ObservableCollection<AccordionSource> _Checking;
 
         public ObservableCollection<AccordionSource> Checking
@@ -73,6 +90,8 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                             if (label.Text == "Dashboard")
                             {
                                 Detail = new DashBoard();
+                                Header = "DashBoard";
+                                RightButton = "";
                             }
                             else
                             {
@@ -84,8 +103,12 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                                 {
                                     //Detail = new Detail1();
                                 };
+
+                                Header = "View Timesheet";
+                                RightButton = "...";
                                 // obj.lbl.GestureRecognizers.Add(td);
                                 Detail = obj;
+
                             }
                             App.UserSession.SideContentVisibility = (!App.UserSession.SideContentVisibility);
                             OnPropertyChanged("SideContentVisible");
@@ -164,6 +187,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
 
             return vResult;
         }
+       
         private List<SimpleObject> PreparedObject()
         {
             var dummyData = new List<SimpleObject>();
@@ -244,4 +268,6 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             };
         }
     }
+
+
 }

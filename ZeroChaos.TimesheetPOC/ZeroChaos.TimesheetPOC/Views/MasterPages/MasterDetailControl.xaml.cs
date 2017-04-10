@@ -40,6 +40,36 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
                 masterPage.OnPropertyChanged("SideContentVisible");
             });
 
+        public BindableProperty TitleProperty = BindableProperty.Create("Header", 
+            typeof(string), typeof(MasterDetailControl), 
+            propertyChanged: (bindable, value, newValue) =>
+            {
+                var masterPage = (MasterDetailControl)bindable;
+                masterPage.headerTitle.Text = (string)newValue;
+
+            });
+        public BindableProperty SideButtonProperty = BindableProperty.Create("RightButton", typeof(string), typeof(MasterDetailControl), propertyChanged: (bindable, value, newValue) =>
+        {
+            var masterPage = (MasterDetailControl)bindable;
+            masterPage.rightButton.Text = (string)newValue;
+
+        });
+
+
+        public string Header
+        {
+            get { return (string)GetValue(TitleProperty); }
+            set { SetValue(TitleProperty, value); }
+        }
+       
+
+        public string RightButton
+        {
+            get { return (string)GetValue(SideButtonProperty); }
+            set { SetValue(SideButtonProperty,value); }
+        }
+
+
         public ContentPage Detail
         {
             get { return (ContentPage)GetValue(DetailProperty); }
@@ -57,7 +87,7 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
             get
             {
                 return App.UserSession.SideContentVisibility;
-                
+
             }
             //set
             //{
@@ -79,6 +109,9 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
         {
             InitializeComponent();
             SetBinding(DetailProperty, new Binding("Detail", BindingMode.OneWay));
+            SetBinding(TitleProperty, new Binding("Header", BindingMode.TwoWay));
+            SetBinding(SideButtonProperty, new Binding("RightButton", BindingMode.TwoWay));
+            
 
         }
         #endregion
