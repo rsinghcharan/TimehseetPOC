@@ -102,6 +102,7 @@
     <Compile Include="Views\Timesheet\TimesheetDetailsPage.xaml.cs">
       <DependentUpon>TimesheetDetailsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\EntryClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">

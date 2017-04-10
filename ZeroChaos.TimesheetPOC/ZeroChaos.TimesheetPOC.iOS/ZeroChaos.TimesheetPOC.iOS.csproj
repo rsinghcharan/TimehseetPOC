@@ -114,7 +114,7 @@
     <None Include="packages.config" />
     <BundleResource Include="Resources\.DS_Store" />
     <Compile Include="Renderers\CustomButtonRenderer.cs" />
-    <Compile Include="Renderers\CustomeEntryRenderer.cs" />
+    <Compile Include="Renderers\EntryClassRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -172,6 +172,10 @@
     <ProjectReference Include="..\ZeroChaos.TimesheetPOC\ZeroChaos.TimesheetPOC.csproj">
       <Project>{6947C644-20D0-4AA4-B140-3106A3897708}</Project>
       <Name>ZeroChaos.TimesheetPOC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Zerochaos.Util.POC\Zerochaos.Util.POC.csproj">
+      <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
+      <Name>Zerochaos.Util.POC</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
