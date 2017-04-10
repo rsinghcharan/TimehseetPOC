@@ -7,6 +7,7 @@ using CoreGraphics;
 using ZeroChaos.TimesheetPOC.iOS.Renderers;
 using ZeroChaos.TimesheetPOC.Controls;
 using UIKit;
+[assembly: ExportRenderer(typeof(CustomButton), typeof(CustomButtonRenderer))]
 namespace ZeroChaos.TimesheetPOC.iOS.Renderers
 {
 	public class CustomButtonRenderer : ButtonRenderer

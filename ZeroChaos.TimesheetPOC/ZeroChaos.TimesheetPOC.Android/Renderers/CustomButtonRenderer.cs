@@ -10,6 +10,7 @@ using Android.Graphics.Drawables;
 using Xamarin.Forms;
 using ZeroChaos.TimesheetPOC.Controls;
 using ZeroChaos.TimesheetPOC.Droid.Renderers;
+[assembly: ExportRenderer(typeof(CustomButton), typeof(CustomButtonRenderer))]
 namespace ZeroChaos.TimesheetPOC.Droid.Renderers
 {
 	public class CustomButtonRenderer : ButtonRenderer

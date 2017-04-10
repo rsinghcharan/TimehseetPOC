@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:controls="clr-namespace:ZeroChaos.TimesheetPOC.Controls"
-             x:Class="ZeroChaos.TimesheetPOC.Views.Timesheet.ViewTimesheetPage">
-   <StackLayout  >
+	x:Class="ZeroChaos.TimesheetPOC.TimesheetDetailsPage">
+	<StackLayout  >
 	  <ContentView x:Name="PanelView"></ContentView>
 		<ScrollView VerticalOptions="StartAndExpand"  >
 		  <StackLayout Padding="10,0,0,0" HorizontalOptions="Start" VerticalOptions="Start">
