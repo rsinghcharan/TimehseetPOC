@@ -33,8 +33,6 @@
     <MtouchUseLlvm>False</MtouchUseLlvm>
     <MtouchUseThumb>False</MtouchUseThumb>
     <MtouchEnableBitcode>False</MtouchEnableBitcode>
-    <MtouchUseSGen>True</MtouchUseSGen>
-    <MtouchUseRefCounting>False</MtouchUseRefCounting>
     <OptimizePNGs>True</OptimizePNGs>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
@@ -115,6 +113,7 @@
     <ITunesArtwork Include="iTunesArtwork@2x" />
     <None Include="packages.config" />
     <BundleResource Include="Resources\.DS_Store" />
+    <Compile Include="Renderers\CustomButtonRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -166,7 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZeroChaos.TimesheetPOC\ZeroChaos.TimesheetPOC.csproj">
-      <Project>{5651fc7b-93d4-4dd3-aa36-4e09047cf514}</Project>
+      <Project>{6947C644-20D0-4AA4-B140-3106A3897708}</Project>
       <Name>ZeroChaos.TimesheetPOC</Name>
     </ProjectReference>
   </ItemGroup>
@@ -274,6 +273,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\uncheckMatrix.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderers\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

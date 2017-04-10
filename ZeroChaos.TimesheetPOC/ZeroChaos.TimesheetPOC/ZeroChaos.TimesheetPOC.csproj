@@ -92,6 +92,7 @@
     <Compile Include="Views\Timesheet\TimesheetTrackCode.xaml.cs">
       <DependentUpon>TimesheetTrackCode.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CustomButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -143,6 +144,7 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Folder Include="New Folder\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Login\LoginPage.xaml">

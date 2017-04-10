@@ -121,6 +121,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\CustomButtonRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -144,12 +145,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZeroChaos.TimesheetPOC\ZeroChaos.TimesheetPOC.csproj">
-      <Project>{5651fc7b-93d4-4dd3-aa36-4e09047cf514}</Project>
+      <Project>{6947C644-20D0-4AA4-B140-3106A3897708}</Project>
       <Name>ZeroChaos.TimesheetPOC</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderers\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />
