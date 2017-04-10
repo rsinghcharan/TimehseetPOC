@@ -85,7 +85,7 @@ namespace ZeroChaos.TimesheetPOC.Views.Login
                 
                // Navigation.PushAsync(new SelectionPage());
 
-                Navigation.PushAsync(new TimesheetActionList());
+                Navigation.PushAsync(new Dashboard.DashBoard());
 
             });
         }
