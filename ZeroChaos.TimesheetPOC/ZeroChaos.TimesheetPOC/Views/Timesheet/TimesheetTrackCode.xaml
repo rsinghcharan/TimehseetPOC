@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZeroChaos.TimesheetPOC.Views.TimesheetTrackCode" 
+             Title="Track Code">
+    <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                <Label Text="Track Codes" TextColor="Navy" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+            <Button Text=" + " BackgroundColor="Orange" FontAttributes="Bold" TextColor="White" WidthRequest="30" HorizontalOptions="End" VerticalOptions="Center" ></Button>
+        </StackLayout>
+        <ListView HasUnevenRows="True" x:Name="lstViewTrackCode">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout BackgroundColor="#3c9ece" Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="25">
+                                <Label  Text="{Binding TrackCode}"
+                                  TextColor="White" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"/>
+                            </StackLayout>
+                            <StackLayout Padding="20" Orientation="Vertical">
+                                <Label  Text="Name" FontAttributes="Bold" />
+                                <Label  Text="{Binding TrackCodeName}" />
+                                <Label  Text="Assignment Status" FontAttributes="Bold" />
+                                <Label  Text="{Binding TrackCodeAssignedValue}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

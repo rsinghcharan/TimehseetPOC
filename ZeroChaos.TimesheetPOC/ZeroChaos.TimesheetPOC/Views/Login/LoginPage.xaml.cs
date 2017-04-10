@@ -81,8 +81,12 @@ namespace ZeroChaos.TimesheetPOC.Views.Login
                 Application.Current.MainPage = MasterDetailControl.Create<MasterDetail, MasterDetailViewModel>();
                 App.UserSession.LoggedonUser = loggedonUser;
                 App.UserSession.CurrentUserInfo = r;
+
                 
                // Navigation.PushAsync(new SelectionPage());
+
+                Navigation.PushAsync(new TimesheetActionList());
+
             });
         }
 
