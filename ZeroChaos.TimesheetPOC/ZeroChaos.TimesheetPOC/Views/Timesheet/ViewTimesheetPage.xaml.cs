@@ -10,6 +10,8 @@ using ZeroChaos.TimesheetPOC.IServices;
 using ZeroChaos.TimesheetPOC.Models.Request.Timesheet;
 using ZeroChaos.TimesheetPOC.Models.Response.Timesheet;
 using ZeroChaos.TimesheetPOC.Services;
+using ZeroChaos.TimesheetPOC.ViewModel;
+using ZeroChaos.TimesheetPOC.ViewModel.Timesheet;
 
 namespace ZeroChaos.TimesheetPOC.Views.Timesheet
 {
@@ -48,17 +50,20 @@ namespace ZeroChaos.TimesheetPOC.Views.Timesheet
                                                            /*var secondPage = new SecondPage();
                                                            secondPage.BindingContext = e.SelectedItem;
                                                            await Navigation.PushAsync(secondPage);*/
-                                                          Detail = new TimesheetDetailsPage();
+
+                  
+                   var viewtimesheetVM = BindingContext as ViewTimesheetViewModel;
+                   viewtimesheetVM.GetTimesheetDetailPage();
                };
             }
             catch (Exception ex)
             { }
         }
 
-        void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            App.UserSession.SideContentVisibility = (!App.UserSession.SideContentVisibility);
-            OnPropertyChanged("SideContentVisible");
-        }
+        //void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        //{
+        //    App.UserSession.SideContentVisibility = (!App.UserSession.SideContentVisibility);
+        //    OnPropertyChanged("SideContentVisible");
+        //}
     }
 }

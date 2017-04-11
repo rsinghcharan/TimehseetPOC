@@ -69,8 +69,10 @@
     <Compile Include="Models\ZCMobileSystemConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ServiceCaller.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MasterDetailControlViewModel.cs" />
     <Compile Include="ViewModel\MasterDetailViewModel.cs" />
+    <Compile Include="ViewModel\Timesheet\ViewTimesheetViewModel.cs" />
     <Compile Include="Views\Dashboard\DashBoard.xaml.cs">
       <DependentUpon>DashBoard.xaml</DependentUpon>
     </Compile>

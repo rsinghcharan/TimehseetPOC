@@ -9,6 +9,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using ZeroChaos.TimesheetPOC.Controls;
 using ZeroChaos.TimesheetPOC.Views;
+using ZeroChaos.TimesheetPOC.ViewModel.Timesheet;
 using ZeroChaos.TimesheetPOC.Views.Dashboard;
 using ZeroChaos.TimesheetPOC.Views.Timesheet;
 using Zerochaos.Util.POC.Messages;
@@ -22,6 +23,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             Detail = new DashBoard();
             MessagingCenter.Subscribe<object, string>(this, "NeedMoreInfoReply", NeedMoreInfoResponse);
         }
+        
 
         private ICommand _NeedMoreInfo;
 
@@ -105,7 +107,11 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                             }
                             else if (label.Text == "View Timesheet")
                             {
-                                Detail = new ViewTimesheetPage();
+                                var page = new ViewTimesheetPage();
+                                ViewTimesheetViewModel vm = new ViewTimesheetViewModel();
+                                vm.MasterDetailViewModel = this;
+                                page.BindingContext = vm;
+                                Detail = page;
                             }
                             else
                             {
@@ -201,7 +207,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
 
             return vResult;
         }
-       
+        
         private List<SimpleObject> PreparedObject()
         {
             var dummyData = new List<SimpleObject>();

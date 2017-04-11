@@ -76,11 +76,10 @@ namespace ZeroChaos.TimesheetPOC.Views.Login
                     userPreferredTimeZoneName = r.UserPreferredTimeZoneName,
                     userType = r.UserTypeID
                 };
-
-                //  App.UserSession = new ZCMobileSystemConfiguration {LoggedonUser = loggedonUser };
-                Application.Current.MainPage = MasterDetailControl.Create<MasterDetail, MasterDetailViewModel>();
+                
                 App.UserSession.LoggedonUser = loggedonUser;
                 App.UserSession.CurrentUserInfo = r;
+                Application.Current.MainPage = MasterDetailControl.Create<MasterDetail, MasterDetailViewModel>();                
             });
         }
 

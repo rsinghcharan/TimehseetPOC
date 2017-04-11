@@ -25,7 +25,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
         private Stack<Page> _pages = new Stack<Page>();
         #endregion
 
-        #region Propertis
+        #region Properties
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Page Detail
