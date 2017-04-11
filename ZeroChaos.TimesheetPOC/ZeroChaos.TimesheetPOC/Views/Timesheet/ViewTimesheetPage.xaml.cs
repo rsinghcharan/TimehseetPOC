@@ -34,9 +34,7 @@ namespace ZeroChaos.TimesheetPOC.Views.Timesheet
 
                 };
                 service.CallHostService<ViewTimesheetRequest, ViewTimesheetObjectResponse>(request, "FilterTimesheetsForSearchRequest", (r) =>
-                {
-                    //ViewTimesheetObjectResponse response = new ViewTimesheetObjectResponse { timesheets = r.timesheets };
-
+                {              
                     this.lstView.ItemsSource = r.timesheets;
 
                 });

@@ -21,7 +21,7 @@
         <ScrollView IsVisible="{Binding SideContentVisible, Source={x:Reference Name=Parent}}" Grid.Row="1">
             <StackLayout Grid.Column="0" x:Name="SideContentContainer"
                  WidthRequest="250"
-                 IsVisible="{Binding SideContentVisible, Source={x:Reference Name=Parent}}" BackgroundColor="Yellow" Grid.Row="1"/>
+                 IsVisible="{Binding SideContentVisible, Source={x:Reference Name=Parent}}" BackgroundColor="#01446b" Grid.Row="1"/>
         </ScrollView>
         
         <AbsoluteLayout AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" AbsoluteLayout.LayoutBounds="0,0,1,44" Margin="25,0,0,0" Grid.ColumnSpan="2">
@@ -50,7 +50,7 @@
                 
             </Label>
         </AbsoluteLayout>
-        <ContentView Grid.Column="1"  x:Name="DetailContainer" BackgroundColor="Green" Grid.Row="1"/>
+        <ContentView Grid.Column="1"  x:Name="DetailContainer" BackgroundColor="White" Grid.Row="1"/>
         
     </Grid>
 </ContentPage>
