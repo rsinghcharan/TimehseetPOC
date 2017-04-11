@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace ZeroChaos.TimesheetPOC
 {
-public class MyEntry : Entry 
+	public class MyEntry : Entry
 	{
 		
 	}

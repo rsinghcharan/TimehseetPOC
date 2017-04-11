@@ -10,7 +10,8 @@ using Android.Graphics.Drawables;
 using Xamarin.Forms;
 using ZeroChaos.TimesheetPOC.Controls;
 using ZeroChaos.TimesheetPOC.Droid.Renderers;
-[assembly: ExportRenderer(typeof(CustomButton), typeof(CustomButtonRenderer))]
+
+
 namespace ZeroChaos.TimesheetPOC.Droid.Renderers
 {
 	public class CustomButtonRenderer : ButtonRenderer
@@ -35,9 +36,9 @@ namespace ZeroChaos.TimesheetPOC.Droid.Renderers
 							if (e2.Event.Action == MotionEventActions.Down)
 							{
 								System.Diagnostics.Debug.WriteLine("TouchDownEvent");
-											// Toast.MakeText(this, "Key Up", ToastLength.Short).Show();
+								// Toast.MakeText(this, "Key Up", ToastLength.Short).Show();
 
-										}
+							}
 							else if (e2.Event.Action == MotionEventActions.Up)
 							{
 

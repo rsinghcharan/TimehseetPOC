@@ -60,12 +60,13 @@
             </Style> 
 
 			<Style x:Key="panel-header-title" TargetType="Label">
-				<Setter Property="FontSize" Value="18"></Setter>	
+				<Setter Property="FontSize" Value="22"></Setter>	
 				<Setter Property="TextColor" Value="White"></Setter>
 				<Setter Property="HeightRequest" Value="30"></Setter>
 				<Setter Property="VerticalOptions" Value="Center"></Setter>
 				<Setter Property="HorizontalOptions" Value="Center"></Setter>
-
+				<Setter Property="FontAttributes" Value="Bold">
+                </Setter>
             </Style>
 			<Style x:Key="header" TargetType="Label">
 				<Setter Property="FontSize" Value="18"></Setter>	
