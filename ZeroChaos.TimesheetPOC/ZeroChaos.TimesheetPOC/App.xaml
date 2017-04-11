@@ -9,9 +9,9 @@
                 <Setter Property="BackgroundColor" Value="#01446b">
                 </Setter>
             </Style>
-            <Style TargetType="Label">
+            <!--<Style TargetType="Label">
                 <Setter Property="TextColor" Value="#FFFFFF" />
-            </Style>
+            </Style>-->
             <Style TargetType="Label" x:Key="header-label">
                 <Setter Property="TextColor" Value="#FFFFFF" />
                 <Setter Property="FontSize">
