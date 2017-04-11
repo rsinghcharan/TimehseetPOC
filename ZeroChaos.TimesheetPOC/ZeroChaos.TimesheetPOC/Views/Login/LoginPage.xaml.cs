@@ -77,9 +77,10 @@ namespace ZeroChaos.TimesheetPOC.Views.Login
                     };
 
                     //  App.UserSession = new ZCMobileSystemConfiguration {LoggedonUser = loggedonUser };
-                    Application.Current.MainPage = MasterDetailControl.Create<MasterDetail, MasterDetailViewModel>();
+
                     App.UserSession.LoggedonUser = loggedonUser;
                     App.UserSession.CurrentUserInfo = r;
+					Application.Current.MainPage = new SingleItemSelectionPage();//MasterDetailControl.Create<MasterDetail, MasterDetailViewModel>();
                 }
                 else
                 {
