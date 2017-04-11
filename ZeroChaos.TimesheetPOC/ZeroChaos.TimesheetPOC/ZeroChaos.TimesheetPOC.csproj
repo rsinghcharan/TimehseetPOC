@@ -105,15 +105,7 @@
       <DependentUpon>TimesheetDetailsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\EntryClass.cs" />
-    <Compile Include="Controls\MyEntry.cs" />
-    <Compile Include="ViewModel\Timesheet\DetailTimesheetViewModel.cs" />
-    <Compile Include="Models\Request\Timesheet\TimesheetDetailsRequest.cs" />
-    <Compile Include="Models\Request\Timesheet\TimesheetDetailsResponse.cs" />
-    <Compile Include="Models\Request\Timesheet\TimesheetEndingDatesRequest.cs" />
-    <Compile Include="Models\Response\Timesheet\TimesheetEndingDatesResponse.cs" />
-    <Compile Include="Views\SingleItemSelectionPage.xaml.cs">
-      <DependentUpon>SingleItemSelectionPage.xaml</DependentUpon>
-    </Compile>
+    
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -127,9 +119,7 @@
     <EmbeddedResource Include="Views\Timesheet\TimesheetDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\SingleItemSelectionPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
+    
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Corcav.Behaviors, Version=2.3.3.0, Culture=neutral, processorArchitecture=MSIL">
