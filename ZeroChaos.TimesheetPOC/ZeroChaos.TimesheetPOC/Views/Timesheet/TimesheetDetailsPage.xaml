@@ -28,7 +28,7 @@
                     <Label x:Name="sicktimebalanceValue" Style="{StaticResource data-label}"   TextColor="Black" Text=""></Label>
                     <Label x:Name="approvalManagerLabel" Style="{StaticResource form-label}"   Text="approvalManagerLabel" ></Label>
 
-                    <Entry  x:Name="txtApprovalManager" Margin="10,7,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="#c1eaf6"  Text="" ></Entry>
+                    <Entry  x:Name="txtApprovalManager" Margin="10,7,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="#c1eaf6"  Text="" Focused="txtApprovalManager_Focused"></Entry>
                     <Label x:Name="lblID" Style="{StaticResource form-label}"   Text="TimeSheet ID" ></Label>
                     <Label x:Name="lblIDValue" Style="{StaticResource data-label}"   TextColor="Black" Text="ID"></Label>
 
@@ -37,7 +37,7 @@
                 <StackLayout VerticalOptions="Start" Orientation="Horizontal" Padding="0,0,10,0" x:Name="stckPayCode" HorizontalOptions="FillAndExpand">
                     <Label Text="Timesheet Entries" Style="{StaticResource header}"  HorizontalOptions="StartAndExpand" FontSize="Medium" TextColor="#01446b" FontAttributes="Bold" />
                     <ContentView  HorizontalOptions="End" WidthRequest="40"  HeightRequest="40">
-                        <controls:CustomButton Text="+" Type="Orange"   HorizontalOptions="Fill" />
+                        <controls:CustomButton Text="+" Type="Orange"   HorizontalOptions="Fill"  />
                     </ContentView>
                 </StackLayout>
                 <Grid>
@@ -50,7 +50,7 @@
                         <RowDefinition Height="40" />
                         <RowDefinition Height="200" />
                     </Grid.RowDefinitions>
-                    <BoxView Grid.Column="0" >
+                    <BoxView Grid.Column="0" BackgroundColor="{DynamicResource DateColor}">
                         <BoxView.GestureRecognizers>
                             <TapGestureRecognizer   Command="{Binding TapCommand}" CommandParameter="Date" />
                         </BoxView.GestureRecognizers>
@@ -105,9 +105,9 @@
 
                                         <Label Grid.Row="0"    TextColor="Black" Text="{Binding TimesheetEntryDate,Converter={StaticResource DateFormatConverter}}" HorizontalOptions="Start" VerticalTextAlignment="Center" />
 
-                                        <Label Grid.Row="0"    TextColor="Black" Text="{Binding PayCodeName}" HorizontalOptions="Start" VerticalTextAlignment="Center" />
+                                        <!--<Label Grid.Row="0"    TextColor="Black" Text="{Binding PayCodeName}" HorizontalOptions="Start" VerticalTextAlignment="Center" />
 
-                                        <Label Grid.Row="0"    TextColor="Black" Text="{Binding TrackCodeName}" HorizontalOptions="Start" VerticalTextAlignment="Center" />
+                                        <Label Grid.Row="0"    TextColor="Black" Text="{Binding TrackCodeName}" HorizontalOptions="Start" VerticalTextAlignment="Center" />-->
 
 
                                         <Label Grid.Row="0" TextColor="Black"  Text="{Binding TimesheetUnitsName}" HorizontalOptions="End"  VerticalTextAlignment="Center"  />
@@ -122,9 +122,9 @@
 
                                         <Label Grid.Row="4"  TextColor="Black" Text="{Binding PayCodeName}" HorizontalOptions="Start" />
 
-                                        <Label Grid.Row="1" Text="Date" HorizontalOptions="Start"  FontAttributes="Bold"/>
+                                        <!--<Label Grid.Row="1" Text="Date" HorizontalOptions="Start"  FontAttributes="Bold"/>
 
-                                        <Label Grid.Row="2"  TextColor="Black" Text="{Binding TimesheetEntryDate,Converter={StaticResource DateFormatConverter}}"  HorizontalOptions="Start"  />
+                                        <Label Grid.Row="2"  TextColor="Black" Text="{Binding TimesheetEntryDate,Converter={StaticResource DateFormatConverter}}"  HorizontalOptions="Start"  />-->
 
 
                                         <Label Grid.Row="5"  Text="Units " HorizontalOptions="Start" FontAttributes="Bold"  />

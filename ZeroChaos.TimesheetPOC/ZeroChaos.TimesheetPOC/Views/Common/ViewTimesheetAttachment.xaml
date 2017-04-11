@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              Title="Attachment"
-             x:Class="ZeroChaos.TimesheetPOC.Views.ViewTimesheetAttachment">
+             x:Class="ZeroChaos.TimesheetPOC.Views.Common.ViewTimesheetAttachment">
     <StackLayout Orientation="Vertical">
         <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
             <Label Text="Attachments" TextColor="Navy" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />

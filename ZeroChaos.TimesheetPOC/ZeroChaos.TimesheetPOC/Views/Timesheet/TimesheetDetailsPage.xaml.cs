@@ -10,8 +10,12 @@ namespace ZeroChaos.TimesheetPOC
 	{
         #region Constructor
         public TimesheetDetailsPage()
-		{
-			InitializeComponent();
+        {
+            InitializeComponent();
+            MessagingCenter.Subscribe<object, string>(this, "ApproveManager", (sender, arg) =>
+           {
+               txtApprovalManager.Text = arg;
+           });
         }
         #endregion
 
@@ -39,5 +43,12 @@ namespace ZeroChaos.TimesheetPOC
             OnPropertyChanged("SideContentVisible");
         }
         #endregion
+
+        private void txtApprovalManager_Focused(object sender, FocusEventArgs e)
+        {
+            var BC = BindingContext as DetailTimesheetViewModel;
+            BC.OpentheApproveManager();
+        }
+       
     }
 }

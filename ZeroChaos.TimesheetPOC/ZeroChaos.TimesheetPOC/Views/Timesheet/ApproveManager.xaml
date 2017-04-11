@@ -1,16 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ZeroChaos.TimesheetPOC.Views.Timesheet.ApproveManager"
-             Title="ApproveManager">
-  <ScrollView>
-    <StackLayout Padding="10">
-      <Label Text="ContentPage" FontSize="40"/>
-      <Label Text="ContentPage is the simplest type of page."/>
-      <Label Text="The content of the ContentPage is generally a layout of some sort that can be a parent to multiple children."/>
-      <Label Text="This contant page contains a StackLayout, which in turn contains a few Label views (including the large one on the top and an example of handling click commands and data binding to a Label below)."/>
-      <Button Text="Click Me" Clicked="Button_Clicked"/>
-      <Label Text="{Binding CountDisplay}"/>
-    </StackLayout>
-  </ScrollView>
+             x:Class="ZeroChaos.TimesheetPOC.Views.Timesheet.ApproveManager">
+    <ListView x:Name="approverlst" ItemSelected="approverlst_ItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Vertical">
+                        <Label  TextColor="Black" Text="{Binding ManagerName}" HorizontalOptions="Start" VerticalTextAlignment="Center"/>
+                        <Label IsVisible="False" Text="{Binding ManagerID}" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+    </ListView>
 </ContentPage>

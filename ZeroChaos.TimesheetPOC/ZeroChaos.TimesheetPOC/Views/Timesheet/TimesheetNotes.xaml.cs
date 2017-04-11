@@ -21,7 +21,6 @@ namespace ZeroChaos.TimesheetPOC.Views.Timesheet
             InitializeComponent();
             GetNotesList();
         }
-
         void GetNotesList()
         {
             IServiceCaller service = new ServiceCaller();

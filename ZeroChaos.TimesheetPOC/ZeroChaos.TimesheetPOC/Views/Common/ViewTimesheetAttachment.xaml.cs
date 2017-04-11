@@ -11,7 +11,7 @@ using ZeroChaos.TimesheetPOC.Models.Request.Common;
 using ZeroChaos.TimesheetPOC.Models.Response.Common;
 using ZeroChaos.TimesheetPOC.Services;
 
-namespace ZeroChaos.TimesheetPOC.Views
+namespace ZeroChaos.TimesheetPOC.Views.Common
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewTimesheetAttachment : ContentPage
@@ -21,7 +21,6 @@ namespace ZeroChaos.TimesheetPOC.Views
             InitializeComponent();
             GetAttachment();
         }
-
         void GetAttachment()
         {
             IServiceCaller service = new ServiceCaller();
@@ -34,10 +33,10 @@ namespace ZeroChaos.TimesheetPOC.Views
 
             service.CallHostService<GetAttachmentsRequest, GetAttachmentResponse>(request, "GetAttachmentsRequest", (r) =>
             {
-                lstViewAttachment.ItemsSource = r.Attachments;
+                 lstViewAttachment.ItemsSource = r.Attachments;
             });
 
         }
-
     }
+   
 }

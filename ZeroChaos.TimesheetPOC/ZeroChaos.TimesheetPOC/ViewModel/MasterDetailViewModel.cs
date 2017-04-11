@@ -14,7 +14,8 @@ using ZeroChaos.TimesheetPOC.Views.Dashboard;
 using ZeroChaos.TimesheetPOC.Views.Timesheet;
 using Zerochaos.Util.POC.Messages;
 using ZeroChaos.TimesheetPOC.Views.Login;
-using ZeroChaos.TimesheetPOC.Models.Request.Common;
+using ZeroChaos.TimesheetPOC.Views.Common;
+
 
 #endregion
 namespace ZeroChaos.TimesheetPOC.ViewModel
@@ -121,6 +122,10 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                                 vm.MasterDetailViewModel = this;
                                 page.BindingContext = vm;
                                 Detail = page;
+                            }
+                            else if(label.Text=="Logout")
+                            {
+                                Application.Current.MainPage = new LoginPage();
                             }
                            
                             App.UserSession.SideContentVisibility = (!App.UserSession.SideContentVisibility);
@@ -235,6 +240,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
 
             obj = new SimpleObject();
             obj.HeaderText = "Logout";
+            obj.ChildItemList.Add(new ChildItems { TextValue = "Logout", DataValue = "D1" });
             dummyData.Add(obj);
 
             return dummyData;
