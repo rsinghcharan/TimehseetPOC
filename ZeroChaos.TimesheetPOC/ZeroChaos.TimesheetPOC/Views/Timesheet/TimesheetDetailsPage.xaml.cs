@@ -2,12 +2,24 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+using ZeroChaos.TimesheetPOC.Controls;
+using ZeroChaos.TimesheetPOC.IServices;
+using ZeroChaos.TimesheetPOC.Models.Request.Timesheet;
+using ZeroChaos.TimesheetPOC.Models.Response.Timesheet;
+using ZeroChaos.TimesheetPOC.Services;
 using ZeroChaos.TimesheetPOC.ViewModel.Timesheet;
 
 namespace ZeroChaos.TimesheetPOC
 {
-	public partial class TimesheetDetailsPage 
-	{
+    public partial class TimesheetDetailsPage
+    {
+        #region Private Members
+        private TimesheetDetailsResponse TimesheetDetails { get; set; }
+        #endregion
+
+        #region Properties
+        #endregion
+
         #region Constructor
         public TimesheetDetailsPage()
         {
@@ -33,6 +45,8 @@ namespace ZeroChaos.TimesheetPOC
                 txtApprovalManager.Text = res.ApprovalManager;
                 lblIDValue.Text = BC.TimesheetID.ToString();
                 lsTimeSheetItem.ItemsSource = res.TimeSheetEntryList;
+                res.TimesheetID = BC.TimesheetID;
+                TimesheetDetails = res;
                 //busy.IsBusy = false;
             });
         }
@@ -41,6 +55,50 @@ namespace ZeroChaos.TimesheetPOC
         {
             App.UserSession.SideContentVisibility = (!App.UserSession.SideContentVisibility);
             OnPropertyChanged("SideContentVisible");
+        }
+
+        /// <summary>
+        /// Save/Submit button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CustomButton_Clicked(object sender, EventArgs e)
+        {
+            var button = sender as CustomButton;
+            IServiceCaller service = new ServiceCaller();
+
+            var request = PrepareSaveOrSubmitTimesheetRequest(Convert.ToInt32(button.StyleId));
+            service.CallHostService<SaveOrSubmitTimesheetRequest, SaveOrSubmitTimesheetResponse>(request, "SaveOrSubmitTimesheetRequest", (r) =>
+            {
+                if (!r.ResultSuccess)
+                {
+                    Application.Current.MainPage.DisplayAlert("Error", r.ResultMessages[0].Message, "Ok");
+                }
+                else
+                {
+                    Application.Current.MainPage.DisplayAlert("Timesheet", r.ResultMessages[0].Message, "Ok");
+                }
+            });
+        }
+        #endregion
+
+        #region Private Methods
+        private SaveOrSubmitTimesheetRequest PrepareSaveOrSubmitTimesheetRequest(int action)
+        {
+            var BC = BindingContext as DetailTimesheetViewModel;
+            var request = new SaveOrSubmitTimesheetRequest
+            {
+                PrimaryApprovalManagerID = TimesheetDetails.ApprovalManagerId,
+                ActionTypeID = action,
+                EndDate = TimesheetDetails.EndDt,
+                ProjectID = TimesheetDetails.ProjectID,
+                ResourceID = TimesheetDetails.ResourceID,
+                TimesheetID = TimesheetDetails.TimesheetID,
+                timesheetEntries = TimesheetDetails.TimeSheetEntryList,
+                loggedonUser = App.UserSession.LoggedonUser
+            };
+
+            return request;
         }
         #endregion
 

@@ -145,10 +145,10 @@
         </ScrollView>
         <StackLayout  Spacing="0" x:Name="buttonBar" HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="Center">
             <ContentView  HorizontalOptions="FillAndExpand" HeightRequest="40">
-                <controls:CustomButton Text="Save" Type="Orange" HorizontalOptions="Fill"/>
+                <controls:CustomButton Text="Save" Type="Orange" HorizontalOptions="Fill" Clicked="CustomButton_Clicked" StyleId="1"/>
             </ContentView>
             <ContentView  HorizontalOptions="FillAndExpand">
-                <controls:CustomButton Text="Submit"  HeightRequest="40"  HorizontalOptions="Fill"/>
+                <controls:CustomButton Text="Submit"  HeightRequest="40"  HorizontalOptions="Fill" Clicked="CustomButton_Clicked" StyleId="2"/>
                 <!--  <Button  HeightRequest="40" Type HorizontalOptions="FillAndExpand"  BackgroundColor="#01446b" Text="submit"></Button> -->
             </ContentView>
         </StackLayout>
