@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              Title="Attachment"
+             x:Class="ZeroChaos.TimesheetPOC.Views.ViewTimesheetAttachment">
+    <StackLayout Orientation="Vertical">
+        <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+            <Label Text="Attachments" TextColor="Navy" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+            <Button Text=" ADD " BackgroundColor="Orange" FontAttributes="Bold" TextColor="White" WidthRequest="30" HorizontalOptions="End" VerticalOptions="Center" ></Button>
+        </StackLayout>-->
+        <ListView HasUnevenRows="True" x:Name="lstViewAttachment">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="5,5,5,5" Orientation="Vertical">
+                            <Label  Text="{Binding FileName}" WidthRequest="50" HeightRequest="50" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

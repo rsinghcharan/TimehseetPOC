@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZeroChaos.TimesheetPOC.Models.Request
+namespace ZeroChaos.TimesheetPOC.Models.Request.Timesheet
 {
     #region Timesheet TrackCode
 

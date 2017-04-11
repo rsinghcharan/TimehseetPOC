@@ -1,84 +1,85 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ZeroChaos.TimesheetPOC.TimesheetNotes" Title="Timesheet Notes">
-	<ContentPage.Resources>
-		<ResourceDictionary>
-			<Style TargetType="Label">
-				<Setter Property="HorizontalTextAlignment" Value="Start">
-				</Setter>
-				<Setter Property="VerticalTextAlignment" Value="Start">
-				</Setter>
-				<Setter Property="TranslationX" Value="15">
-				</Setter>
-			</Style>
-			<Style TargetType="View" x:Key="row-header-view">
-				<Setter Property="BackgroundColor" Value="#3c9ece">
-				</Setter>
-				<Setter Property="HeightRequest" Value="35">
-				</Setter>
-			</Style>
-			<Style x:Key="form-header-lbl" TargetType="Label">
-				<Setter Property="VerticalOptions" Value="Center">
-				</Setter>
-				<Setter Property="TextColor" Value="White">
-				</Setter>
-				<Setter Property="TranslationX" Value="15">
-				</Setter>
-				<Setter Property="FontAttributes" Value="Bold">
-				</Setter>
-				<Setter Property="VerticalTextAlignment" Value="Center">
-				</Setter>
-			</Style>
-			<Style x:Key="form-lbl" TargetType="Label">
-				<Setter Property="VerticalTextAlignment" Value="Center">
-				</Setter>
-				<Setter Property="TranslationX" Value="15">
-				</Setter>
-				<Setter Property="FontAttributes" Value="Bold">
-				</Setter>
-				<Setter Property="TextColor" Value="Black">
-				</Setter>
-			</Style>
-			<Style x:Key="form-data-lbl" TargetType="Label">
-				<Setter Property="TextColor" Value="Black">
-				</Setter>
-				<Setter Property="TranslationX" Value="15">
-				</Setter>
-			</Style>
-		</ResourceDictionary>
-	</ContentPage.Resources>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZeroChaos.TimesheetPOC.Views.Timesheet.TimesheetNotes">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="HorizontalTextAlignment" Value="Start">
+                </Setter>
+                <Setter Property="VerticalTextAlignment" Value="Start">
+                </Setter>
+                <Setter Property="TranslationX" Value="15">
+                </Setter>
+            </Style>
+            <Style TargetType="View" x:Key="row-header-view">
+                <Setter Property="BackgroundColor" Value="#3c9ece">
+                </Setter>
+                <Setter Property="HeightRequest" Value="35">
+                </Setter>
+            </Style>
+            <Style x:Key="form-header-lbl" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center">
+                </Setter>
+                <Setter Property="TextColor" Value="White">
+                </Setter>
+                <Setter Property="TranslationX" Value="15">
+                </Setter>
+                <Setter Property="FontAttributes" Value="Bold">
+                </Setter>
+                <Setter Property="VerticalTextAlignment" Value="Center">
+                </Setter>
+            </Style>
+            <Style x:Key="form-lbl" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center">
+                </Setter>
+                <Setter Property="TranslationX" Value="15">
+                </Setter>
+                <Setter Property="FontAttributes" Value="Bold">
+                </Setter>
+                <Setter Property="TextColor" Value="Black">
+                </Setter>
+            </Style>
+            <Style x:Key="form-data-lbl" TargetType="Label">
+                <Setter Property="TextColor" Value="Black">
+                </Setter>
+                <Setter Property="TranslationX" Value="15">
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-		<ListView x:Name="lstView" HasUnevenRows="true">	
-			<ListView.ItemTemplate>
-				<DataTemplate>
-					<ViewCell>
-						<ViewCell.View>
-							<StackLayout>
-								<ContentView Style="{StaticResource row-header-view}">
-									<Label Text="{Binding createdOn}" Style="{StaticResource form-header-lbl}">
-									</Label>
-								</ContentView>
-								<Label Text="Note" Style="{StaticResource form-lbl}">
-								</Label>
-								<Label Text="{Binding createdOn}" Style="{StaticResource form-data-lbl}">
-								</Label>
-								<Label Text="Send To" Style="{StaticResource form-lbl}">
-								</Label>
-								<Label Text="{Binding emails}" Style="{StaticResource form-data-lbl}">
-								</Label>
-								<Label Text="Created By" Style="{StaticResource form-lbl}">
-								</Label>
-								<Label Text="{Binding createdBy}" Style="{StaticResource form-data-lbl}">
-								</Label>
-								<Label Text="Created On" Style="{StaticResource form-lbl}">
-								</Label>
-								<Label Text="{Binding createdOn}" Style="{StaticResource form-data-lbl}" Margin="0,0,0,10">
-								</Label>
-								<!--<BoxView HeightRequest="5" BackgroundColor="White"/>-->
-							</StackLayout>
-						</ViewCell.View>
-					</ViewCell>
-				</DataTemplate>
-			</ListView.ItemTemplate>
-		</ListView>
-	
+    <ListView x:Name="lstView" HasUnevenRows="true">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout>
+                            <ContentView Style="{StaticResource row-header-view}">
+                                <Label Text="{Binding createdOn}" Style="{StaticResource form-header-lbl}">
+                                </Label>
+                            </ContentView>
+                            <Label Text="Note" Style="{StaticResource form-lbl}">
+                            </Label>
+                            <Label Text="{Binding createdOn}" Style="{StaticResource form-data-lbl}">
+                            </Label>
+                            <Label Text="Send To" Style="{StaticResource form-lbl}">
+                            </Label>
+                            <Label Text="{Binding emails}" Style="{StaticResource form-data-lbl}">
+                            </Label>
+                            <Label Text="Created By" Style="{StaticResource form-lbl}">
+                            </Label>
+                            <Label Text="{Binding createdBy}" Style="{StaticResource form-data-lbl}">
+                            </Label>
+                            <Label Text="Created On" Style="{StaticResource form-lbl}">
+                            </Label>
+                            <Label Text="{Binding createdOn}" Style="{StaticResource form-data-lbl}" Margin="0,0,0,10">
+                            </Label>
+                            <!--<BoxView HeightRequest="5" BackgroundColor="White"/>-->
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>

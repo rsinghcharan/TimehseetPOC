@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using ZeroChaos.TimesheetPOC.Models.Response;
 
-namespace ZeroChaos.TimesheetPOC
+namespace ZeroChaos.TimesheetPOC.Models.Response.Timesheet
 {
 
 	public class NoteType

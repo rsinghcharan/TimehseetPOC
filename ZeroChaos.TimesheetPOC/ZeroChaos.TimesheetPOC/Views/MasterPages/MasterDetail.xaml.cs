@@ -38,6 +38,15 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
         void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             App.UserSession.SideContentVisibility = (!App.UserSession.SideContentVisibility);
+            //Image imgMenu = (Image)sender;
+            //if (App.UserSession.SideContentVisibility)
+            //{
+            //    imgMenu.Margin = new Thickness(220, 20, 0, 0);
+            //}
+            //else
+            //{
+            //    imgMenu.Margin = new Thickness(2, 20, 0, 0);
+            //}
             OnPropertyChanged("SideContentVisible");
         }
         #endregion

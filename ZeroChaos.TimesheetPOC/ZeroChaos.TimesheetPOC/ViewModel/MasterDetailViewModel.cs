@@ -14,6 +14,8 @@ using ZeroChaos.TimesheetPOC.Views.Dashboard;
 using ZeroChaos.TimesheetPOC.Views.Timesheet;
 using Zerochaos.Util.POC.Messages;
 using ZeroChaos.TimesheetPOC.Views.Login;
+using ZeroChaos.TimesheetPOC.Models.Request.Common;
+
 #endregion
 namespace ZeroChaos.TimesheetPOC.ViewModel
 {
@@ -37,7 +39,9 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
               //var action = await DisplayActionSheet("More Information", "Cancel", null, "Notes", "Adjustment Track", "Track Codes", "Attachments", "Additional Information");
 
               string title = "More Information";
+
               List<string> Options = new List<string>() { "Notes", "Track Codes", "Attachments" };
+
               NeedMoreInfo nm = new NeedMoreInfo("More Information", Options);
 
               MessagingCenter.Send<object, NeedMoreInfo>(this, "NeedMoreInfo", nm);
@@ -196,7 +200,6 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
 
             return vResult;
         }
-
         private List<SimpleObject> PreparedObject()
         {
             var dummyData = new List<SimpleObject>();
@@ -239,8 +242,14 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
 
         private void NeedMoreInfoResponse(object sender, string selectedaction)
         {
+            Header = selectedaction;
+            RightButton = string.Empty;
             if (selectedaction == "Track Codes")
                 Detail = new TimesheetTrackCode();
+            if (selectedaction == "Attachments")
+                Detail = new ViewTimesheetAttachment();
+            if (selectedaction == "Notes")
+                Detail = new TimesheetNotes();
         }
     }
     public class SimpleObject
