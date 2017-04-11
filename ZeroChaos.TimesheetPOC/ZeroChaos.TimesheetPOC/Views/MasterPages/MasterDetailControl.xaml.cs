@@ -138,6 +138,8 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
                 var masterDetail = new TView();
                 var navigationPage = new NavigationPage(masterDetail);
                 viewModel.SetNavigation(navigationPage.Navigation);
+                viewModel.Header = "Dashboard";
+                viewModel.RightButton = string.Empty;
                 masterDetail.BindingContext = viewModel;
 
                 return navigationPage;

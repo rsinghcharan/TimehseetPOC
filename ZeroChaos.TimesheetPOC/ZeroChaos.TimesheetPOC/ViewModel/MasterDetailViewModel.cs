@@ -23,7 +23,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             Detail = new DashBoard();
             MessagingCenter.Subscribe<object, string>(this, "NeedMoreInfoReply", NeedMoreInfoResponse);
         }
-        
+
 
         private ICommand _NeedMoreInfo;
 
@@ -36,9 +36,9 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
               //var action = await DisplayActionSheet("More Information", "Cancel", null, "Notes", "Adjustment Track", "Track Codes", "Attachments", "Additional Information");
 
               string title = "More Information";
-              List<string> Options = new List<string>() { "Notes", "Adjustment Track", "Track Codes", "Attachments", "Additional Information" };
-              NeedMoreInfo nm = new NeedMoreInfo("More Information",Options);
-             
+              List<string> Options = new List<string>() { "Notes", "Track Codes", "Attachments" };
+              NeedMoreInfo nm = new NeedMoreInfo("More Information", Options);
+
               MessagingCenter.Send<object, NeedMoreInfo>(this, "NeedMoreInfo", nm);
               // Detail = new TimesheetActionList();
           }));
@@ -108,6 +108,8 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                             else if (label.Text == "View Timesheet")
                             {
                                 var page = new ViewTimesheetPage();
+                                Header = "View Timesheet";
+                                RightButton = string.Empty;
                                 ViewTimesheetViewModel vm = new ViewTimesheetViewModel();
                                 vm.MasterDetailViewModel = this;
                                 page.BindingContext = vm;
@@ -207,7 +209,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
 
             return vResult;
         }
-        
+
         private List<SimpleObject> PreparedObject()
         {
             var dummyData = new List<SimpleObject>();
@@ -248,7 +250,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             return dummyData;
         }
 
-        private void NeedMoreInfoResponse(object sender,string selectedaction)
+        private void NeedMoreInfoResponse(object sender, string selectedaction)
         {
             if (selectedaction == "Track Codes")
                 Detail = new TimesheetTrackCode();

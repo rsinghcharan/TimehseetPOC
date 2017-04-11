@@ -33,6 +33,9 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
         #region Public Methods
         public void GetTimesheetDetailPage()
         {
+
+            MasterDetailViewModel.Header = "Timesheet Detail";
+            MasterDetailViewModel.RightButton = "...";
             MasterDetailViewModel.Detail = new TimesheetDetailsPage();            
         }
         #endregion
