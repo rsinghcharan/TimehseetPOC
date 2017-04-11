@@ -55,10 +55,10 @@ namespace ZeroChaos.TimesheetPOC.Views.Login
 		{
 			IServiceCaller service = new ServiceCaller();
 			var request = new LoginRequest { emailAddress = txtUserName.Text, password = txtPassword.Text };
-			//busyindicator.IsBusy = true;
+			busyindicator.IsBusy = true;
 			service.CallHostService<LoginRequest, LoginResponse>(request, "loginrequest", (r) =>
 			{
-				//busyindicator.IsBusy = false;
+				busyindicator.IsBusy = false;
 				var loggedonUser = new UserInfo
 				{
 					userCulture = r.UserCulture,
