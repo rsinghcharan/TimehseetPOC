@@ -15,5 +15,7 @@ namespace ZeroChaos.TimesheetPOC.Models.Request.Timesheet
     {
         public int contactID { get; set; }
         public int resourceID { get; set; }
+        public int pageSize { get; set; }
+        public int offset { get; set; }
     }
 }

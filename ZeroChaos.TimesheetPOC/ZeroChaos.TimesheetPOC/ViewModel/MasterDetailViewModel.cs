@@ -13,6 +13,7 @@ using ZeroChaos.TimesheetPOC.ViewModel.Timesheet;
 using ZeroChaos.TimesheetPOC.Views.Dashboard;
 using ZeroChaos.TimesheetPOC.Views.Timesheet;
 using Zerochaos.Util.POC.Messages;
+using ZeroChaos.TimesheetPOC.Views.Login;
 #endregion
 namespace ZeroChaos.TimesheetPOC.ViewModel
 {
@@ -107,6 +108,8 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                             }
                             else if (label.Text == "View Timesheet")
                             {
+                                Header = "View Timesheet";
+                                RightButton = "...";
                                 var page = new ViewTimesheetPage();
                                 Header = "View Timesheet";
                                 RightButton = string.Empty;
@@ -115,23 +118,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                                 page.BindingContext = vm;
                                 Detail = page;
                             }
-                            else
-                            {
-                                var obj = new ViewTimesheetPage();
-                                // obj.LblText = label.Text;
-
-                                TapGestureRecognizer td = new TapGestureRecognizer();
-                                td.Tapped += (ss, se) =>
-                                {
-                                    //Detail = new Detail1();
-                                };
-
-                                Header = "View Timesheet";
-                                RightButton = "...";
-                                // obj.lbl.GestureRecognizers.Add(td);
-                                Detail = obj;
-
-                            }
+                           
                             App.UserSession.SideContentVisibility = (!App.UserSession.SideContentVisibility);
                             OnPropertyChanged("SideContentVisible");
                         };

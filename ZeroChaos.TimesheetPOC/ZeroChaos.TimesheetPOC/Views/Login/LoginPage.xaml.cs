@@ -59,25 +59,33 @@ namespace ZeroChaos.TimesheetPOC.Views.Login
 			service.CallHostService<LoginRequest, LoginResponse>(request, "loginrequest", (r) =>
 			{
 				busyindicator.IsBusy = false;
-				var loggedonUser = new UserInfo
-				{
-					userCulture = r.UserCulture,
-					userGUID = r.UserID,
-					userName = r.EmailAddress,
-					userID = (r.UserTypeID == 1 ? r.ResourceID : r.ContactID),
-					zCWUserID = Convert.ToInt32(r.ZCWUserID),
-					userPreferredCNLanguageID = r.UserPreferredCNLanguageID,
-					userPreferredLanguageID = r.PreferredLanguageID,
-					userPreferredLanguageName = r.UserPreferredLanguageName,
-					userPreferredTimeZoneID = Convert.ToInt32(r.UserPreferredTimeZone),
-					userPreferredTimeZoneName = r.UserPreferredTimeZoneName,
-					userType = r.UserTypeID
-				};
+                if(r.ResultSuccess)
+                {
+                    var loggedonUser = new UserInfo
+                    {
+                        userCulture = r.UserCulture,
+                        userGUID = r.UserID,
+                        userName = r.EmailAddress,
+                        userID = (r.UserTypeID == 1 ? r.ResourceID : r.ContactID),
+                        zCWUserID = Convert.ToInt32(r.ZCWUserID),
+                        userPreferredCNLanguageID = r.UserPreferredCNLanguageID,
+                        userPreferredLanguageID = r.PreferredLanguageID,
+                        userPreferredLanguageName = r.UserPreferredLanguageName,
+                        userPreferredTimeZoneID = Convert.ToInt32(r.UserPreferredTimeZone),
+                        userPreferredTimeZoneName = r.UserPreferredTimeZoneName,
+                        userType = r.UserTypeID
+                    };
 
-				//  App.UserSession = new ZCMobileSystemConfiguration {LoggedonUser = loggedonUser };
-				Application.Current.MainPage = MasterDetailControl.Create<MasterDetail, MasterDetailViewModel>();
-				App.UserSession.LoggedonUser = loggedonUser;
-				App.UserSession.CurrentUserInfo = r;
+                    //  App.UserSession = new ZCMobileSystemConfiguration {LoggedonUser = loggedonUser };
+                    Application.Current.MainPage = MasterDetailControl.Create<MasterDetail, MasterDetailViewModel>();
+                    App.UserSession.LoggedonUser = loggedonUser;
+                    App.UserSession.CurrentUserInfo = r;
+                }
+                else
+                {
+                    DisplayAlert("Error", r.ResultMessages.FirstOrDefault().Message, "ok");
+                }
+				
 			});
 		}
 

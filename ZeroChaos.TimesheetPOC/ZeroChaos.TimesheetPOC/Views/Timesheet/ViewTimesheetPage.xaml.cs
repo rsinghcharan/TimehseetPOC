@@ -30,7 +30,8 @@ namespace ZeroChaos.TimesheetPOC.Views.Timesheet
                 {
                     contactID = (App.UserSession.CurrentUserInfo.UserTypeID == 2 ? App.UserSession.LoggedonUser.userID : 0),
                     resourceID = (App.UserSession.CurrentUserInfo.UserTypeID == 1 ? App.UserSession.LoggedonUser.userID : 0),
-                    loggedonUser = App.UserSession.LoggedonUser
+                    loggedonUser = App.UserSession.LoggedonUser,
+                    offset=0,pageSize=10
 
                 };
                 service.CallHostService<ViewTimesheetRequest, ViewTimesheetObjectResponse>(request, "FilterTimesheetsForSearchRequest", (r) =>
@@ -42,7 +43,7 @@ namespace ZeroChaos.TimesheetPOC.Views.Timesheet
                {
                    if (e.SelectedItem == null) return; // don't do anything if we just de-selected the row
 
-
+                   var timesheet = e.SelectedItem as ViewTimesheetResponse;
                    ((ListView)sender).SelectedItem = null; // de-select the row
                                                            //call detail page from below
                                                            /*var secondPage = new SecondPage();
@@ -51,7 +52,7 @@ namespace ZeroChaos.TimesheetPOC.Views.Timesheet
 
                   
                    var viewtimesheetVM = BindingContext as ViewTimesheetViewModel;
-                   viewtimesheetVM.GetTimesheetDetailPage();
+                   viewtimesheetVM.GetTimesheetDetailPage(timesheet.timesheetID);
                };
             }
             catch (Exception ex)

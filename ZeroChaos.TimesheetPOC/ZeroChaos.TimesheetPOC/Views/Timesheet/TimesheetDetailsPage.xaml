@@ -2,10 +2,17 @@
 <masterDetail:DetailPage xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:masterDetail="clr-namespace:ZeroChaos.TimesheetPOC.Models"
+                         xmlns:local="clr-namespace:ZeroChaos.TimesheetPOC.Controls"
+                         xmlns:DateConverter="clr-namespace:ZeroChaos.TimesheetPOC.Converter"
 	xmlns:controls="clr-namespace:ZeroChaos.TimesheetPOC.Controls"
 	x:Class="ZeroChaos.TimesheetPOC.TimesheetDetailsPage">
+    <masterDetail:DetailPage.Resources>
+        <ResourceDictionary>
+            <DateConverter:DateFormatConverter x:Key="DateFormatConverter"/>
+        </ResourceDictionary>
+    </masterDetail:DetailPage.Resources>
+
     <StackLayout>
-        <ContentView x:Name="PanelView"></ContentView>
         <ScrollView VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Padding="0,0,10,0" >
             <StackLayout Padding="10,0,0,0" HorizontalOptions="FillAndExpand"  VerticalOptions="Start">
                 <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" >
@@ -18,10 +25,10 @@
                     <Label x:Name="lblPo" Style="{StaticResource form-label}"   Text="Po Number" ></Label>
                     <Label x:Name="lblPoValue" Style="{StaticResource data-label}"   TextColor="Black" Text="Po Value"></Label>
                     <Label x:Name="sicktimebalanceLabel" Style="{StaticResource form-label}"  Text="sicktimebalanceLabel" ></Label>
-                    <Label x:Name="sicktimebalanceValue" Style="{StaticResource data-label}"   TextColor="Black" Text="sicktimebalanceValue"></Label>
+                    <Label x:Name="sicktimebalanceValue" Style="{StaticResource data-label}"   TextColor="Black" Text=""></Label>
                     <Label x:Name="approvalManagerLabel" Style="{StaticResource form-label}"   Text="approvalManagerLabel" ></Label>
 
-                    <Entry  x:Name="txtApprovalManager" HorizontalOptions="FillAndExpand" BackgroundColor="#c1eaf6"  Text="" ></Entry>
+                    <Entry  x:Name="txtApprovalManager" Margin="10,7,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="#c1eaf6"  Text="" ></Entry>
                     <Label x:Name="lblID" Style="{StaticResource form-label}"   Text="TimeSheet ID" ></Label>
                     <Label x:Name="lblIDValue" Style="{StaticResource data-label}"   TextColor="Black" Text="ID"></Label>
 
@@ -96,33 +103,32 @@
 
                                         <BoxView Grid.Row="0" BackgroundColor="#19baea" HorizontalOptions="FillAndExpand"   />
 
-                                        <Label Grid.Row="0"    TextColor="Black" Text="{Binding TimesheetEntryDate,Converter={StaticResource DateFormatConverter}}" HorizontalOptions="Start" VerticalTextAlignment="Center" IsVisible="{Binding Path= BindingContext.IsDate,Source={x:Reference objectDetail}}"/>
+                                        <Label Grid.Row="0"    TextColor="Black" Text="{Binding TimesheetEntryDate,Converter={StaticResource DateFormatConverter}}" HorizontalOptions="Start" VerticalTextAlignment="Center" />
 
-                                        <Label Grid.Row="0"    TextColor="Black" Text="{Binding PayCodeName}" HorizontalOptions="Start" VerticalTextAlignment="Center" IsVisible="{Binding  Path=BindingContext.IsPayCode,Source={x:Reference objectDetail}"/>
+                                        <Label Grid.Row="0"    TextColor="Black" Text="{Binding PayCodeName}" HorizontalOptions="Start" VerticalTextAlignment="Center" />
 
-                                        <Label Grid.Row="0"    TextColor="Black" Text="{Binding TrackCodeName}" HorizontalOptions="Start" VerticalTextAlignment="Center" IsVisible="{Binding  Path=BindingContext.IsTrackCode,Source={x:Reference objectDetail}"/>
+                                        <Label Grid.Row="0"    TextColor="Black" Text="{Binding TrackCodeName}" HorizontalOptions="Start" VerticalTextAlignment="Center" />
 
 
                                         <Label Grid.Row="0" TextColor="Black"  Text="{Binding TimesheetUnitsName}" HorizontalOptions="End"  VerticalTextAlignment="Center"  />
 
 
 
-                                        <Label Grid.Row="1"  Text="Track Code " HorizontalOptions="Start" IsVisible="{Binding Path= BindingContext.IsTrackCodelbl,Source={x:Reference objectDetail}}"  FontAttributes="Bold" />
+                                        <Label Grid.Row="1"  Text="Track Code " HorizontalOptions="Start"  />
 
-                                        <Label Grid.Row="2"  TextColor="Black" Text="{Binding TrackCodeName}" HorizontalOptions="Start" IsVisible="{Binding Path= BindingContext.IsTrackCodelbl,Source={x:Reference objectDetail}}"  />
+                                        <Label Grid.Row="2"  TextColor="Black" Text="{Binding TrackCodeName}" HorizontalOptions="Start" />
 
-                                        <Label Grid.Row="3" Text="Pay Code" HorizontalOptions="Start" IsVisible="{Binding Path= BindingContext.IsPayCodelbl,Source={x:Reference objectDetail}}" FontAttributes="Bold"/>
+                                        <Label Grid.Row="3" Text="Pay Code" HorizontalOptions="Start"  FontAttributes="Bold"/>
 
-                                        <Label Grid.Row="4"  TextColor="Black" Text="{Binding PayCodeName}" HorizontalOptions="Start"  IsVisible="{Binding Path= BindingContext.IsPayCodelbl,Source={x:Reference objectDetail}}" />
+                                        <Label Grid.Row="4"  TextColor="Black" Text="{Binding PayCodeName}" HorizontalOptions="Start" />
 
-                                        <Label Grid.Row="1" Text="Date" HorizontalOptions="Start" IsVisible="{Binding Path= BindingContext.IsDatelbl,Source={x:Reference objectDetail}}" FontAttributes="Bold"/>
+                                        <Label Grid.Row="1" Text="Date" HorizontalOptions="Start"  FontAttributes="Bold"/>
 
-                                        <Label Grid.Row="2"  TextColor="Black" Text="{Binding TimesheetEntryDate,Converter={StaticResource DateFormatConverter}}"  HorizontalOptions="Start"  IsVisible="{Binding Path= BindingContext.IsDatelbl,Source={x:Reference objectDetail}}" />
+                                        <Label Grid.Row="2"  TextColor="Black" Text="{Binding TimesheetEntryDate,Converter={StaticResource DateFormatConverter}}"  HorizontalOptions="Start"  />
 
 
                                         <Label Grid.Row="5"  Text="Units " HorizontalOptions="Start" FontAttributes="Bold"  />
                                         <Label Grid.Row="6"  TextColor="Black" Text="{Binding Units}" HorizontalOptions="Start"   />
-
 
                                     </Grid>
 
@@ -148,4 +154,5 @@
         </StackLayout>
         <!--	<ContentView x:Name="ButtonBar" VerticalOptions="End" HorizontalOptions="Center" ></ContentView> -->
     </StackLayout>
+
 </masterDetail:DetailPage>

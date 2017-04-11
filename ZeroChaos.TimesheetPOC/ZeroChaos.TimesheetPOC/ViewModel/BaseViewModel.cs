@@ -7,12 +7,17 @@ using Xamarin.Forms;
 
 namespace ZeroChaos.TimesheetPOC.ViewModel
 {
-    public class BaseViewModel
+    public abstract class BaseViewModel
     {
-        
+        private MasterDetailViewModel _MasterDetailViewModel;
+
         public MasterDetailViewModel MasterDetailViewModel
         {
-            get { return Application.Current.MainPage.BindingContext as MasterDetailViewModel; }
+            get { return _MasterDetailViewModel; }
+            set { _MasterDetailViewModel = value; }
         }
+
+
+
     }
 }
