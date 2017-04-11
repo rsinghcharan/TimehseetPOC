@@ -31,12 +31,18 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
         #endregion
 
         #region Public Methods
-        public void GetTimesheetDetailPage()
+        public void GetTimesheetDetailPage(int TimesheetID)
         {
 
-            MasterDetailViewModel.Header = "Timesheet Detail";
+            MasterDetailViewModel.Header = "Timesheet";
             MasterDetailViewModel.RightButton = "...";
-            MasterDetailViewModel.Detail = new TimesheetDetailsPage();            
+            DetailTimesheetViewModel vm = new DetailTimesheetViewModel();
+            vm.TimesheetID = TimesheetID;
+            vm.MasterDetailViewModel = MasterDetailViewModel;
+            TimesheetDetailsPage detailPage = new TimesheetDetailsPage();
+            detailPage.BindingContext = vm;
+            MasterDetailViewModel.Detail = detailPage;
+            detailPage.LoadTimesheet();           
         }
         #endregion
 
