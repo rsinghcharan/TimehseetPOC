@@ -88,7 +88,7 @@ namespace ZeroChaos.TimesheetPOC
             var BC = BindingContext as DetailTimesheetViewModel;
             var request = new SaveOrSubmitTimesheetRequest
             {
-                PrimaryApprovalManagerID = TimesheetDetails.ApprovalManagerId,
+                PrimaryApprovalManagerID = BC.SelectedManager,
                 ActionTypeID = action,
                 EndDate = TimesheetDetails.EndDt,
                 ProjectID = TimesheetDetails.ProjectID,
