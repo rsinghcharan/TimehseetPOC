@@ -1,13 +1,27 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:ZeroChaos.TimesheetPOC"
-             x:Class="ZeroChaos.TimesheetPOC.MainPage">
-
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Orientation="Vertical" Padding="25" Opacity="10">
-        <Image Source="logo.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="200" WidthRequest="200"/>
-        <Button Text="United States" BackgroundColor="#3b5998" TextColor="White" CommandParameter="USButton" Clicked="OnButtonClick"></Button>
-        <Button Text="Europe" BackgroundColor="#3b5998" TextColor="White" CommandParameter="EUButton" Clicked="OnButtonClick"></Button>
-    </StackLayout>
-
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ZeroChaos.TimesheetPOC" x:Class="ZeroChaos.TimesheetPOC.MainPage" BackgroundColor="#FFFFFF">
+	<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Orientation="Vertical">
+		<StackLayout.Padding>
+			<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
+		</StackLayout.Padding>
+		<AbsoluteLayout AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" AbsoluteLayout.LayoutBounds="0,0,1,44" BackgroundColor="#01446b">
+			<AbsoluteLayout.HeightRequest>
+				<OnIdiom x:TypeArguments="x:Double" Phone="44" Tablet="64">
+				</OnIdiom>
+			</AbsoluteLayout.HeightRequest>
+			<Label x:Name="headerTitle" AbsoluteLayout.LayoutFlags="PositionProportional" Style="{StaticResource panel-header-title}" Text="Data Center">
+				<Label.AbsoluteLayout.LayoutBounds>
+					<OnIdiom x:TypeArguments="Rectangle" Phone="0.5,0.5,200,30" Tablet="0.5,0.5,-1,-1">
+					</OnIdiom>
+				</Label.AbsoluteLayout.LayoutBounds>
+			</Label>
+		</AbsoluteLayout>
+		<StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+		<Image Source="logo.png" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Aspect="AspectFit" />
+		<Button Text="United States" BackgroundColor="#3b5998" TextColor="White" CommandParameter="USButton" Clicked="OnButtonClick">
+		</Button>
+		<Button Text="Europe" BackgroundColor="#3b5998" TextColor="White" CommandParameter="EUButton" Clicked="OnButtonClick">
+		</Button>
+		</StackLayout>
+	</StackLayout>
 </ContentPage>
