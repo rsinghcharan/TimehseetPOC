@@ -60,7 +60,7 @@
 							</Button>-->
                             <Frame IsClippedToBounds="true" Padding="0,0,0,0">
                                 <ContentView  HorizontalOptions="FillAndExpand" HeightRequest="40">
-                                    <local:CustomButton Text="Save" Type="Orange" CommandParameter="EUButton" Clicked="OnButtonClick"   StyleId="1"/>
+                                    <local:CustomButton Text="Login" Type="Orange" CommandParameter="EUButton" Clicked="OnButtonClick"   StyleId="1"/>
                                 </ContentView>
                             </Frame>
                             <Label x:Name="lblResponse" VerticalOptions="StartAndExpand" />
