@@ -11,10 +11,10 @@
             <Label HorizontalOptions="Start" Margin="10,0,0,0" Text="Date" FontSize="Medium" />
             <Entry HorizontalOptions="FillAndExpand" StyleId="Date" x:Name="date" BackgroundColor="#c1eaf6" Margin="10,0,10,0" Focused="Entry_Focused" />
             <Label HorizontalOptions="Start" Margin="10,0,0,0" Text="Pay Code" FontSize="Medium" />
-            <Entry HorizontalOptions="FillAndExpand" BackgroundColor="#c1eaf6" Margin="10,0,10,0" Focused="Entry_Focused" StyleId="Paycode" x:Name="PayCode"/>
+            <Entry HorizontalOptions="FillAndExpand" BackgroundColor="#c1eaf6"  Margin="10,0,10,0" Focused="Entry_Focused" StyleId="Paycode" x:Name="PayCode"/>
 
             <Label HorizontalOptions="Start" Margin="10,0,0,0" Text="Track Code" FontSize="Medium" />
-            <Entry HorizontalOptions="FillAndExpand" BackgroundColor="#c1eaf6" Margin="10,0,10,0" Focused="Entry_Focused" StyleId="Trackcode" x:Name="TrackCode" />
+            <Entry HorizontalOptions="FillAndExpand" BackgroundColor="#c1eaf6"  Margin="10,0,10,0" Focused="Entry_Focused" StyleId="Trackcode" x:Name="TrackCode" />
 
             <Label HorizontalOptions="Start" Margin="10,0,0,0" Text="Units" FontSize="Medium" />
             <Entry HorizontalOptions="FillAndExpand" BackgroundColor="#c1eaf6" Margin="10,0,10,0" x:Name="unit"  />

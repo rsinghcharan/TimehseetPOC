@@ -33,6 +33,19 @@ namespace ZeroChaos.TimesheetPOC
                 if (es) LoadTimesheet();
             });
 
+			lsTimeSheetItem.ItemSelected += (sender, e) =>
+			{
+				if (e.SelectedItem == null) return;
+				var timesheet = e.SelectedItem as Models.Request.Timesheet.TimesheetEntry;
+				((ListView)sender).SelectedItem = null;
+
+				var BC = BindingContext as DetailTimesheetViewModel;
+				BC.TimeshetEntrySeleted=timesheet;
+				BC.OpenAddEntryPage();
+			};
+				                                                                          
+
+
         }
         #endregion
 
@@ -112,6 +125,7 @@ namespace ZeroChaos.TimesheetPOC
             BC.OpenAddEntryPage();
         }
 
+
         #endregion
 
         #region Private Methods
@@ -139,6 +153,9 @@ namespace ZeroChaos.TimesheetPOC
             var BC = BindingContext as DetailTimesheetViewModel;
             BC.OpentheApproveManager();
         }
+
+
+		 
 
     }
 }

@@ -22,6 +22,10 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
         public event PropertyChangedEventHandler PropertyChanged;
 
         public int TimesheetID { get; set; }
+		public TimesheetEntry TimeshetEntrySeleted {
+			get;
+			set;
+		}
         public TimesheetDetailsResponse Tres { get; set; }
         public SaveOrSubmitTimesheetResponse SaveSubmitResponse { get; set; }
 
@@ -163,8 +167,12 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
 			AddTimesheetEntryDetailPage ad = new AddTimesheetEntryDetailPage();
 			MasterDetailViewModel.Header="Timesheet Entry";
 			MasterDetailViewModel.RightButton="";
-            ad.BindingContext = this;
+			 ad.BindingContext = this;
 			MasterDetailViewModel.Detail = ad;
+			ad.OnAppearing();
+
+				
+
 		}
 
         void OnPropertyChanged([CallerMemberName] string propertyName = "")
