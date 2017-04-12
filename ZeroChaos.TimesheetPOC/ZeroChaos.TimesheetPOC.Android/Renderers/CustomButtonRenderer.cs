@@ -48,9 +48,9 @@ namespace ZeroChaos.TimesheetPOC.Droid.Renderers
 										}
 						            };
 			      // CustomButton.SetAllCaps(false);
-					if (elementButton.Type == "Orange")
+					if (elementButton.Type == Typeenum.Orange)
 						Control.SetBackgroundDrawable(CreateGradientColor("#ffb85c", "#d25903", "#FFF6923F"));
-					else if (elementButton.Type == "Blue")
+					else if (elementButton.Type == Typeenum.Blue)
 						Control.SetBackgroundDrawable(CreateGradientColor("#3c9ece", "#01446b", "#FFB95454"));
 					else Control.SetBackgroundDrawable(CreateGradientColor("#3c9ece", "#01446b", "#FF98B954"));
 				}

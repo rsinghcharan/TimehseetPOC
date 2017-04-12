@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ZeroChaos.TimesheetPOC.AddTimesheetEntryDetailPage">
-	<StackLayout>
-			
-			<Label Text="Entry Date" TranslationX="10" />
-			<Entry x:Name="entryDate" StyleId="entryDate" Focused="Handle_Focused"></Entry>
-			<Label Text="Pay Code" TranslationX="10" />
-			<Entry x:Name="payCode" StyleId="payCode" Focused="Handle_Focused"></Entry>
-			<Label Text="Track Code" TranslationX="10" />
-			<Entry x:Name="trackCode" StyleId="trackCode" Focused="Handle_Focused"></Entry>
-			<Label Text="Unit" TranslationX="10" />
-			<Entry x:Name="unit" StyleId="unit" Focused="Handle_Focused"></Entry>
-		<StackLayout>
-			<Button Text="Save" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Clicked="Save_Button_Clicked"></Button>
-		</StackLayout>
-	</StackLayout>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ZeroChaos.TimesheetPOC.AddTimesheetEntryDetailPage"
+             xmlns:local="clr-namespace:ZeroChaos.TimesheetPOC.Controls">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <StackLayout Orientation="Vertical">
+            <Label HorizontalOptions="Start" Margin="10,0,0,0" Text="Date" FontSize="Medium" />
+            <Entry HorizontalOptions="FillAndExpand" StyleId="Date" x:Name="date" BackgroundColor="#c1eaf6" Margin="10,0,10,0" Focused="Entry_Focused" />
+            <Label HorizontalOptions="Start" Margin="10,0,0,0" Text="Pay Code" FontSize="Medium" />
+            <Entry HorizontalOptions="FillAndExpand" BackgroundColor="#c1eaf6" Margin="10,0,10,0" Focused="Entry_Focused" StyleId="Paycode" x:Name="PayCode"/>
+
+            <Label HorizontalOptions="Start" Margin="10,0,0,0" Text="Track Code" FontSize="Medium" />
+            <Entry HorizontalOptions="FillAndExpand" BackgroundColor="#c1eaf6" Margin="10,0,10,0" Focused="Entry_Focused" StyleId="Trackcode" x:Name="TrackCode" />
+
+            <Label HorizontalOptions="Start" Margin="10,0,0,0" Text="Units" FontSize="Medium" />
+            <Entry HorizontalOptions="FillAndExpand" BackgroundColor="#c1eaf6" Margin="10,0,10,0" x:Name="unit"  />
+
+        </StackLayout>
+        <local:CustomButton Text="Save" Grid.Row="1" Type="Orange" x:Name="Save" Clicked="Save_Clicked"/>
+        <!--<Button Grid.Row="1" HorizontalOptions="FillAndExpand" BackgroundColor="#d25903" Command="{Binding SaveTimesheet}" TextColor="White" FontAttributes="Bold"  Text="Save" Margin="10" />-->
+    </Grid>
 </ContentPage>

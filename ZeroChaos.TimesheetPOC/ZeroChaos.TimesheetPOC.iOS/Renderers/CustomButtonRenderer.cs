@@ -34,9 +34,9 @@ namespace ZeroChaos.TimesheetPOC.iOS.Renderers
 				System.Diagnostics.Debug.WriteLine("TouchUpEvent");
 			};
 			///
-			if (elementButton.Type == "Orange")
+			if (elementButton.Type == Typeenum.Orange)
 				Control.Layer.InsertSublayer(CreateGradientColor("#ffb85c", "#d25903", "#FFF6923F", Control.Bounds), 0);
-			else if (elementButton.Type == "Blue")
+			else if (elementButton.Type == Typeenum.Blue)
 				Control.Layer.InsertSublayer(CreateGradientColor("#3c9ece", "#01446b", "#FFB95454", Control.Bounds), 0);
 			else Control.Layer.InsertSublayer(CreateGradientColor("#3c9ece", "#01446b", "#FFB95454", Control.Bounds), 0);
 		}

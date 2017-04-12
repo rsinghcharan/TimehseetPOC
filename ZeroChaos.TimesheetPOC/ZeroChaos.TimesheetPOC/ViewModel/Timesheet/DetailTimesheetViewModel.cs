@@ -10,6 +10,7 @@ using ZeroChaos.TimesheetPOC.IServices;
 using ZeroChaos.TimesheetPOC.Models.Request.Timesheet;
 using ZeroChaos.TimesheetPOC.Models.Response.Timesheet;
 using ZeroChaos.TimesheetPOC.Services;
+using ZeroChaos.TimesheetPOC.Views;
 using ZeroChaos.TimesheetPOC.Views.Timesheet;
 
 namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
@@ -23,6 +24,10 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
         public int TimesheetID { get; set; }
         public TimesheetDetailsResponse Tres { get; set; }
         public SaveOrSubmitTimesheetResponse SaveSubmitResponse { get; set; }
+
+        public List<PayCodeInfoList> PayCodeInfoList { get; set; }
+
+        public List<ProjectTrackCode> ProjectTrackCode { get; set; }
         public int SelectedManager { get; set; }
 
         private bool saveSubmitButtonVisibility = true;
@@ -38,6 +43,18 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
                 OnPropertyChanged();
             }
         }
+
+        private AddTimeSheet _AddTimesheetEntrySelected;
+
+        public AddTimeSheet AddTimesheetEntrySelected
+        {
+            get { return _AddTimesheetEntrySelected ?? (_AddTimesheetEntrySelected=new AddTimeSheet()); }
+            set { _AddTimesheetEntrySelected = value; }
+        }
+
+      
+       
+
         public DetailTimesheetViewModel()
         {
             App.Current.Resources["DateColor"] = Color.FromHex("#3c9ece");
@@ -88,11 +105,65 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
 
         }
 
+        public void LoadSelectionPage(string value)
+        {
+            IServiceCaller service = new Services.ServiceCaller();
+            switch (value)
+            {
+                case "Date":
+                    var request = new TimesheetEndingDatesRequest { projectID = Tres.ProjectID, loggedonUser = App.UserSession.LoggedonUser, timesheetEndingDate =Tres.EndDt.ToString()};
+                    service.CallHostService<TimesheetEndingDatesRequest, TimesheetEndingDatesResponse>(request, "GetTimesheetEntryDatesRequest", (r) =>
+                    {
+                       
+                        SingleItemSelectionPage page = new SingleItemSelectionPage();
+                        page.SelectionPageCollection = r.timesheetEntryDates;
+                        page.Option = value;
+                        page.BindingContext = this;
+                        MasterDetailViewModel.Detail = page;
+                    });
+                    break;
+                case "Paycode":
+                    var req = new TimesheetPayCodeRequest { timesheetTypeID = Tres.TimesheetTypeID.Value, projectID = Tres.ProjectID, loggedonUser = App.UserSession.LoggedonUser, timesheetEndingDate = Tres.EndDt.ToString() };
+                    service.CallHostService<TimesheetPayCodeRequest, TimesheetPayCodeResponse>(req, "GetPayCodesRequest", (r) =>
+                    {
+                        PayCodeInfoList = r.payCodeInfoList;
+                        SingleItemSelectionPage page = new SingleItemSelectionPage();
+                        page.BindingContext = this;
+                        page.Option = value;
+                        page.SelectionPageCollection = r.payCodeInfoList.Select(p=>p.payCodeName).ToList();
+                        MasterDetailViewModel.Detail = page;
+                    });
+
+                    break;
+                case "Trackcode":
+                    ProjectTrackCodesRequest trackReq = new ProjectTrackCodesRequest();
+                    trackReq.ProjectID = Tres.ProjectID;
+                    trackReq.TimesheetEndingDate = Tres.EndDt;
+                    trackReq.TimesheetID = Tres.TimesheetID;
+                    trackReq.Offset = 0;
+                    trackReq.PageSize = 10;
+                    trackReq.loggedonUser = App.UserSession.LoggedonUser;
+                     service.CallHostService<ProjectTrackCodesRequest, ProjectTrackCodeResponse>(trackReq, "GetProjectTrackCodesRequest", (r) =>
+                     {
+                         ProjectTrackCode = r.ProjectTrackCodes.ToList();
+                         SingleItemSelectionPage page = new SingleItemSelectionPage();
+                         page.BindingContext = this;
+                         page.Option = value;
+                         page.SelectionPageCollection = r.ProjectTrackCodes.Select(p => p.TrackCodeName).ToList();
+                         MasterDetailViewModel.Detail = page;
+                     });
+                    break;
+                default:
+                    break;
+            }
+        }
+
 		public void OpenAddEntryPage()
 		{
 			AddTimesheetEntryDetailPage ad = new AddTimesheetEntryDetailPage();
 			MasterDetailViewModel.Header="Timesheet Entry";
 			MasterDetailViewModel.RightButton="";
+            ad.BindingContext = this;
 			MasterDetailViewModel.Detail = ad;
 		}
 
@@ -117,5 +188,13 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
 
             return request;
         }
+    }
+
+    public class AddTimeSheet
+    {
+        public string SelectedEntryDate { get; set; }
+        public string SelectedPaycode { get; set; }
+        public string TrackCode { get; set; }
+        public int Units { get; set; }
     }
 }

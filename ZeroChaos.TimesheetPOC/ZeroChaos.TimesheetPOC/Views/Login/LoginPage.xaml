@@ -1,68 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ZeroChaos.TimesheetPOC.Controls" xmlns:customControls="clr-namespace:ZeroChaos.TimesheetPOC" x:Class="ZeroChaos.TimesheetPOC.Views.Login.LoginPage" BackgroundColor="#FFFFFF">
-	<local:BusyIndicator x:Name="busyindicator">
-		<local:BusyIndicator.ContainerContent>
-			<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-				<StackLayout.Padding>
-					<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
-				</StackLayout.Padding>
-				<AbsoluteLayout AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" AbsoluteLayout.LayoutBounds="0,0,1,44" BackgroundColor="#01446b">
-					<AbsoluteLayout.HeightRequest>
-						<OnIdiom x:TypeArguments="x:Double" Phone="44" Tablet="64">
-						</OnIdiom>
-					</AbsoluteLayout.HeightRequest>
-					<Label x:Name="headerTitle" AbsoluteLayout.LayoutFlags="PositionProportional" Style="{StaticResource panel-header-title}" Text="Login">
-						<Label.AbsoluteLayout.LayoutBounds>
-							<OnIdiom x:TypeArguments="Rectangle" Phone="0.5,0.5,200,30" Tablet="0.5,0.5,-1,-1">
-							</OnIdiom>
-						</Label.AbsoluteLayout.LayoutBounds>
-					</Label>
-					<!--<Label x:Name="rightButton" VerticalTextAlignment="Center" AbsoluteLayout.LayoutFlags="PositionProportional" Style="{StaticResource header-right-label}" Text="ADD NOTES">
+    <local:BusyIndicator x:Name="busyindicator">
+        <local:BusyIndicator.ContainerContent>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
+                </StackLayout.Padding>
+                <AbsoluteLayout AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" AbsoluteLayout.LayoutBounds="0,0,1,44" BackgroundColor="#01446b">
+                    <AbsoluteLayout.HeightRequest>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="44" Tablet="64">
+                        </OnIdiom>
+                    </AbsoluteLayout.HeightRequest>
+                    <Label x:Name="headerTitle" AbsoluteLayout.LayoutFlags="PositionProportional" Style="{StaticResource panel-header-title}" Text="Login">
+                        <Label.AbsoluteLayout.LayoutBounds>
+                            <OnIdiom x:TypeArguments="Rectangle" Phone="0.5,0.5,200,30" Tablet="0.5,0.5,-1,-1">
+                            </OnIdiom>
+                        </Label.AbsoluteLayout.LayoutBounds>
+                    </Label>
+                    <!--<Label x:Name="rightButton" VerticalTextAlignment="Center" AbsoluteLayout.LayoutFlags="PositionProportional" Style="{StaticResource header-right-label}" Text="ADD NOTES">
 						<Label.AbsoluteLayout.LayoutBounds>
 							<OnIdiom x:TypeArguments="Rectangle" Phone="0.95,0.5,80,30" Tablet="0.95,0.5,-1,-1">
 							</OnIdiom>
 						</Label.AbsoluteLayout.LayoutBounds>
 					</Label>-->
-				</AbsoluteLayout>
-				<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Orientation="Vertical">
-					<Image Source="logo.png" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Aspect="AspectFit" />
-					<StackLayout x:Name="loginContainer" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Orientation="Vertical">
-						<Grid BackgroundColor="#c1eaf6" RowSpacing="5">
-							<Grid.RowDefinitions>
-								<RowDefinition>
-									<RowDefinition.Height>
-										<OnPlatform x:TypeArguments="GridLength" iOS="35" Android="*" />
-									</RowDefinition.Height>
-								</RowDefinition>
-								<RowDefinition>
-									<RowDefinition.Height>
-										<OnPlatform x:TypeArguments="GridLength" iOS="35" Android="*" />
-									</RowDefinition.Height>
-								</RowDefinition>
-							</Grid.RowDefinitions>
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="*">
-								</ColumnDefinition>
-								<ColumnDefinition Width="80">
-								</ColumnDefinition>
-							</Grid.ColumnDefinitions>
-							<customControls:MyEntry x:Name="txtUserName" Text="test1@test1.com12" Placeholder="Username" BackgroundColor="Transparent" Grid.ColumnSpan="1" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0" />
-							<customControls:MyEntry x:Name="txtPassword" Text="Planet#9" Placeholder="Password" IsPassword="True" BackgroundColor="Transparent" Grid.Column="0" Grid.Row="1" Margin="10,0,0,0" />
-							<Label x:Name="lblForgot" Text="Forgot?" VerticalTextAlignment="Center" VerticalOptions="Center" TextColor="#3c9ece" Grid.Column="1" Grid.Row="1" />
-						</Grid>
-						<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
-							<Switch x:Name="RememberMeSwitch" HorizontalOptions="Start" VerticalOptions="StartAndExpand" Toggled="OnRemeberSwitchToggled">
-							</Switch>
-							<Label Text="Save Username" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="#3c9ece" />
-						</StackLayout>
-						<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Orientation="Vertical">
-							<Button Text="Login" BackgroundColor="#ffb85c" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" TextColor="White" CommandParameter="EUButton" Clicked="OnButtonClick">
-							</Button>
-							<Label x:Name="lblResponse" VerticalOptions="StartAndExpand" />
-						</StackLayout>
-					</StackLayout>
-				</StackLayout>
-			</StackLayout>
-		</local:BusyIndicator.ContainerContent>
-	</local:BusyIndicator>
+                </AbsoluteLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Orientation="Vertical">
+                    <Image Source="logo.png" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Aspect="AspectFit" BackgroundColor="Transparent"/>
+                    <StackLayout x:Name="loginContainer" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Orientation="Vertical">
+                        <Grid BackgroundColor="#c1eaf6" RowSpacing="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition>
+                                    <RowDefinition.Height>
+                                        <OnPlatform x:TypeArguments="GridLength" iOS="35" Android="*" />
+                                    </RowDefinition.Height>
+                                </RowDefinition>
+                                <RowDefinition>
+                                    <RowDefinition.Height>
+                                        <OnPlatform x:TypeArguments="GridLength" iOS="35" Android="*" />
+                                    </RowDefinition.Height>
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*">
+                                </ColumnDefinition>
+                                <ColumnDefinition Width="80">
+                                </ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <customControls:MyEntry x:Name="txtUserName" Text="test1@test1.com12" Placeholder="Username" BackgroundColor="Transparent" Grid.ColumnSpan="1" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0" />
+                            <customControls:MyEntry x:Name="txtPassword" Text="Planet#9" Placeholder="Password" IsPassword="True" BackgroundColor="Transparent" Grid.Column="0" Grid.Row="1" Margin="10,0,0,0" />
+                            <Label x:Name="lblForgot" Text="Forgot?" VerticalTextAlignment="Center" VerticalOptions="Center" TextColor="#3c9ece" Grid.Column="1" Grid.Row="1" />
+                        </Grid>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                            <Switch x:Name="RememberMeSwitch" HorizontalOptions="Start" VerticalOptions="StartAndExpand" Toggled="OnRemeberSwitchToggled">
+                            </Switch>
+                            <Label Text="Save Username" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="#3c9ece" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Orientation="Vertical">
+                            <!--<Button Text="Login" BackgroundColor="#ffb85c" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" TextColor="White" CommandParameter="EUButton" Clicked="OnButtonClick">
+							</Button>-->
+                            <Frame IsClippedToBounds="true" Padding="0,0,0,0">
+                                <ContentView  HorizontalOptions="FillAndExpand" HeightRequest="40">
+                                    <local:CustomButton Text="Save" Type="Orange" CommandParameter="EUButton" Clicked="OnButtonClick"   StyleId="1"/>
+                                </ContentView>
+                            </Frame>
+                            <Label x:Name="lblResponse" VerticalOptions="StartAndExpand" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </local:BusyIndicator.ContainerContent>
+    </local:BusyIndicator>
 </ContentPage>

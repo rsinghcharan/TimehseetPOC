@@ -28,6 +28,12 @@ namespace ZeroChaos.TimesheetPOC.Controls
             get { return overlay.IsVisible; }
             set
             {
+                if (value)
+                    ContentFrame.IsEnabled = false;
+                else
+                    ContentFrame.IsEnabled = true;
+
+
                 overlay.IsVisible = value;
                 indicator.IsVisible = value;
                 indicator.IsRunning = true;

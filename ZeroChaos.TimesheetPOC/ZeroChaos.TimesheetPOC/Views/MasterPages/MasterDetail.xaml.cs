@@ -23,6 +23,11 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
         public MasterDetail()
         {
             InitializeComponent();
+            if(Device.RuntimePlatform==Device.Android)
+            {
+                NavigationPage.SetHasNavigationBar(this, false);
+            }
+            
         }
         #endregion
 

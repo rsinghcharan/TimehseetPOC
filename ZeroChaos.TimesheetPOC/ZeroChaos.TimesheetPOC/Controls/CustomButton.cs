@@ -11,6 +11,11 @@ namespace ZeroChaos.TimesheetPOC.Controls
 							   //this.HeightRequest=40;
 			this.TextColor = Color.White;
 		}
-		public string Type { get; set; }
+		public Typeenum Type { get; set; }
 	}
+    public enum Typeenum
+    {
+        Orange=0,
+        Blue=1
+    }
 }

@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZeroChaos.TimesheetPOC.IServices;
 using ZeroChaos.TimesheetPOC.Services;
+using ZeroChaos.TimesheetPOC.ViewModel.Timesheet;
 
 namespace ZeroChaos.TimesheetPOC.Views
 {
@@ -18,23 +19,40 @@ namespace ZeroChaos.TimesheetPOC.Views
         {
             InitializeComponent();
         }
-        public void GetTimesheetEndDates()
+
+       
+
+        public List<string> SelectionPageCollection
         {
-            IServiceCaller service = new ServiceCaller();
-            var request = new TimesheetEndingDatesRequest { projectID = 429103, loggedonUser = App.UserSession.LoggedonUser, timesheetEndingDate = "10/22/2014 12:00:00" };
-            service.CallHostService<TimesheetEndingDatesRequest, TimesheetEndingDatesResponse>(request, "GetTimesheetEntryDatesRequest", (r) =>
-            {
-                lstView.ItemsSource = r.timesheetEntryDates;
-            });
+            get { return lstView.ItemsSource as List<string>; }
+            set { lstView.ItemsSource = value; }
         }
-        public void GetTimesheetPaycodes()
+        public string Option { get; set; }
+
+
+        private void lstView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            IServiceCaller service = new ServiceCaller();
-            var request = new TimesheetPayCodeRequest { timesheetTypeID = 1, projectID = 429103, loggedonUser = App.UserSession.LoggedonUser, timesheetEndingDate = "10/22/2014 12:00:00" };
-            service.CallHostService<TimesheetPayCodeRequest, TimesheetPayCodeResponse>(request, "GetPayCodesRequest", (r) =>
+            var lstview = (sender as ListView);
+            var SelectedItem = lstview.SelectedItem;
+            var BC = BindingContext as DetailTimesheetViewModel;
+            switch (Option)
             {
-                lstView.ItemsSource = r.payCodeInfoList;
-            });
+                case "Date":
+                    BC.AddTimesheetEntrySelected.SelectedEntryDate = Convert.ToString(SelectedItem);
+                    break;
+                case "Paycode":
+                    BC.AddTimesheetEntrySelected.SelectedPaycode = Convert.ToString(SelectedItem);
+                    break;
+                case "Trackcode":
+                    BC.AddTimesheetEntrySelected.TrackCode = Convert.ToString(SelectedItem);
+                    break;
+                default:
+                    break;
+            }
+            MessagingCenter.Send<string, string>(Option, "SelectedOption", SelectedItem.ToString());
+
+            BC.MasterDetailViewModel.PopAsync();
+
         }
     }
 }

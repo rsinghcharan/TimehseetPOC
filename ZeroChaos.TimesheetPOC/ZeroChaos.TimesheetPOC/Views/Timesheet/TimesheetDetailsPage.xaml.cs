@@ -14,7 +14,7 @@ namespace ZeroChaos.TimesheetPOC
     public partial class TimesheetDetailsPage
     {
         #region Private Members
-    //    private TimesheetDetailsResponse TimesheetDetails { get; set; }
+        //    private TimesheetDetailsResponse TimesheetDetails { get; set; }
         #endregion
 
         #region Properties
@@ -28,13 +28,21 @@ namespace ZeroChaos.TimesheetPOC
            {
                txtApprovalManager.Text = arg;
            });
+            MessagingCenter.Subscribe<object, bool>(this, "UpdateDetail", (qa, es) => 
+            {
+                if (es) LoadTimesheet();
+            });
+
         }
         #endregion
 
         #region Form Events
         public void LoadTimesheet()
         {
-            //busy.IsBusy = true;
+            busy.IsBusy = true;
+            txtApprovalManager.BackgroundColor = Color.Transparent;
+
+            
             var BC = BindingContext as DetailTimesheetViewModel;
             BC.GetDetail((res) =>
             {
@@ -46,10 +54,13 @@ namespace ZeroChaos.TimesheetPOC
                 lblIDValue.Text = BC.TimesheetID.ToString();
                 lsTimeSheetItem.ItemsSource = res.TimeSheetEntryList;
                 res.TimesheetID = BC.TimesheetID;
-              //  BC.SaveSubmitButtonVisibility = (res.TimesheetTypeID == 1 ? true : false);
-                btnSave.IsVisible = (res.TimesheetTypeID == 1 ? true : false);
-                btnSubmit.IsVisible = (res.TimesheetTypeID == 1 ? true : false);
-                //busy.IsBusy = false;
+                //  BC.SaveSubmitButtonVisibility = (res.TimesheetTypeID == 1 ? true : false);
+                btnSave.IsVisible = (res.TimesheetTypeID == 1 && (res.StatusID == 1 || res.StatusID == 64) ? true : false);
+                btnSubmit.IsVisible = (res.TimesheetTypeID == 1 && (res.StatusID == 1 || res.StatusID == 64) ? true : false);
+                add.IsVisible = (res.TimesheetTypeID == 1 && (res.StatusID == 1 || res.StatusID == 64) ? true : false);
+                busy.IsBusy = false;
+                txtApprovalManager.BackgroundColor = Color.FromHex("#c1eaf6");
+              
             });
         }
 
@@ -69,17 +80,17 @@ namespace ZeroChaos.TimesheetPOC
         {
             var button = sender as CustomButton;
             var BC = BindingContext as DetailTimesheetViewModel;
-            BC.SaveSubmitTimesheet(Convert.ToInt32(button.StyleId),(r) =>
-            {
-                if (!r.ResultSuccess)
-                {
-                    Application.Current.MainPage.DisplayAlert("Error", r.ResultMessages[0].Message, "Ok");
-                }
-                else
-                {
-                    Application.Current.MainPage.DisplayAlert("Timesheet", r.ResultMessages[0].Message, "Ok");
-                }
-            });
+            BC.SaveSubmitTimesheet(Convert.ToInt32(button.StyleId), (r) =>
+             {
+                 if (!r.ResultSuccess)
+                 {
+                     Application.Current.MainPage.DisplayAlert("Error", r.ResultMessages[0].Message, "Ok");
+                 }
+                 else
+                 {
+                     Application.Current.MainPage.DisplayAlert("Timesheet", r.ResultMessages[0].Message, "Ok");
+                 }
+             });
             //IServiceCaller service = new ServiceCaller();
 
             //var request = PrepareSaveOrSubmitTimesheetRequest(Convert.ToInt32(button.StyleId));
@@ -95,18 +106,18 @@ namespace ZeroChaos.TimesheetPOC
             //    }
             //});
         }
-		void Handle_Clicked(object sender, System.EventArgs e)
-		{
-			var BC = BindingContext as DetailTimesheetViewModel;
-			BC.OpenAddEntryPage();
-		}
+        void Handle_Clicked(object sender, System.EventArgs e)
+        {
+            var BC = BindingContext as DetailTimesheetViewModel;
+            BC.OpenAddEntryPage();
+        }
 
         #endregion
 
         #region Private Methods
         private SaveOrSubmitTimesheetRequest PrepareSaveOrSubmitTimesheetRequest(int action)
         {
-            var BC = BindingContext as DetailTimesheetViewModel;            
+            var BC = BindingContext as DetailTimesheetViewModel;
             var request = new SaveOrSubmitTimesheetRequest
             {
                 PrimaryApprovalManagerID = BC.SelectedManager,
@@ -128,6 +139,6 @@ namespace ZeroChaos.TimesheetPOC
             var BC = BindingContext as DetailTimesheetViewModel;
             BC.OpentheApproveManager();
         }
-       
+
     }
 }

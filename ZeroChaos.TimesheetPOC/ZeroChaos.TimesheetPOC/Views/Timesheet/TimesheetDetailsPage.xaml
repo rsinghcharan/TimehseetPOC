@@ -5,154 +5,160 @@
                          xmlns:local="clr-namespace:ZeroChaos.TimesheetPOC.Controls"
                          xmlns:DateConverter="clr-namespace:ZeroChaos.TimesheetPOC.Converter"
 	xmlns:controls="clr-namespace:ZeroChaos.TimesheetPOC.Controls"
-	x:Class="ZeroChaos.TimesheetPOC.TimesheetDetailsPage">
+	x:Class="ZeroChaos.TimesheetPOC.TimesheetDetailsPage" >
     <masterDetail:DetailPage.Resources>
         <ResourceDictionary>
             <DateConverter:DateFormatConverter x:Key="DateFormatConverter"/>
         </ResourceDictionary>
     </masterDetail:DetailPage.Resources>
 
-    <StackLayout>
-        <ScrollView VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Padding="0,0,10,0" >
-            <StackLayout Padding="10,0,0,0" HorizontalOptions="FillAndExpand"  VerticalOptions="Start">
-                <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" >
-                    <Label x:Name="lblResourceName" Style="{StaticResource form-label}"    Text="ResuceName" ></Label>
-                    <Label x:Name="lblResourceNameValue" Style="{StaticResource data-label}"   TextColor="Black" Text="ResouceValue"></Label>
-                    <Label x:Name="lblProjectName" Style="{StaticResource form-label}"  Text="Project Name" ></Label>
-                    <Label x:Name="lblProjectNameValue" Style="{StaticResource data-label}"   TextColor="Black" Text="Project Valeu"></Label>
-                    <Label x:Name="lblEndDate" Style="{StaticResource form-label}"  Text="Timesheet Ending Date" ></Label>
-                    <Label x:Name="lblEndValue" Style="{StaticResource data-label}"  TextColor="Black" Text="Date"></Label>
-                    <Label x:Name="lblPo" Style="{StaticResource form-label}"   Text="Po Number" ></Label>
-                    <Label x:Name="lblPoValue" Style="{StaticResource data-label}"   TextColor="Black" Text="Po Value"></Label>
-                    <Label x:Name="sicktimebalanceLabel" Style="{StaticResource form-label}"  Text="sicktimebalanceLabel" ></Label>
-                    <Label x:Name="sicktimebalanceValue" Style="{StaticResource data-label}"   TextColor="Black" Text=""></Label>
-                    <Label x:Name="approvalManagerLabel" Style="{StaticResource form-label}"   Text="approvalManagerLabel" ></Label>
+    <local:BusyIndicator x:Name="busy">
+        <local:BusyIndicator.ContainerContent>
+            <StackLayout>
 
-                    <Entry  x:Name="txtApprovalManager" Margin="10,7,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="#c1eaf6"  Text="" Focused="txtApprovalManager_Focused"></Entry>
-                    <Label x:Name="lblID" Style="{StaticResource form-label}"   Text="TimeSheet ID" ></Label>
-                    <Label x:Name="lblIDValue" Style="{StaticResource data-label}"   TextColor="Black" Text="ID"></Label>
+                <ScrollView VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Padding="0,0,10,0" >
+                    <StackLayout Padding="10,0,0,0" HorizontalOptions="FillAndExpand"  VerticalOptions="Start">
+                        <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" >
+                            <Label x:Name="lblResourceName" Style="{StaticResource form-label}"    Text="ResuceName" ></Label>
+                            <Label x:Name="lblResourceNameValue" Style="{StaticResource data-label}"   TextColor="Black" Text="ResouceValue"></Label>
+                            <Label x:Name="lblProjectName" Style="{StaticResource form-label}"  Text="Project Name" ></Label>
+                            <Label x:Name="lblProjectNameValue" Style="{StaticResource data-label}"   TextColor="Black" Text="Project Valeu"></Label>
+                            <Label x:Name="lblEndDate" Style="{StaticResource form-label}"  Text="Timesheet Ending Date" ></Label>
+                            <Label x:Name="lblEndValue" Style="{StaticResource data-label}"  TextColor="Black" Text="Date"></Label>
+                            <Label x:Name="lblPo" Style="{StaticResource form-label}"   Text="Po Number" ></Label>
+                            <Label x:Name="lblPoValue" Style="{StaticResource data-label}"   TextColor="Black" Text="Po Value"></Label>
+                            <Label x:Name="sicktimebalanceLabel" Style="{StaticResource form-label}"  Text="sicktimebalanceLabel" ></Label>
+                            <Label x:Name="sicktimebalanceValue" Style="{StaticResource data-label}"   TextColor="Black" Text=""></Label>
+                            <Label x:Name="approvalManagerLabel" Style="{StaticResource form-label}"   Text="approvalManagerLabel" ></Label>
 
-                </StackLayout>
-                <BoxView Color="#c1eaf6" HeightRequest="1" WidthRequest="1" />
-                <StackLayout VerticalOptions="Start" Orientation="Horizontal" Padding="0,0,10,0" x:Name="stckPayCode" HorizontalOptions="FillAndExpand">
-                    <Label Text="Timesheet Entries" Style="{StaticResource header}"  HorizontalOptions="StartAndExpand" FontSize="Medium" TextColor="#01446b" FontAttributes="Bold" />
-                    <ContentView  HorizontalOptions="End" WidthRequest="40"  HeightRequest="40">
-                        <controls:CustomButton Text="+" Type="Orange" Clicked="Handle_Clicked"  HorizontalOptions="Fill"  />
-                    </ContentView>
-                </StackLayout>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40" />
-                        <RowDefinition Height="200" />
-                    </Grid.RowDefinitions>
-                    <BoxView Grid.Column="0" BackgroundColor="{DynamicResource DateColor}">
-                        <BoxView.GestureRecognizers>
-                            <TapGestureRecognizer   Command="{Binding TapCommand}" CommandParameter="Date" />
-                        </BoxView.GestureRecognizers>
-                    </BoxView>
-                    <Label Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Date"  >
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="Date" />
-                        </Label.GestureRecognizers>
-                    </Label>
-                    <BoxView Grid.Column="1" BackgroundColor="{DynamicResource PayCode}" Margin="-10,0,0,0">
-                        <BoxView.GestureRecognizers>
-                            <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="PayCode"/>
-                        </BoxView.GestureRecognizers>
-                    </BoxView>
-                    <Label Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Pay Code" >
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="PayCode" />
-                        </Label.GestureRecognizers>
+                            <Entry  x:Name="txtApprovalManager" Margin="10,7,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="#c1eaf6"  Text="" Focused="txtApprovalManager_Focused"></Entry>
+                            <Label x:Name="lblID" Style="{StaticResource form-label}"   Text="TimeSheet ID" ></Label>
+                            <Label x:Name="lblIDValue" Style="{StaticResource data-label}"   TextColor="Black" Text="ID"></Label>
 
-                    </Label>
-                    <BoxView Grid.Column="2" BackgroundColor="{DynamicResource TrackCode}" Margin="-10,0,0,0">
-                        <BoxView.GestureRecognizers>
-                            <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="TrackCode"/>
-                        </BoxView.GestureRecognizers>
-                    </BoxView>
-                    <Label Grid.Column="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Track Code"  >
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="TrackCode" />
-                        </Label.GestureRecognizers>
+                        </StackLayout>
+                        <BoxView Color="#c1eaf6" HeightRequest="1" WidthRequest="1" />
+                        <StackLayout VerticalOptions="Start" Orientation="Horizontal" Padding="0,0,10,0" x:Name="stckPayCode" HorizontalOptions="FillAndExpand">
+                            <Label Text="Timesheet Entries" Style="{StaticResource header}"  HorizontalOptions="StartAndExpand" FontSize="Medium" TextColor="#01446b" FontAttributes="Bold" />
+                            <ContentView  HorizontalOptions="End" WidthRequest="40"  HeightRequest="40">
+                                <controls:CustomButton Text="+" Type="Orange" Clicked="Handle_Clicked"  HorizontalOptions="Fill" x:Name="add"  />
+                            </ContentView>
+                        </StackLayout>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="200" />
+                            </Grid.RowDefinitions>
+                            <BoxView Grid.Column="0" BackgroundColor="{DynamicResource DateColor}">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer   Command="{Binding TapCommand}" CommandParameter="Date" />
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+                            <Label Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Date"  >
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="Date" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <BoxView Grid.Column="1" BackgroundColor="{DynamicResource PayCode}" Margin="-10,0,0,0">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="PayCode"/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+                            <Label Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Pay Code" >
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="PayCode" />
+                                </Label.GestureRecognizers>
 
-                    </Label>
+                            </Label>
+                            <BoxView Grid.Column="2" BackgroundColor="{DynamicResource TrackCode}" Margin="-10,0,0,0">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="TrackCode"/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+                            <Label Grid.Column="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Track Code"  >
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="TrackCode" />
+                                </Label.GestureRecognizers>
 
-                    <ListView x:Name="lsTimeSheetItem"   HasUnevenRows="True"  Grid.Row="1" Grid.ColumnSpan="3" IsVisible="{Binding IsVisibleDate}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
+                            </Label>
 
-                                    <Grid  Padding="5" Margin="0,0,0,0">
+                            <ListView x:Name="lsTimeSheetItem"   HasUnevenRows="True"  Grid.Row="1" Grid.ColumnSpan="3" IsVisible="{Binding IsVisibleDate}" BackgroundColor="Transparent">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
 
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition />
-                                            <RowDefinition Height="20"  />
-                                            <RowDefinition Height="20" />
-                                            <RowDefinition Height="20" />
-                                            <RowDefinition Height="20" />
-                                            <RowDefinition Height="20" />
-                                            <RowDefinition Height="20" />
+                                            <Grid  Padding="5" Margin="0,0,0,0">
 
-                                        </Grid.RowDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    <RowDefinition Height="20"  />
+                                                    <RowDefinition Height="20" />
+                                                    <RowDefinition Height="20" />
+                                                    <RowDefinition Height="20" />
+                                                    <RowDefinition Height="20" />
+                                                    <RowDefinition Height="20" />
 
-                                        <BoxView Grid.Row="0" BackgroundColor="#19baea" HorizontalOptions="FillAndExpand"   />
+                                                </Grid.RowDefinitions>
 
-                                        <Label Grid.Row="0"    TextColor="Black" Text="{Binding TimesheetEntryDate,Converter={StaticResource DateFormatConverter}}" HorizontalOptions="Start" VerticalTextAlignment="Center" />
+                                                <BoxView Grid.Row="0" BackgroundColor="#19baea" HorizontalOptions="FillAndExpand"   />
 
-                                        <!--<Label Grid.Row="0"    TextColor="Black" Text="{Binding PayCodeName}" HorizontalOptions="Start" VerticalTextAlignment="Center" />
+                                                <Label Grid.Row="0"    TextColor="Black" Text="{Binding TimesheetEntryDate,Converter={StaticResource DateFormatConverter}}" HorizontalOptions="Start" VerticalTextAlignment="Center" />
+
+                                                <!--<Label Grid.Row="0"    TextColor="Black" Text="{Binding PayCodeName}" HorizontalOptions="Start" VerticalTextAlignment="Center" />
 
                                         <Label Grid.Row="0"    TextColor="Black" Text="{Binding TrackCodeName}" HorizontalOptions="Start" VerticalTextAlignment="Center" />-->
 
 
-                                        <Label Grid.Row="0" TextColor="Black"  Text="{Binding TimesheetUnitsName}" HorizontalOptions="End"  VerticalTextAlignment="Center"  />
+                                                <Label Grid.Row="0" TextColor="Black"  Text="{Binding TimesheetUnitsName}" HorizontalOptions="End"  VerticalTextAlignment="Center"  />
 
 
 
-                                        <Label Grid.Row="1"  Text="Track Code " HorizontalOptions="Start"  />
+                                                <Label Grid.Row="1"  Text="Track Code " HorizontalOptions="Start"  />
 
-                                        <Label Grid.Row="2"  TextColor="Black" Text="{Binding TrackCodeName}" HorizontalOptions="Start" />
+                                                <Label Grid.Row="2"  TextColor="Black" Text="{Binding TrackCodeName}" HorizontalOptions="Start" />
 
-                                        <Label Grid.Row="3" Text="Pay Code" HorizontalOptions="Start"  FontAttributes="Bold"/>
+                                                <Label Grid.Row="3" Text="Pay Code" HorizontalOptions="Start"  FontAttributes="Bold"/>
 
-                                        <Label Grid.Row="4"  TextColor="Black" Text="{Binding PayCodeName}" HorizontalOptions="Start" />
+                                                <Label Grid.Row="4"  TextColor="Black" Text="{Binding PayCodeName}" HorizontalOptions="Start" />
 
-                                        <!--<Label Grid.Row="1" Text="Date" HorizontalOptions="Start"  FontAttributes="Bold"/>
+                                                <!--<Label Grid.Row="1" Text="Date" HorizontalOptions="Start"  FontAttributes="Bold"/>
 
                                         <Label Grid.Row="2"  TextColor="Black" Text="{Binding TimesheetEntryDate,Converter={StaticResource DateFormatConverter}}"  HorizontalOptions="Start"  />-->
 
 
-                                        <Label Grid.Row="5"  Text="Units " HorizontalOptions="Start" FontAttributes="Bold"  />
-                                        <Label Grid.Row="6"  TextColor="Black" Text="{Binding Units}" HorizontalOptions="Start"   />
+                                                <Label Grid.Row="5"  Text="Units " HorizontalOptions="Start" FontAttributes="Bold"  />
+                                                <Label Grid.Row="6"  TextColor="Black" Text="{Binding Units}" HorizontalOptions="Start"   />
 
-                                    </Grid>
+                                            </Grid>
 
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
 
-                </Grid>
-                <!-- </StackLayout> -->
+                        </Grid>
+                        <!-- </StackLayout> -->
+
+                    </StackLayout>
+
+                </ScrollView>
+                <StackLayout  Spacing="0" x:Name="buttonBar" HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="Center">
+                    <ContentView  HorizontalOptions="FillAndExpand" HeightRequest="40">
+                        <controls:CustomButton x:Name="btnSave" Text="Save" Type="Orange" HorizontalOptions="Fill" Clicked="CustomButton_Clicked" StyleId="1"/>
+                    </ContentView>
+                    <ContentView  HorizontalOptions="FillAndExpand">
+                        <controls:CustomButton x:Name="btnSubmit" Text="Submit"  HeightRequest="40"  HorizontalOptions="Fill" Clicked="CustomButton_Clicked" StyleId="2"/>
+                        <!--<controls:CustomButton Text="Submit" Type="Blue"  HeightRequest="40"  HorizontalOptions="Fill" Clicked="CustomButton_Clicked" StyleId="2"/>-->
+                        <!--  <Button  HeightRequest="40" Type HorizontalOptions="FillAndExpand"  BackgroundColor="#01446b" Text="submit"></Button> -->
+                    </ContentView>
+                </StackLayout>
+                <!--	<ContentView x:Name="ButtonBar" VerticalOptions="End" HorizontalOptions="Center" ></ContentView> -->
 
             </StackLayout>
-
-        </ScrollView>
-        <StackLayout  Spacing="0" x:Name="buttonBar" HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="Center">
-            <ContentView  HorizontalOptions="FillAndExpand" HeightRequest="40">
-                <controls:CustomButton x:Name="btnSave" Text="Save" Type="Orange" HorizontalOptions="Fill" Clicked="CustomButton_Clicked" StyleId="1"/>
-            </ContentView>
-            <ContentView  HorizontalOptions="FillAndExpand">
-                <controls:CustomButton x:Name="btnSubmit" Text="Submit"  HeightRequest="40"  HorizontalOptions="Fill" Clicked="CustomButton_Clicked" StyleId="2"/>
-                <!--  <Button  HeightRequest="40" Type HorizontalOptions="FillAndExpand"  BackgroundColor="#01446b" Text="submit"></Button> -->
-            </ContentView>
-        </StackLayout>
-        <!--	<ContentView x:Name="ButtonBar" VerticalOptions="End" HorizontalOptions="Center" ></ContentView> -->
-    </StackLayout>
-
+        </local:BusyIndicator.ContainerContent>
+    </local:BusyIndicator>
 </masterDetail:DetailPage>
