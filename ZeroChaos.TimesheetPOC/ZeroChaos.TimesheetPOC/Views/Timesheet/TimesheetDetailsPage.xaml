@@ -151,7 +151,7 @@
                         <controls:CustomButton x:Name="btnSave" Text="Save" Type="Orange" HorizontalOptions="Fill" Clicked="CustomButton_Clicked" StyleId="1"/>
                     </ContentView>
                     <ContentView  HorizontalOptions="FillAndExpand">
-                        <controls:CustomButton x:Name="btnSubmit" Text="Submit"  HeightRequest="40"  HorizontalOptions="Fill" Clicked="CustomButton_Clicked" StyleId="2"/>
+                        <controls:CustomButton x:Name="btnSubmit" Text="Submit"  HeightRequest="40"  HorizontalOptions="Fill" Clicked="CustomButton_Clicked" StyleId="2" Type="Blue"/>
                         <!--<controls:CustomButton Text="Submit" Type="Blue"  HeightRequest="40"  HorizontalOptions="Fill" Clicked="CustomButton_Clicked" StyleId="2"/>-->
                         <!--  <Button  HeightRequest="40" Type HorizontalOptions="FillAndExpand"  BackgroundColor="#01446b" Text="submit"></Button> -->
                     </ContentView>
