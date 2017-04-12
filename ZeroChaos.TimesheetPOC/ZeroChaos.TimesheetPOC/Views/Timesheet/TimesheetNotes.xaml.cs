@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZeroChaos.TimesheetPOC.IServices;
-using ZeroChaos.TimesheetPOC.Model.Request.Timesheet;
+using ZeroChaos.TimesheetPOC.Models.Request.Timesheet;
 using ZeroChaos.TimesheetPOC.Models.Response.Timesheet;
 using ZeroChaos.TimesheetPOC.Services;
 

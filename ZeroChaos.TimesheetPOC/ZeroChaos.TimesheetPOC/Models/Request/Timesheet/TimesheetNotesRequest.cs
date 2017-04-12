@@ -3,7 +3,7 @@
 using Xamarin.Forms;
 using ZeroChaos.TimesheetPOC.Models;
 
-namespace ZeroChaos.TimesheetPOC.Model.Request.Timesheet
+namespace ZeroChaos.TimesheetPOC.Models.Request.Timesheet
 {
 	/// <summary>
 	/// TimesheetNotesRequest class containes the required necessary properties for getting TimesheetNotes Data.
