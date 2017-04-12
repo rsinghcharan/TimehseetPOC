@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using ZeroChaos.TimesheetPOC.Models;
+using ZeroChaos.TimesheetPOC.ViewModel;
+using ZeroChaos.TimesheetPOC.Views;
+using ZeroChaos.TimesheetPOC.Views.Timesheet;
 #endregion
 
 namespace ZeroChaos.TimesheetPOC.Views.Dashboard
@@ -42,7 +45,16 @@ namespace ZeroChaos.TimesheetPOC.Views.Dashboard
                 tapGestureRecognizerForGridTile.Tapped += (s, e) =>
                 {
                     ContentView contentViewContainer = s as ContentView;
-                    App.Current.MainPage.DisplayAlert("Dashboard", "Your StyleId =" + contentViewContainer.StyleId, "OK");
+					if(contentViewContainer.StyleId =="view-timesheet")
+					{
+						var BC= BindingContext as MasterDetailViewModel;
+						BC.Header = "View Timesheet";
+						BC.RightButton = "";
+						var page = new ViewTimesheetPage();
+						BC.Detail = page;
+						
+					}
+                    
                 };
                 tileView.GestureRecognizers.Add(tapGestureRecognizerForGridTile);
             }

@@ -28,24 +28,24 @@ namespace ZeroChaos.TimesheetPOC.Views.Dashboard
         public DashBoard()
         {
             InitializeComponent();
-            string userType = "2";
+            int userType = App.UserSession.LoggedonUser.userType;
             var dashBoardDataCollection = handleUserDashboardData(userType);
             loadDashboard(dashBoardDataCollection, userType);
         }
         #endregion
 
         #region Public Methods
-        public PickerDataSource.DashboardItems handleUserDashboardData(string userType)
+        public PickerDataSource.DashboardItems handleUserDashboardData(int userType)
         {
             switch (userType)
             {
-                case "2":
+                case 2:
                     dashBoardData = PickerDataSource.getManagerData();
                     break;
-                case "1":
+                case 1:
                     dashBoardData = PickerDataSource.getResourceData();
                     break;
-                case "10":
+                case 10:
                     dashBoardData = PickerDataSource.getSupplierData();
                     break;
                 default:
@@ -53,7 +53,7 @@ namespace ZeroChaos.TimesheetPOC.Views.Dashboard
             }
             return dashBoardData;
         }
-        public void loadDashboard(PickerDataSource.DashboardItems dashboardItems, string userType)
+        public void loadDashboard(PickerDataSource.DashboardItems dashboardItems, int userType)
         {
             try
             {

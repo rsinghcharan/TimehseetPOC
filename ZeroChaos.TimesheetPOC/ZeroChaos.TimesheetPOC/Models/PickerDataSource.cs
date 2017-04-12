@@ -65,6 +65,7 @@ namespace ZeroChaos.TimesheetPOC.Models
      new Student {Title = "Welcome Mobile", ImageName = "dossier.png", StyleID="welcome-mobile"},
      new Student {Title = "View Projects", ImageName = "project.png", StyleID="view-project"},
      new Student {Title = "View Expenses", ImageName = "expense.png", StyleID="view-expenses"},
+	 new Student {Title = "View Timesheets", ImageName = "timesheet.png", StyleID="view-timesheet"},
      new Student {Title = "View Invoices", ImageName = "invoice.png", StyleID="view-invoices"},
      new Student {StyleID="contact-us", ImageName="loginlogo.png"}
     }

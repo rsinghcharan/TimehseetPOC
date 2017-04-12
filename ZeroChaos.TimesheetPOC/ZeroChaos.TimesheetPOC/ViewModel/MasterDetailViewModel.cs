@@ -24,7 +24,9 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
     {
         public MasterDetailViewModel()
         {
-            Detail = new DashBoard();
+			DashBoard ds = new DashBoard();
+			ds.BindingContext = this;
+			Detail = ds;
             MessagingCenter.Subscribe<object, string>(this, "NeedMoreInfoReply", NeedMoreInfoResponse);
         }
 
