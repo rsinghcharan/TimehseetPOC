@@ -33,7 +33,9 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                 </Image.GestureRecognizers>
             </Image>
-            
+            <Image x:Name="back" HeightRequest="20" WidthRequest="20" HorizontalOptions="Start" VerticalOptions="Center" Source="back.png" IsVisible="False">
+                
+            </Image>
             <Label x:Name="headerTitle" AbsoluteLayout.LayoutFlags="PositionProportional" Style="{StaticResource header-label}"  >
                 <Label.AbsoluteLayout.LayoutBounds>
                     <OnIdiom x:TypeArguments="Rectangle" Phone="0.5,0.5,200,30" Tablet="0.5,0.5,-1,-1">

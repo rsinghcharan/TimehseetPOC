@@ -44,6 +44,8 @@
     <Compile Include="Controls\BusyIndicator.xaml.cs">
       <DependentUpon>BusyIndicator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MyEntry.cs" />
+    <Compile Include="Converter\DateFormatConverter.cs" />
     <Compile Include="IServices\IServiceCaller.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -52,14 +54,28 @@
     <Compile Include="Models\DropDownItem.cs" />
     <Compile Include="Models\EnrollmentDetails.cs" />
     <Compile Include="Models\PickerDataSource.cs" />
+    <Compile Include="Models\Request\Common\DownloadAttachmentRequest.cs" />
+    <Compile Include="Models\Request\Common\GetAttachmentsRequest.cs" />
     <Compile Include="Models\Request\LoginRequest.cs" />
     <Compile Include="Models\Request\RequestBase.cs" />
+    <Compile Include="Models\Request\Timesheet\ApprovalManagerResponse.cs" />
+    <Compile Include="Models\Request\Timesheet\ApprovalManagersRequest.cs" />
+    <Compile Include="Models\Request\Timesheet\ProjectTrackCodesRequest.cs" />
     <Compile Include="Models\Request\Timesheet\SaveOrSubmitTimesheetRequest.cs" />
+    <Compile Include="Models\Request\Timesheet\TimesheetDetailsRequest.cs" />
+    <Compile Include="Models\Request\Timesheet\TimesheetDetailsResponse.cs" />
+    <Compile Include="Models\Request\Timesheet\TimesheetEndingDatesRequest.cs" />
+    <Compile Include="Models\Request\Timesheet\TimesheetNotesRequest.cs" />
     <Compile Include="Models\Request\Timesheet\ViewTimesheetRequest.cs" />
+    <Compile Include="Models\Response\Common\DownloadAttachmentResponse.cs" />
+    <Compile Include="Models\Response\Common\GetAttachmentResponse.cs" />
     <Compile Include="Models\Response\LoginResponse.cs" />
     <Compile Include="Models\Response\ResponseBase.cs" />
     <Compile Include="Models\Request\Timesheet\TimesheetRequest.cs" />
+    <Compile Include="Models\Response\Timesheet\ProjectTrackCodeResponse.cs" />
     <Compile Include="Models\Response\Timesheet\SaveOrSubmitTimesheetResponse.cs" />
+    <Compile Include="Models\Response\Timesheet\TimesheetEndingDatesResponse.cs" />
+    <Compile Include="Models\Response\Timesheet\TimesheetNotesResponse.cs" />
     <Compile Include="Models\Response\Timesheet\ViewTimesheetResponse.cs" />
     <Compile Include="Models\TimesheetEntry.cs" />
     <Compile Include="Models\Response\Timesheet\TimesheetResponse.cs" />
@@ -69,10 +85,17 @@
     <Compile Include="Models\ZCMobileSystemConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ServiceCaller.cs" />
+    <Compile Include="ViewModel\AttachmentViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MasterDetailControlViewModel.cs" />
     <Compile Include="ViewModel\MasterDetailViewModel.cs" />
+    <Compile Include="ViewModel\Timesheet\DetailTimesheetViewModel.cs" />
+    <Compile Include="ViewModel\Timesheet\NotesTimesheetViewModel.cs" />
+    <Compile Include="ViewModel\Timesheet\TrackcodeTimesheetViewModel.cs" />
     <Compile Include="ViewModel\Timesheet\ViewTimesheetViewModel.cs" />
+    <Compile Include="Views\Common\ViewAttachment.xaml.cs">
+      <DependentUpon>ViewAttachment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dashboard\DashBoard.xaml.cs">
       <DependentUpon>DashBoard.xaml</DependentUpon>
     </Compile>
@@ -91,6 +114,18 @@
     <Compile Include="Views\SelectionPage.xaml.cs">
       <DependentUpon>SelectionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SingleItemSelectionPage.xaml.cs">
+      <DependentUpon>SingleItemSelectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Timesheet\AddTimesheetEntryDetailPage.xaml.cs">
+      <DependentUpon>AddTimesheetEntryDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Timesheet\ApproveManager.xaml.cs">
+      <DependentUpon>ApproveManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Timesheet\TimesheetNotes.xaml.cs">
+      <DependentUpon>TimesheetNotes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Timesheet\ViewTimesheetPage.xaml.cs">
       <DependentUpon>ViewTimesheetPage.xaml</DependentUpon>
     </Compile>
@@ -105,7 +140,6 @@
       <DependentUpon>TimesheetDetailsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\EntryClass.cs" />
-    
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -119,7 +153,6 @@
     <EmbeddedResource Include="Views\Timesheet\TimesheetDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Corcav.Behaviors, Version=2.3.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -223,6 +256,36 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Dossier\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Timesheet\ApproveManager.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Timesheet\TimesheetNotes.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\SingleItemSelectionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Timesheet\AddTimesheetEntryDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Common\ViewAttachment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
