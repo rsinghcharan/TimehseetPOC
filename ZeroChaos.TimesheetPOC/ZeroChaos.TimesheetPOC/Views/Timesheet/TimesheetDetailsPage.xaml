@@ -37,7 +37,7 @@
                 <StackLayout VerticalOptions="Start" Orientation="Horizontal" Padding="0,0,10,0" x:Name="stckPayCode" HorizontalOptions="FillAndExpand">
                     <Label Text="Timesheet Entries" Style="{StaticResource header}"  HorizontalOptions="StartAndExpand" FontSize="Medium" TextColor="#01446b" FontAttributes="Bold" />
                     <ContentView  HorizontalOptions="End" WidthRequest="40"  HeightRequest="40">
-                        <controls:CustomButton Text="+" Type="Orange"   HorizontalOptions="Fill"  />
+                        <controls:CustomButton Text="+" Type="Orange" Clicked="Handle_Clicked"  HorizontalOptions="Fill"  />
                     </ContentView>
                 </StackLayout>
                 <Grid>

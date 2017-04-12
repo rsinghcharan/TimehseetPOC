@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ZeroChaos.TimesheetPOC.AddTimesheetEntryDetailPage">
+	<StackLayout>
+			
+			<Label Text="Entry Date" TranslationX="10" />
+			<Entry x:Name="entryDate" StyleId="entryDate" Focused="Handle_Focused"></Entry>
+			<Label Text="Pay Code" TranslationX="10" />
+			<Entry x:Name="payCode" StyleId="payCode" Focused="Handle_Focused"></Entry>
+			<Label Text="Track Code" TranslationX="10" />
+			<Entry x:Name="trackCode" StyleId="trackCode" Focused="Handle_Focused"></Entry>
+			<Label Text="Unit" TranslationX="10" />
+			<Entry x:Name="unit" StyleId="unit" Focused="Handle_Focused"></Entry>
+		<StackLayout>
+			<Button Text="Save" VerticalOptions="EndAndExpand" HorizontalOptions="Center" Clicked="Save_Button_Clicked"></Button>
+		</StackLayout>
+	</StackLayout>
+</ContentPage>

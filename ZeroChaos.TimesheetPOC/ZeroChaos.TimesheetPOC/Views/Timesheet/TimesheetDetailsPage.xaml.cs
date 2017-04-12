@@ -57,6 +57,7 @@ namespace ZeroChaos.TimesheetPOC
             OnPropertyChanged("SideContentVisible");
         }
 
+
         /// <summary>
         /// Save/Submit button
         /// </summary>
@@ -80,6 +81,12 @@ namespace ZeroChaos.TimesheetPOC
                 }
             });
         }
+		void Handle_Clicked(object sender, System.EventArgs e)
+		{
+			var BC = BindingContext as DetailTimesheetViewModel;
+			BC.OpenAddEntryPage();
+		}
+
         #endregion
 
         #region Private Methods

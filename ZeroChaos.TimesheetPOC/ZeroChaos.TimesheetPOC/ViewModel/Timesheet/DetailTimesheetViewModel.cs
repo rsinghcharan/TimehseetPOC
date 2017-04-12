@@ -52,5 +52,12 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
             });
 
         }
+		public void OpenAddEntryPage()
+		{
+			AddTimesheetEntryDetailPage ad = new AddTimesheetEntryDetailPage();
+			MasterDetailViewModel.Header="Timesheet Entry";
+			MasterDetailViewModel.RightButton="";
+			MasterDetailViewModel.Detail = ad;
+		}
     }
 }
