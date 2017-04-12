@@ -59,7 +59,11 @@ namespace ZeroChaos.TimesheetPOC.Views.Login
 			service.CallHostService<LoginRequest, LoginResponse>(request, "loginrequest", (r) =>
 			{
 				busyindicator.IsBusy = false;
-                if(r.ResultSuccess)
+                if (!r.ResultSuccess)
+                {
+                    Application.Current.MainPage.DisplayAlert("Error", r.ResultMessages[0].Message, "Ok");
+                }
+                else
                 {
                     var loggedonUser = new UserInfo
                     {
@@ -82,12 +86,7 @@ namespace ZeroChaos.TimesheetPOC.Views.Login
                     App.UserSession.CurrentUserInfo = r;
                     //Application.Current.MainPage = new SingleItemSelectionPage();
                     Application.Current.MainPage=MasterDetailControl.Create<MasterDetail, MasterDetailViewModel>();
-                }
-                else
-                {
-                    DisplayAlert("Error", r.ResultMessages.FirstOrDefault().Message, "ok");
-                }
-				
+                }				
 			});
 		}
 

@@ -1,20 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using ZeroChaos.TimesheetPOC.IServices;
 using ZeroChaos.TimesheetPOC.Models.Request.Timesheet;
+using ZeroChaos.TimesheetPOC.Models.Response.Timesheet;
+using ZeroChaos.TimesheetPOC.Services;
 using ZeroChaos.TimesheetPOC.Views.Timesheet;
 
 namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
 {
-    public class DetailTimesheetViewModel : BaseViewModel
+    public class DetailTimesheetViewModel : BaseViewModel, INotifyPropertyChanged
     {
-        Services.ServiceCaller service;
+        IServiceCaller service;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public int TimesheetID { get; set; }
         public TimesheetDetailsResponse Tres { get; set; }
+        public SaveOrSubmitTimesheetResponse SaveSubmitResponse { get; set; }
         public int SelectedManager { get; set; }
+
+        private bool saveSubmitButtonVisibility = true;
+        public bool SaveSubmitButtonVisibility
+        {
+            get
+            {
+                return saveSubmitButtonVisibility;
+            }
+            set
+            {
+                saveSubmitButtonVisibility = value;
+                OnPropertyChanged();
+            }
+        }
         public DetailTimesheetViewModel()
         {
             App.Current.Resources["DateColor"] = Color.FromHex("#3c9ece");
@@ -30,6 +53,18 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
                 Callback(res);
             });
         }
+
+        public async void SaveSubmitTimesheet(int action, Action<SaveOrSubmitTimesheetResponse> callback)
+        {
+            service = new ServiceCaller();
+            var request = PrepareSaveOrSubmitTimesheetRequest(action);
+            await service.CallHostService<SaveOrSubmitTimesheetRequest, SaveOrSubmitTimesheetResponse>(request, "SaveOrSubmitTimesheetRequest", (res) =>
+            {
+                SaveSubmitResponse = res;
+                callback(res);
+            });
+        }
+
         public async void OpentheApproveManager()
         {
             service = new Services.ServiceCaller();
@@ -52,6 +87,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
             });
 
         }
+
 		public void OpenAddEntryPage()
 		{
 			AddTimesheetEntryDetailPage ad = new AddTimesheetEntryDetailPage();
@@ -59,5 +95,27 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
 			MasterDetailViewModel.RightButton="";
 			MasterDetailViewModel.Detail = ad;
 		}
+
+        void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private SaveOrSubmitTimesheetRequest PrepareSaveOrSubmitTimesheetRequest(int action)
+        {
+            var request = new SaveOrSubmitTimesheetRequest
+            {
+                PrimaryApprovalManagerID = (SelectedManager != 0 ? SelectedManager : Tres.ApprovalManagerId),
+                ActionTypeID = action,
+                EndDate = Tres.EndDt,
+                ProjectID = Tres.ProjectID,
+                ResourceID = Tres.ResourceID,
+                TimesheetID = Tres.TimesheetID,
+                timesheetEntries = Tres.TimeSheetEntryList,
+                loggedonUser = App.UserSession.LoggedonUser
+            };
+
+            return request;
+        }
     }
 }
