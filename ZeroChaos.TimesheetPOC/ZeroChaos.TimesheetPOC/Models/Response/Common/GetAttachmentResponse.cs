@@ -20,13 +20,14 @@ namespace ZeroChaos.TimesheetPOC.Models.Response.Common
         }
         public int RecordCount { get; set; }
 
-        public class AttachmentInfo
-        {
-            public string FileName { get; set; }
-            public int? AttachmentID { get; set; }
-            public string RelativePath { get; set; }
-        }
     }
-  
+
+    public class AttachmentInfo
+    {
+        public string FileName { get; set; }
+        public int? AttachmentID { get; set; }
+        public string RelativePath { get; set; }
+    }
+
 
 }

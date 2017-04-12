@@ -33,7 +33,7 @@ namespace ZeroChaos.TimesheetPOC.Models.Response.Timesheet
 		public bool isCreatedByVisible { get; set; }
 		public bool isCreatedOnVisible { get; set; }
 		public bool isObjectStatusNameVisible { get; set; }
-		public IList<ZcwNoteList> zcwNoteList { get; set; }
+		public List<ZcwNoteList> zcwNoteList { get; set; }
 		public int recordCount { get; set; }
 	}
 }

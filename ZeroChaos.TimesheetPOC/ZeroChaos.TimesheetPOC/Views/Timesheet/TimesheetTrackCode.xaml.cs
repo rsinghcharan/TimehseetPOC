@@ -11,31 +11,38 @@ using ZeroChaos.TimesheetPOC.Models;
 using ZeroChaos.TimesheetPOC.Models.Request.Timesheet;
 using ZeroChaos.TimesheetPOC.Models.Response.Timesheet;
 using ZeroChaos.TimesheetPOC.Services;
+using ZeroChaos.TimesheetPOC.ViewModel.Timesheet;
 
 namespace ZeroChaos.TimesheetPOC.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TimesheetTrackCode : ContentPage
+    public partial class TimesheetTrackCode
     {
+        #region Private Member
+        #endregion
+      
+        #region Property
+        public List<UnAssignedTrackCode> ItemSource
+        {
+            get { return lstViewTrackCode.ItemsSource as List<UnAssignedTrackCode>; }
+            set { lstViewTrackCode.ItemsSource = value; }
+        }
+
+        #endregion
+        
         #region Constructor
         public TimesheetTrackCode()
         {
             InitializeComponent();
-            GetTrackCode();
+           // GetTrackCode();
         }
         #endregion
 
-        #region Private Methods
-        void GetTrackCode()
+        #region Public Methods
+        public void GetTrackCode()
         {
-            IServiceCaller service = new ServiceCaller();
-            var request = new FilterUnAssignedTrackCodesToProjectRequest { ProjectID = 429103, IsUnassginedFilter = true, OffSet = 0, PageSize = 10 };
-            request.loggedonUser = App.UserSession.LoggedonUser;
-            service.CallHostService<FilterUnAssignedTrackCodesToProjectRequest, UnAssignedTrackCodesToProjectResponse>(request, "FilterUnAssignedTrackCodesToProjectRequest", (r) =>
-            {
-                lstViewTrackCode.ItemsSource = r.UnAssignedTrackCodes;
-            });
-
+            var BC = BindingContext as TrackcodeTimesheetViewModel;
+            BC.GetTimesheetTrackCode();
         }
         #endregion
     }

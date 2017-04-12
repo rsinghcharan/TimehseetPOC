@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<masterDetail:DetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:masterDetail="clr-namespace:ZeroChaos.TimesheetPOC.Models"      
              x:Class="ZeroChaos.TimesheetPOC.Views.Timesheet.TimesheetNotes">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -82,4 +83,4 @@
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
-</ContentPage>
+</masterDetail:DetailPage>

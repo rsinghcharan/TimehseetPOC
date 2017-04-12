@@ -123,11 +123,11 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                                 page.BindingContext = vm;
                                 Detail = page;
                             }
-                            else if(label.Text=="Logout")
+                            else if (label.Text == "Logout")
                             {
                                 Application.Current.MainPage = new LoginPage();
                             }
-                           
+
                             App.UserSession.SideContentVisibility = (!App.UserSession.SideContentVisibility);
                             OnPropertyChanged("SideContentVisible");
                         };
@@ -251,11 +251,39 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             Header = selectedaction;
             RightButton = string.Empty;
             if (selectedaction == "Track Codes")
-                Detail = new TimesheetTrackCode();
+            {
+                var page = new TimesheetTrackCode();
+                TrackcodeTimesheetViewModel vm = new TrackcodeTimesheetViewModel();
+                vm.ProjectID = 429103;
+                vm.IsUnassginedFilter = true;
+                vm.MasterDetailViewModel = this;
+                page.BindingContext = vm;
+                page.GetTrackCode();
+                Detail = page;
+            }
             if (selectedaction == "Attachments")
-                Detail = new ViewTimesheetAttachment();
+            {
+                var page = new ViewAttachment();
+                AttachmentViewModel vm = new AttachmentViewModel();
+                vm.ObjectID = 9;
+                vm.PKID = 1354014;
+                vm.MasterDetailViewModel = this;
+                page.BindingContext = vm;
+                page.GetAttachment();
+                Detail = page;
+            }
             if (selectedaction == "Notes")
-                Detail = new TimesheetNotes();
+            {
+                var page = new TimesheetNotes();
+                NotesTimesheetViewModel vm = new NotesTimesheetViewModel();
+                vm.ObjectID = 9;
+                vm.ClientID = 1292;
+                vm.PKID = 7649972;
+                vm.MasterDetailViewModel = this;
+                page.BindingContext = vm;
+                page.GetNotesList();
+                Detail = page;
+            }
         }
     }
     public class SimpleObject

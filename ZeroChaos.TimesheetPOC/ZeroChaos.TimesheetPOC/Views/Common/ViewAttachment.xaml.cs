@@ -7,43 +7,43 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ZeroChaos.TimesheetPOC.IServices;
-using ZeroChaos.TimesheetPOC.Models.Request.Timesheet;
-using ZeroChaos.TimesheetPOC.Models.Response.Timesheet;
+using ZeroChaos.TimesheetPOC.Models.Request.Common;
+using ZeroChaos.TimesheetPOC.Models.Response.Common;
 using ZeroChaos.TimesheetPOC.Services;
-using ZeroChaos.TimesheetPOC.ViewModel.Timesheet;
+using ZeroChaos.TimesheetPOC.ViewModel;
 
-namespace ZeroChaos.TimesheetPOC.Views.Timesheet
+namespace ZeroChaos.TimesheetPOC.Views.Common
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TimesheetNotes
+    public partial class ViewAttachment 
     {
         #region Private Member
         #endregion
-      
+
         #region Property
-        public List<ZcwNoteList> ItemSource
+        public List<AttachmentInfo> ItemSource
         {
-            get { return lstView.ItemsSource as List<ZcwNoteList>; }
-            set { lstView.ItemsSource = value; }
+            get { return lstViewAttachment.ItemsSource as List<AttachmentInfo>; }
+            set { lstViewAttachment.ItemsSource = value; }
         }
 
         #endregion
         
         #region Constructor
-        public TimesheetNotes()
+        public ViewAttachment()
         {
             InitializeComponent();
-            //GetNotesList();
+            //GetAttachment();
         }
         #endregion
         
         #region Public Method
-        public void GetNotesList()
+        public void GetAttachment()
         {
-            var BC = BindingContext as NotesTimesheetViewModel;
-            BC.GetTimesheetNotesList();
+            var BC = BindingContext as AttachmentViewModel;
+            BC.GetAttachmentList();
         }
         #endregion
-
     }
+   
 }

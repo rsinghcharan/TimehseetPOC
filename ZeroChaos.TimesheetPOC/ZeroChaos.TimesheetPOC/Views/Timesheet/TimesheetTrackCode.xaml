@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<masterDetail:DetailPage  xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:masterDetail="clr-namespace:ZeroChaos.TimesheetPOC.Models"        
              x:Class="ZeroChaos.TimesheetPOC.Views.TimesheetTrackCode" 
              Title="Track Code">
     <StackLayout Orientation="Vertical">
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-                <Label Text="Track Codes" TextColor="Navy" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+            <Label Text="Track Codes" TextColor="Navy" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
             <Button Text=" + " BackgroundColor="Orange" FontAttributes="Bold" TextColor="White" WidthRequest="30" HorizontalOptions="End" VerticalOptions="Center" ></Button>
         </StackLayout>
         <ListView HasUnevenRows="True" x:Name="lstViewTrackCode">
@@ -32,4 +33,4 @@
         </ListView>
     </StackLayout>
 
-</ContentPage>
+</masterDetail:DetailPage>
