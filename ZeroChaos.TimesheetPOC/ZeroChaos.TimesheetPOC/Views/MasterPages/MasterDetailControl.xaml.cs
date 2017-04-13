@@ -56,7 +56,12 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
 
         });
 
+       /* public BindableProperty MasterBackButtonProperty = BindableProperty.Create("MasterBackButton", typeof(bool), typeof(MasterDetailControl), propertyChanged: (bindable, value, newValue) =>
+        {
+            var masterPage = (MasterDetailControl)bindable;
+            masterPage.back.IsVisible = (bool)newValue;
 
+        });*/
         public string Header
         {
             get { return (string)GetValue(TitleProperty); }
@@ -69,7 +74,11 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
             get { return (string)GetValue(SideButtonProperty); }
             set { SetValue(SideButtonProperty,value); }
         }
-
+       /* public bool MasterBackButton
+        {
+            get { return (bool)GetValue(MasterBackButtonProperty); }
+            set { SetValue(MasterBackButtonProperty, value); }
+        }*/
 
         public ContentPage Detail
         {
@@ -112,7 +121,8 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
             SetBinding(DetailProperty, new Binding("Detail", BindingMode.OneWay));
             SetBinding(TitleProperty, new Binding("Header", BindingMode.TwoWay));
             SetBinding(SideButtonProperty, new Binding("RightButton", BindingMode.TwoWay));
-
+            //SetBinding(BackButtonIsVisibleProperty, new Binding("BackButtonIsVisible", BindingMode.TwoWay));
+            
             MessagingCenter.Subscribe<object, NeedMoreInfo>(this, "NeedMoreInfo", async (sender, arg) =>
             {
                 var nm = arg as NeedMoreInfo;

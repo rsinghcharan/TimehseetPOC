@@ -4,7 +4,7 @@
              x:Class="ZeroChaos.TimesheetPOC.Views.MasterPages.MasterDetailControl"
              xmlns:b="clr-namespace:Corcav.Behaviors;assembly=Corcav.Behaviors"
              x:Name="Parent">
-    <Grid>
+   <Grid>
         <Grid.RowDefinitions>
             <RowDefinition>
                 <RowDefinition.Height>
@@ -18,41 +18,45 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <ScrollView IsVisible="{Binding SideContentVisible, Source={x:Reference Name=Parent}}" Grid.Row="1">
-            <StackLayout Grid.Column="0" x:Name="SideContentContainer"
-                 WidthRequest="250"
-                 IsVisible="{Binding SideContentVisible, Source={x:Reference Name=Parent}}" BackgroundColor="#01446b" Grid.Row="1"/>
-        </ScrollView>
-        
-        <AbsoluteLayout AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" AbsoluteLayout.LayoutBounds="0,0,1,44" Margin="25,0,0,0" Grid.ColumnSpan="2">
-            <AbsoluteLayout.HeightRequest>
-                <OnIdiom x:TypeArguments="x:Double" Phone="44" Tablet="88" />
-            </AbsoluteLayout.HeightRequest>
-            <Image Source="menumedium.png"  HeightRequest="20" WidthRequest="20" HorizontalOptions="Start" Margin="25,0,0,0" VerticalOptions="Center">
+        <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+            <Image Source="menumedium.png" Grid.Column="0" Grid.Row="0"  HeightRequest="20" VerticalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image x:Name="back" HeightRequest="20" WidthRequest="20" HorizontalOptions="Start" VerticalOptions="Center" Source="back.png" IsVisible="False">
-                
-            </Image>
-            <Label x:Name="headerTitle" AbsoluteLayout.LayoutFlags="PositionProportional" Style="{StaticResource header-label}"  >
-                <Label.AbsoluteLayout.LayoutBounds>
-                    <OnIdiom x:TypeArguments="Rectangle" Phone="0.5,0.5,200,30" Tablet="0.5,0.5,-1,-1">
-                    </OnIdiom>
-                </Label.AbsoluteLayout.LayoutBounds>
+        </StackLayout>
+        <ScrollView x:Name="scrollContent" IsVisible="{Binding SideContentVisible, Source={x:Reference Name=Parent}}" Grid.Row="1">
+            <StackLayout Grid.Column="0" x:Name="SideContentContainer"
+                 WidthRequest="250"
+                 IsVisible="{Binding SideContentVisible, Source={x:Reference Name=Parent}}" BackgroundColor="#01446b" Grid.Row="1"/>
+        </ScrollView>
+
+        <!--<AbsoluteLayout AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" AbsoluteLayout.LayoutBounds="0,0,1,44" Margin="25,0,0,0" Grid.ColumnSpan="2">
+            <AbsoluteLayout.HeightRequest>
+                <OnIdiom x:TypeArguments="x:Double" Phone="44" Tablet="88" />
+            </AbsoluteLayout.HeightRequest>-->
+      
+        <StackLayout  Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+            <Label x:Name="headerTitle" Style="{StaticResource header-label}" >
+                <!--<Label.AbsoluteLayout.LayoutBounds>
+                <OnIdiom x:TypeArguments="Rectangle" Phone="0.5,0.5,200,30" Tablet="0.5,0.5,-1,-1">
+                </OnIdiom>
+            </Label.AbsoluteLayout.LayoutBounds>-->
             </Label>
-            <Label x:Name="rightButton" VerticalTextAlignment="Center" AbsoluteLayout.LayoutFlags="PositionProportional" Style="{StaticResource header-right-label}" >
-                <Label.AbsoluteLayout.LayoutBounds>
-                    <OnIdiom x:TypeArguments="Rectangle" Phone="0.95,0.5,80,30" Tablet="0.95,0.5,-1,-1" />
-                </Label.AbsoluteLayout.LayoutBounds>
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NeedMoreInfo}" />
-                </Label.GestureRecognizers>
-                
-            </Label>
-        </AbsoluteLayout>
+        </StackLayout>
+        <StackLayout  Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+            <Label x:Name="rightButton" VerticalTextAlignment="Center" HorizontalOptions="End"  Style="{StaticResource header-right-label}" >
+            <!--<Label.AbsoluteLayout.LayoutBounds>
+                <OnIdiom x:TypeArguments="Rectangle" Phone="0.95,0.5,80,30" Tablet="0.95,0.5,-1,-1" />
+            </Label.AbsoluteLayout.LayoutBounds>-->
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NeedMoreInfo}" />
+            </Label.GestureRecognizers>
+
+        </Label>
+        </StackLayout>
+        <!--</AbsoluteLayout>-->
         <ContentView Grid.Column="1"  x:Name="DetailContainer" BackgroundColor="White" Grid.Row="1"/>
-        
+
     </Grid>
 </ContentPage>

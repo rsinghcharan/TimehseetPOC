@@ -5,7 +5,7 @@
              x:Class="ZeroChaos.TimesheetPOC.Views.TimesheetTrackCode" 
              Title="Track Code">
     <StackLayout Orientation="Vertical">
-        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Padding="10">
             <Label Text="Track Codes" TextColor="Navy" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
             <Button Text=" + " BackgroundColor="Orange" FontAttributes="Bold" TextColor="White" WidthRequest="30" HorizontalOptions="End" VerticalOptions="Center" ></Button>
         </StackLayout>
