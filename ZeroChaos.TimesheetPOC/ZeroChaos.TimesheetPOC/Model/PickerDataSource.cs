@@ -33,7 +33,7 @@ namespace ZeroChaos.TimesheetPOC.Models
      new Student {Title = "Approve Timesheet", ImageName = "timesheet.png", StyleID="approve-timesheet", BubbleCount=2},
      new Student {Title = "Approve Adjustment", ImageName = "adjustment.png", StyleID="approve-adjustment", BubbleCount=10},
      new Student {Title = "Approve Service Invoice", ImageName = "invoice.png", StyleID="approve-service-invoice", BubbleCount=11},
-     new Student {Title = "Manage Submissions", ImageName = "sowrequisitionIcon.png", StyleID="approve-sow-requisition"},
+     new Student {Title = "Manage Submissions", ImageName = "sowrequisitionIcon.png", StyleID="manage-submission"},
      new Student {Title = "Approve SOW Engagement", ImageName = "sowengagements.png", StyleID="approve-sow-engagement", BubbleCount=15},
      new Student {Title = "Approve Requisition", ImageName = "sowRequisitionicon.png", StyleID="approve-sow-requisition", BubbleCount=10},
      new Student {Title = "Create Expense Report", ImageName = "expense.png", StyleID="create-expense-report"},
@@ -60,7 +60,7 @@ namespace ZeroChaos.TimesheetPOC.Models
 
      new Student {Title = "Create Timesheet", ImageName = "timesheet.png", StyleID="create-timesheet"},
      new Student {Title = "Create Expense Report", ImageName = "expense.png", StyleID="create-expense-report"},
-     new Student {Title = "Manage Submissions", ImageName = "sowrequisitionicon.png", StyleID="approve-sow-requisition"},
+     new Student {Title = "Manage Submissions", ImageName = "sowrequisitionicon.png", StyleID="manage-submission"},
      new Student {Title = "View Pay History", ImageName = "payment.png", StyleID="view-pay-history"},
      new Student {Title = "Welcome Mobile", ImageName = "dossier.png", StyleID="welcome-mobile"},
      new Student {Title = "View Projects", ImageName = "project.png", StyleID="view-project"},
