@@ -12,7 +12,7 @@ using ZeroChaos.TimesheetPOC.Models.Response.Timesheet;
 using ZeroChaos.TimesheetPOC.Services;
 using ZeroChaos.TimesheetPOC.ViewModel;
 using ZeroChaos.TimesheetPOC.ViewModel.Timesheet;
-
+using System.Linq;
 namespace ZeroChaos.TimesheetPOC.Views.Timesheet
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -57,6 +57,17 @@ namespace ZeroChaos.TimesheetPOC.Views.Timesheet
             }
             catch (Exception ex)
             { }
+        }
+
+        private void lstView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            var timesheet = e.Item as ViewTimesheetResponse;
+             var abc= lstView.ItemsSource as List<ViewTimesheetResponse>;
+            if(abc.Last().timesheetID==timesheet.timesheetID)
+            {
+                Application.Current.MainPage.DisplayAlert("last", "Last element Reached", "ok");
+            }
+          
         }
 
         //void TapGestureRecognizer_Tapped(object sender, EventArgs e)

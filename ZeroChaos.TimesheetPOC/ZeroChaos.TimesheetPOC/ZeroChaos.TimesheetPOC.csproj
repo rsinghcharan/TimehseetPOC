@@ -50,39 +50,39 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\DetailPage.cs" />
-    <Compile Include="Models\DropDownItem.cs" />
-    <Compile Include="Models\EnrollmentDetails.cs" />
-    <Compile Include="Models\PickerDataSource.cs" />
-    <Compile Include="Models\Request\Common\DownloadAttachmentRequest.cs" />
-    <Compile Include="Models\Request\Common\GetAttachmentsRequest.cs" />
-    <Compile Include="Models\Request\LoginRequest.cs" />
-    <Compile Include="Models\Request\RequestBase.cs" />
-    <Compile Include="Models\Request\Timesheet\ApprovalManagerResponse.cs" />
-    <Compile Include="Models\Request\Timesheet\ApprovalManagersRequest.cs" />
-    <Compile Include="Models\Request\Timesheet\ProjectTrackCodesRequest.cs" />
-    <Compile Include="Models\Request\Timesheet\SaveOrSubmitTimesheetRequest.cs" />
-    <Compile Include="Models\Request\Timesheet\TimesheetDetailsRequest.cs" />
-    <Compile Include="Models\Request\Timesheet\TimesheetDetailsResponse.cs" />
-    <Compile Include="Models\Request\Timesheet\TimesheetEndingDatesRequest.cs" />
-    <Compile Include="Models\Request\Timesheet\TimesheetNotesRequest.cs" />
-    <Compile Include="Models\Request\Timesheet\ViewTimesheetRequest.cs" />
-    <Compile Include="Models\Response\Common\DownloadAttachmentResponse.cs" />
-    <Compile Include="Models\Response\Common\GetAttachmentResponse.cs" />
-    <Compile Include="Models\Response\LoginResponse.cs" />
-    <Compile Include="Models\Response\ResponseBase.cs" />
-    <Compile Include="Models\Request\Timesheet\TimesheetRequest.cs" />
-    <Compile Include="Models\Response\Timesheet\ProjectTrackCodeResponse.cs" />
-    <Compile Include="Models\Response\Timesheet\SaveOrSubmitTimesheetResponse.cs" />
-    <Compile Include="Models\Response\Timesheet\TimesheetEndingDatesResponse.cs" />
-    <Compile Include="Models\Response\Timesheet\TimesheetNotesResponse.cs" />
-    <Compile Include="Models\Response\Timesheet\ViewTimesheetResponse.cs" />
-    <Compile Include="Models\TimesheetEntry.cs" />
-    <Compile Include="Models\Response\Timesheet\TimesheetResponse.cs" />
-    <Compile Include="Models\UserDefinedFields.cs" />
-    <Compile Include="Models\UserInfo.cs" />
-    <Compile Include="Models\UserPermissions.cs" />
-    <Compile Include="Models\ZCMobileSystemConfiguration.cs" />
+    <Compile Include="Model\DetailPage.cs" />
+    <Compile Include="Model\DropDownItem.cs" />
+    <Compile Include="Model\EnrollmentDetails.cs" />
+    <Compile Include="Model\PickerDataSource.cs" />
+    <Compile Include="Model\Request\Common\DownloadAttachmentRequest.cs" />
+    <Compile Include="Model\Request\Common\GetAttachmentsRequest.cs" />
+    <Compile Include="Model\Request\LoginRequest.cs" />
+    <Compile Include="Model\Request\RequestBase.cs" />
+    <Compile Include="Model\Request\Timesheet\ApprovalManagerResponse.cs" />
+    <Compile Include="Model\Request\Timesheet\ApprovalManagersRequest.cs" />
+    <Compile Include="Model\Request\Timesheet\ProjectTrackCodesRequest.cs" />
+    <Compile Include="Model\Request\Timesheet\SaveOrSubmitTimesheetRequest.cs" />
+    <Compile Include="Model\Request\Timesheet\TimesheetDetailsRequest.cs" />
+    <Compile Include="Model\Request\Timesheet\TimesheetDetailsResponse.cs" />
+    <Compile Include="Model\Request\Timesheet\TimesheetEndingDatesRequest.cs" />
+    <Compile Include="Model\Request\Timesheet\TimesheetNotesRequest.cs" />
+    <Compile Include="Model\Request\Timesheet\ViewTimesheetRequest.cs" />
+    <Compile Include="Model\Response\Common\DownloadAttachmentResponse.cs" />
+    <Compile Include="Model\Response\Common\GetAttachmentResponse.cs" />
+    <Compile Include="Model\Response\LoginResponse.cs" />
+    <Compile Include="Model\Response\ResponseBase.cs" />
+    <Compile Include="Model\Request\Timesheet\TimesheetRequest.cs" />
+    <Compile Include="Model\Response\Timesheet\ProjectTrackCodeResponse.cs" />
+    <Compile Include="Model\Response\Timesheet\SaveOrSubmitTimesheetResponse.cs" />
+    <Compile Include="Model\Response\Timesheet\TimesheetEndingDatesResponse.cs" />
+    <Compile Include="Model\Response\Timesheet\TimesheetNotesResponse.cs" />
+    <Compile Include="Model\Response\Timesheet\ViewTimesheetResponse.cs" />
+    <Compile Include="Model\TimesheetEntry.cs" />
+    <Compile Include="Model\Response\Timesheet\TimesheetResponse.cs" />
+    <Compile Include="Model\UserDefinedFields.cs" />
+    <Compile Include="Model\UserInfo.cs" />
+    <Compile Include="Model\UserPermissions.cs" />
+    <Compile Include="Model\ZCMobileSystemConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ServiceCaller.cs" />
     <Compile Include="ViewModel\AttachmentViewModel.cs" />
@@ -93,50 +93,50 @@
     <Compile Include="ViewModel\Timesheet\NotesTimesheetViewModel.cs" />
     <Compile Include="ViewModel\Timesheet\TrackcodeTimesheetViewModel.cs" />
     <Compile Include="ViewModel\Timesheet\ViewTimesheetViewModel.cs" />
-    <Compile Include="Views\Common\ViewAttachment.xaml.cs">
+    <Compile Include="View\Common\ViewAttachment.xaml.cs">
       <DependentUpon>ViewAttachment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dashboard\DashBoard.xaml.cs">
+    <Compile Include="View\Dashboard\DashBoard.xaml.cs">
       <DependentUpon>DashBoard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dashboard\GridTile.xaml.cs">
+    <Compile Include="View\Dashboard\GridTile.xaml.cs">
       <DependentUpon>GridTile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Login\LoginPage.xaml.cs">
+    <Compile Include="View\Login\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MasterPages\MasterDetail.xaml.cs">
+    <Compile Include="View\MasterPages\MasterDetail.xaml.cs">
       <DependentUpon>MasterDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MasterPages\MasterDetailControl.xaml.cs">
+    <Compile Include="View\MasterPages\MasterDetailControl.xaml.cs">
       <DependentUpon>MasterDetailControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SelectionPage.xaml.cs">
+    <Compile Include="View\SelectionPage.xaml.cs">
       <DependentUpon>SelectionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SingleItemSelectionPage.xaml.cs">
+    <Compile Include="View\SingleItemSelectionPage.xaml.cs">
       <DependentUpon>SingleItemSelectionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Timesheet\AddTimesheetEntryDetailPage.xaml.cs">
+    <Compile Include="View\Timesheet\AddTimesheetEntryDetailPage.xaml.cs">
       <DependentUpon>AddTimesheetEntryDetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Timesheet\ApproveManager.xaml.cs">
+    <Compile Include="View\Timesheet\ApproveManager.xaml.cs">
       <DependentUpon>ApproveManager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Timesheet\TimesheetNotes.xaml.cs">
+    <Compile Include="View\Timesheet\TimesheetNotes.xaml.cs">
       <DependentUpon>TimesheetNotes.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Timesheet\ViewTimesheetPage.xaml.cs">
+    <Compile Include="View\Timesheet\ViewTimesheetPage.xaml.cs">
       <DependentUpon>ViewTimesheetPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Timesheet\TimesheetActionList.xaml.cs">
+    <Compile Include="View\Timesheet\TimesheetActionList.xaml.cs">
       <DependentUpon>TimesheetActionList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Timesheet\TimesheetTrackCode.xaml.cs">
+    <Compile Include="View\Timesheet\TimesheetTrackCode.xaml.cs">
       <DependentUpon>TimesheetTrackCode.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CustomButton.cs" />
-    <Compile Include="Views\Timesheet\TimesheetDetailsPage.xaml.cs">
+    <Compile Include="View\Timesheet\TimesheetDetailsPage.xaml.cs">
       <DependentUpon>TimesheetDetailsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\EntryClass.cs" />
@@ -150,7 +150,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Timesheet\TimesheetDetailsPage.xaml">
+    <EmbeddedResource Include="View\Timesheet\TimesheetDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -195,19 +195,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Timesheet\TimesheetActionList.xaml">
+    <EmbeddedResource Include="View\Timesheet\TimesheetActionList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Login\LoginPage.xaml">
+    <EmbeddedResource Include="View\Login\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\SelectionPage.xaml">
+    <EmbeddedResource Include="View\SelectionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -219,70 +219,70 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Dashboard\DashBoard.xaml">
+    <EmbeddedResource Include="View\Dashboard\DashBoard.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Dashboard\GridTile.xaml">
+    <EmbeddedResource Include="View\Dashboard\GridTile.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MasterPages\MasterDetail.xaml">
+    <EmbeddedResource Include="View\MasterPages\MasterDetail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MasterPages\MasterDetailControl.xaml">
+    <EmbeddedResource Include="View\MasterPages\MasterDetailControl.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Timesheet\TimesheetTrackCode.xaml">
+    <EmbeddedResource Include="View\Timesheet\TimesheetTrackCode.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Timesheet\ViewTimesheetPage.xaml">
+    <EmbeddedResource Include="View\Timesheet\ViewTimesheetPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Dossier\" />
+    <Folder Include="View\Dossier\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Timesheet\ApproveManager.xaml">
+    <EmbeddedResource Include="View\Timesheet\ApproveManager.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Timesheet\TimesheetNotes.xaml">
+    <EmbeddedResource Include="View\Timesheet\TimesheetNotes.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\SingleItemSelectionPage.xaml">
+    <EmbeddedResource Include="View\SingleItemSelectionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Timesheet\AddTimesheetEntryDetailPage.xaml">
+    <EmbeddedResource Include="View\Timesheet\AddTimesheetEntryDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Common\ViewAttachment.xaml">
+    <EmbeddedResource Include="View\Common\ViewAttachment.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

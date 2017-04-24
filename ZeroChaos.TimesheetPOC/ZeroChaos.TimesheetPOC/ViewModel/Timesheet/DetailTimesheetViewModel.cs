@@ -15,11 +15,11 @@ using ZeroChaos.TimesheetPOC.Views.Timesheet;
 
 namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
 {
-    public class DetailTimesheetViewModel : BaseViewModel, INotifyPropertyChanged
+    public class DetailTimesheetViewModel : BaseViewModel 
     {
         IServiceCaller service;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+      
 
         public int TimesheetID { get; set; }
 		public TimesheetEntry TimeshetEntrySeleted {
@@ -175,10 +175,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
 
 		}
 
-        void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        
 
         private SaveOrSubmitTimesheetRequest PrepareSaveOrSubmitTimesheetRequest(int action)
         {

@@ -6,7 +6,7 @@
              x:Class="ZeroChaos.TimesheetPOC.Views.Timesheet.ViewTimesheetPage">
     
         <ScrollView>
-            <ListView x:Name="lstView" HasUnevenRows="true">
+            <ListView x:Name="lstView" HasUnevenRows="true" ItemAppearing="lstView_ItemAppearing">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
