@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ZeroChaos.TimesheetPOC.RefineTimesheet" 
+	xmlns:customControls="clr-namespace:ZeroChaos.TimesheetPOC" 
+	 xmlns:controls="clr-namespace:ZeroChaos.TimesheetPOC.Controls">
+	<ContentPage.Content>
+		<StackLayout VerticalOptions="FillAndExpand">
+		<Grid x:Name="grdFilter" VerticalOptions="FillAndExpand"> 
+			<Grid.RowDefinitions>
+		        <RowDefinition x:Name="grdRowDivision" Height="*" />
+		        <RowDefinition x:Name="grdRowBussinessUnit" Height="*" />
+				
+			 <RowDefinition x:Name="grdRowClient"   Height="*" /> 
+					 <RowDefinition    Height="*" />
+   		   </Grid.RowDefinitions> 
+
+		 <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions> 
+			<StackLayout Grid.Row="0" >
+             <Label Text="Division"  Style="{StaticResource form-label}"  />
+             <Label Text="" Style="{StaticResource data-label}" />
+          </StackLayout> 
+			<StackLayout Grid.Row="1">
+             <Label Text="Business Unit"  Style="{StaticResource form-label}"  />
+             <Label x:Name="lblBusinessUnit" Text="" Style="{StaticResource data-label}" />
+          </StackLayout>
+			<StackLayout Grid.Row="2">
+             <Label Text="Vendor Agreement" Style="{StaticResource form-label}"  />
+             <Label x:Name="lblClientName" Text="" Style="{StaticResource data-label}" />
+          </StackLayout>
+		    <StackLayout Grid.Row="3">
+             <Label Text="Timesheet Id" Style="{StaticResource form-label}"  />
+             <customControls:MyEntry x:Name="txtTimesheetId" Text="test1@test1.com12" HorizontalOptions="FillAndExpand"  BackgroundColor="#c1eaf6"  Margin="10,0,0,0" />
+          </StackLayout>
+		</Grid> 
+			<StackLayout  Spacing="0" x:Name="buttonBar" HorizontalOptions="FillAndExpand" Orientation="Horizontal" VerticalOptions="End">
+                    <ContentView  HorizontalOptions="FillAndExpand" HeightRequest="40">
+                        <controls:CustomButton x:Name="btApply" Text="Apply" Type="Orange" HorizontalOptions="Fill"  StyleId="1"/>
+                    </ContentView>
+                    <ContentView  HorizontalOptions="FillAndExpand">
+                        <controls:CustomButton x:Name="btnReset" Text="Reset"  HeightRequest="40"  HorizontalOptions="Fill"  StyleId="2" Type="Blue"/>
+                        <!--<controls:CustomButton Text="Submit" Type="Blue"  HeightRequest="40"  HorizontalOptions="Fill" Clicked="CustomButton_Clicked" StyleId="2"/>-->
+                        <!--  <Button  HeightRequest="40" Type HorizontalOptions="FillAndExpand"  BackgroundColor="#01446b" Text="submit"></Button> -->
+                    </ContentView>
+                </StackLayout>
+		  </StackLayout>
+	</ContentPage.Content>
+</ContentPage>

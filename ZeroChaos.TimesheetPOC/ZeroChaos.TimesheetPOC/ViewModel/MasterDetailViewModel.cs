@@ -43,7 +43,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
 
               string title = "More Information";
 
-              List<string> Options = new List<string>() { "Notes", "Track Codes", "Attachments" };
+              List<string> Options = new List<string>() { "Notes", "Track Codes", "Attachments","Filter Timesheet" };
 
               NeedMoreInfo nm = new NeedMoreInfo("More Information", Options);
 
@@ -119,7 +119,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                                 RightButton = "...";
                                 var page = new ViewTimesheetPage();
                                 Header = "View Timesheet";
-                                RightButton = string.Empty;
+								RightButton = "...";//string.Empty;
                                 ViewTimesheetViewModel vm = new ViewTimesheetViewModel();
                                 vm.MasterDetailViewModel = this;
                                 page.BindingContext = vm;
@@ -286,6 +286,13 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                 page.GetNotesList();
                 Detail = page;
             }
+			//Filter Timesheet 
+			//
+			if (selectedaction == "Filter Timesheet") { 
+				var page = new RefineTimesheet();
+				Detail = page;
+			}
+
         }
     }
     public class SimpleObject
