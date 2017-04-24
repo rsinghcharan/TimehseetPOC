@@ -24,7 +24,7 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
 
         #region Properties
         public static readonly BindableProperty SideContentProperty = BindableProperty.Create("SideContent",
-            typeof(View), typeof(MasterDetailControl), null, propertyChanged: (bindable, value, newValue) =>
+            typeof(Xamarin.Forms.View), typeof(MasterDetailControl), null, propertyChanged: (bindable, value, newValue) =>
             {
                 var control = (MasterDetailControl)bindable;
                 control.SideContentContainer.Children.Clear();
@@ -38,6 +38,11 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
                 var masterPage = (MasterDetailControl)bindable;
                 masterPage.DetailContainer.Content = newValue != null ?
                     ((ContentPage)newValue).Content : null;
+                if (masterPage.DetailContainer.Content != null)
+                {
+                    masterPage.DetailContainer.Content.BindingContext = newValue != null ? (newValue as Page).BindingContext : null;
+                }
+
                 masterPage.OnPropertyChanged("SideContentVisible");
             });
 
@@ -86,9 +91,9 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
             set { SetValue(DetailProperty, value); }
         }
 
-        public View SideContent
+        public Xamarin.Forms.View SideContent
         {
-            get { return (View)GetValue(SideContentProperty); }
+            get { return (Xamarin.Forms.View)GetValue(SideContentProperty); }
             set { SetValue(SideContentProperty, value); }
         }
 
@@ -118,7 +123,7 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
         public MasterDetailControl()
         {
             InitializeComponent();
-            SetBinding(DetailProperty, new Binding("Detail", BindingMode.OneWay));
+            SetBinding(DetailProperty, new Binding("Detail", BindingMode.TwoWay));
             SetBinding(TitleProperty, new Binding("Header", BindingMode.TwoWay));
             SetBinding(SideButtonProperty, new Binding("RightButton", BindingMode.TwoWay));
             //SetBinding(BackButtonIsVisibleProperty, new Binding("BackButtonIsVisible", BindingMode.TwoWay));
