@@ -4,18 +4,45 @@ using OxyPlot;
 using OxyPlot.Annotations;
 using OxyPlot.Axes;
 using OxyPlot.Series;
-namespace ZeroChaos.TimesheetPOC
+using ZeroChaos.TimesheetPOC.ViewModel;
+using ZeroChaos.TimesheetPOC.IServices;
+using ZeroChaos.TimesheetPOC.Services;
+using ZeroChaos.TimesheetPOC.Model.Request.Engagement;
+using ZeroChaos.TimesheetPOC.Model.Response.Engagement;
+
+namespace ZeroChaos.TimesheetPOC.ViewModel
 {
-	public class EngagementSpendSummaryViewModel
+	public class EngagementSpendSummaryViewModel:BaseViewModel
 	{
-		public PlotModel PieModel { get; set; }
+        private IServiceCaller service;
+        private PlotModel _PieModel;
 
-		public EngagementSpendSummaryViewModel()
+        public PlotModel PieModel
+        {
+            get { return _PieModel; }
+            set { _PieModel = value; OnPropertyChanged(); }
+        }
+        private GetSOWEngagementSpendSummaryResponse _SummaryDetails;
+
+        public GetSOWEngagementSpendSummaryResponse SummaryDetails
+        {
+            get { return _SummaryDetails ?? (_SummaryDetails=new GetSOWEngagementSpendSummaryResponse()); }
+            set { _SummaryDetails = value; OnPropertyChanged(); }
+        }
+
+
+        public EngagementSpendSummaryViewModel()
 		{
-			PieModel = CreatePieChart();
-
+            service = new ServiceCaller();
+            var request = new GetEngagementSpendSummaryRequest() {ClientID=5000,EngagementID= 48478,loggedonUser=App.UserSession.LoggedonUser };
+            service.CallHostService<GetEngagementSpendSummaryRequest, GetSOWEngagementSpendSummaryResponse>(request, "GetEngagementSpendSummaryRequest", val => 
+            {
+                SummaryDetails = val;
+            });
+            PieModel = CreatePieChart();
+           
 		}
-		private PlotModel CreatePieChart()
+		public PlotModel CreatePieChart()
 		{
 			Contract.Ensures(Contract.Result<PlotModel>() != null);
 			var model = new PlotModel { Title = "Spend Summary" };

@@ -16,7 +16,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
     /// <summary>
     /// MasterDetailControlViewModel class.
     /// </summary>
-    public class MasterDetailControlViewModel : INotifyPropertyChanged, INavigation
+    public class MasterDetailControlViewModel : BaseViewModel, INavigation
     {
         #region Private Members
         private Page _detail;
@@ -26,7 +26,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
         #endregion
 
         #region Properties
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
         public Page Detail
         {
@@ -193,11 +193,11 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             _navigation = navigation;
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
+        //protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        //{
+        //    var handler = PropertyChanged;
+        //    if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        //}
         #endregion
     }
 }

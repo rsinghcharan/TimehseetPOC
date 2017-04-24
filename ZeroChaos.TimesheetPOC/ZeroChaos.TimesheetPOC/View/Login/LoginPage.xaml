@@ -47,7 +47,7 @@
                                 </ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <customControls:MyEntry x:Name="txtUserName" Text="kathy.knoerl@ucsf.edu" Placeholder="Username" BackgroundColor="Transparent" Grid.ColumnSpan="1" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0" />
-                            <customControls:MyEntry x:Name="txtPassword" Text="Spring#9" Placeholder="Password" IsPassword="True" BackgroundColor="Transparent" Grid.Column="0" Grid.Row="1" Margin="10,0,0,0" />
+                            <customControls:MyEntry x:Name="txtPassword" Text="Spring#1" Placeholder="Password" IsPassword="True" BackgroundColor="Transparent" Grid.Column="0" Grid.Row="1" Margin="10,0,0,0" />
                             <Label x:Name="lblForgot" Text="Forgot?" VerticalTextAlignment="Center" VerticalOptions="Center" TextColor="#3c9ece" Grid.Column="1" Grid.Row="1" />
                         </Grid>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">

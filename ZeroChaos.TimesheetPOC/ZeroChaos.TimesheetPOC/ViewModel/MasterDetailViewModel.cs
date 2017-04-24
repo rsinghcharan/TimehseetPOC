@@ -17,6 +17,7 @@ using ZeroChaos.TimesheetPOC.Views.Login;
 using ZeroChaos.TimesheetPOC.Views.Common;
 
 
+
 #endregion
 namespace ZeroChaos.TimesheetPOC.ViewModel
 {
@@ -125,6 +126,16 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                                 page.BindingContext = vm;
                                 Detail = page;
                             }
+                            else if(label.Text== "View Engagement")
+                            {
+                                Header = "Spend Summary";
+                                RightButton = "";
+                                var page = new SpendSummaryPage();
+                                //var context = new EngagementSpendSummaryViewModel();
+                                //context.Test = "Updates test from master page";
+                                page.BindingContext = new EngagementSpendSummaryViewModel();
+                                Detail = page;
+                            }
                             else if (label.Text == "Logout")
                             {
                                 Application.Current.MainPage = new LoginPage();
@@ -221,6 +232,12 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             obj.ChildItemList.Add(new ChildItems { TextValue = "View Expense Report", DataValue = "E1" });
             obj.ChildItemList.Add(new ChildItems { TextValue = "Create Expense Report", DataValue = "E2" });
             obj.ChildItemList.Add(new ChildItems { TextValue = "Approve Expense Report", DataValue = "E3", BubbleCount = 2 });
+            dummyData.Add(obj);
+
+            obj = new SimpleObject();
+            obj.HeaderText = "Engagement";
+            obj.ChildItemList.Add(new ChildItems { TextValue = "View Engagement", DataValue = "Eg1" });
+          
             dummyData.Add(obj);
 
             obj = new SimpleObject();
