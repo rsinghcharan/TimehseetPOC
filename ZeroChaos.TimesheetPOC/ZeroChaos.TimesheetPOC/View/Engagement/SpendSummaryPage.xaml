@@ -25,7 +25,7 @@
                     <BoxView WidthRequest="12" HeightRequest="12" BackgroundColor="#007DCC"  />
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label Text="Released for Invoicing" FontSize="Small" />
+                    <Label x:Name="lblReleasedInvoicing" Text="Released for Invoicing" FontSize="Small" WidthRequest="250" />
                 </StackLayout>
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="2">
@@ -33,7 +33,7 @@
                     <BoxView WidthRequest="12" HeightRequest="12" BackgroundColor="#46BFBD" />
                 </StackLayout>
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label Text="Distribution of Approved Budget" FontSize="Small" />
+                    <Label x:Name="lblApprovedBudget" Text="Distribution of Approved Budget" FontSize="Small" WidthRequest="250"/>
                 </StackLayout>
             </StackLayout>
             <StackLayout Grid.Row="3">
