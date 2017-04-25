@@ -16,29 +16,34 @@ using System.Linq;
 namespace ZeroChaos.TimesheetPOC.Views.Timesheet
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ViewTimesheetPage
+    public partial class ViewTimesheetPage : ContentPage
     {
+      
         public ViewTimesheetPage()
         {
             try
             {
                 InitializeComponent();
-				 //Detail = new TimesheetDetailsPage();
-                IServiceCaller service = new ServiceCaller();
-                //var request = new LoginRequest { emailAddress = txtUserName.Text, password = txtPassword.Text };
-                var request = new ViewTimesheetRequest
-                {
-                    contactID = (App.UserSession.CurrentUserInfo.UserTypeID == 2 ? App.UserSession.LoggedonUser.userID : 0),
-                    resourceID = (App.UserSession.CurrentUserInfo.UserTypeID == 1 ? App.UserSession.LoggedonUser.userID : 0),
-                    loggedonUser = App.UserSession.LoggedonUser,
-                    offset=0,pageSize=10
+                //Detail = new TimesheetDetailsPage();
+                //IServiceCaller service = new ServiceCaller();
+                ////var request = new LoginRequest { emailAddress = txtUserName.Text, password = txtPassword.Text };
+                //var request = new ViewTimesheetRequest
+                //{
+                //    contactID = (App.UserSession.CurrentUserInfo.UserTypeID == 2 ? App.UserSession.LoggedonUser.userID : 0),
+                //    resourceID = (App.UserSession.CurrentUserInfo.UserTypeID == 1 ? App.UserSession.LoggedonUser.userID : 0),
+                //    loggedonUser = App.UserSession.LoggedonUser,
+                //    offset=0,pageSize=10
 
-                };
-                service.CallHostService<ViewTimesheetRequest, ViewTimesheetObjectResponse>(request, "FilterTimesheetsForSearchRequest", (r) =>
-                {              
-                    this.lstView.ItemsSource = r.timesheets;
+                //};
+                //service.CallHostService<ViewTimesheetRequest, ViewTimesheetObjectResponse>(request, "FilterTimesheetsForSearchRequest", (r) =>
+                //{              
+                //    this.lstView.ItemsSource = r.timesheets;
 
-                });
+                //});
+                ViewTimesheetViewModel vtvm = new ViewTimesheetViewModel();
+                this.BindingContext = vtvm;
+
+
                 this.lstView.ItemSelected += (sender, e) =>
                {
                    if (e.SelectedItem == null) return; // don't do anything if we just de-selected the row
@@ -61,12 +66,12 @@ namespace ZeroChaos.TimesheetPOC.Views.Timesheet
 
         private void lstView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
         {
-            var timesheet = e.Item as ViewTimesheetResponse;
-             var abc= lstView.ItemsSource as List<ViewTimesheetResponse>;
-            if(abc.Last().timesheetID==timesheet.timesheetID)
-            {
-                //Application.Current.MainPage.DisplayAlert("last", "Last element Reached", "ok");
-            }
+            //var timesheet = e.Item as ViewTimesheetResponse;
+            // var abc= lstView.ItemsSource as List<ViewTimesheetResponse>;
+            //if(abc.Last().timesheetID==timesheet.timesheetID)
+            //{
+            //    //Application.Current.MainPage.DisplayAlert("last", "Last element Reached", "ok");
+            //}
           
         }
 

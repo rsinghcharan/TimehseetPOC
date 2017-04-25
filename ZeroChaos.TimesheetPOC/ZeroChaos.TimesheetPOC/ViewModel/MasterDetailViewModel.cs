@@ -26,9 +26,9 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
     {
         public MasterDetailViewModel()
         {
-			DashBoard ds = new DashBoard();
-			ds.BindingContext = this;
-			Detail = ds;
+            DashBoard ds = new DashBoard();
+            ds.BindingContext = this;
+            Detail = ds;
             MessagingCenter.Subscribe<object, string>(this, "NeedMoreInfoReply", NeedMoreInfoResponse);
         }
 
@@ -45,7 +45,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
 
               string title = "More Information";
 
-              List<string> Options = new List<string>() { "Notes", "Track Codes", "Attachments","Filter Timesheet" };
+              List<string> Options = new List<string>() { "Notes", "Track Codes", "Attachments", "Filter Timesheet" };
 
               NeedMoreInfo nm = new NeedMoreInfo("More Information", Options);
 
@@ -122,9 +122,9 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                                 var page = new ViewTimesheetPage();
                                 Header = "View Timesheet";
                                 RightButton = "...";//string.Empty;
-                                ViewTimesheetViewModel vm = new ViewTimesheetViewModel();
-                                vm.MasterDetailViewModel = this;
-                                page.BindingContext = vm;
+                                //ViewTimesheetViewModel vm = new ViewTimesheetViewModel();
+                                // vm.MasterDetailViewModel = this;
+                               // page.BindingContext = vm;
                                 Detail = page;
                             }
                             else if (label.Text == "View Engagement")
@@ -252,7 +252,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             obj = new SimpleObject();
             obj.HeaderText = "Engagement";
             obj.ChildItemList.Add(new ChildItems { TextValue = "View Engagement", DataValue = "Eg1" });
-          
+
             dummyData.Add(obj);
 
             obj = new SimpleObject();
@@ -318,12 +318,13 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                 page.GetNotesList();
                 Detail = page;
             }
-			//Filter Timesheet 
-			//
-			if (selectedaction == "Filter Timesheet") { 
-				//var page = new RefineTimesheet();
-				//Detail = page;
-			}
+            //Filter Timesheet 
+            //
+            if (selectedaction == "Filter Timesheet")
+            {
+                //var page = new RefineTimesheet();
+                //Detail = page;
+            }
 
         }
     }

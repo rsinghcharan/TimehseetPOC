@@ -4,6 +4,7 @@
 	xmlns:customControls="clr-namespace:ZeroChaos.TimesheetPOC" 
 	 xmlns:controls="clr-namespace:ZeroChaos.TimesheetPOC.Controls">
 	<ContentPage.Resources>
+
 	   	<ResourceDictionary>
 	   	 	<Style x:Key="form-Text" TargetType="Entry">
 				<Setter Property="TranslationX" Value="10">
