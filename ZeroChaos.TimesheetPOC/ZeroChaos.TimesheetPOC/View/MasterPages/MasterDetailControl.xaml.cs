@@ -44,6 +44,7 @@ namespace ZeroChaos.TimesheetPOC.Views.MasterPages
                 }
 
                 masterPage.OnPropertyChanged("SideContentVisible");
+
             });
 
         public BindableProperty TitleProperty = BindableProperty.Create("Header", 

@@ -1,16 +1,19 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
-using ZeroChaos.TimesheetPOC.Models.Response;
-
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 namespace ZeroChaos.TimesheetPOC.ViewModel
 {
-    public abstract class BaseViewModel: INotifyPropertyChanged
+    public abstract class BaseViewModel : ViewModelBase
     {
         #region Properties
         private MasterDetailViewModel _MasterDetailViewModel;
@@ -21,16 +24,5 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             set { _MasterDetailViewModel = value; }
         }
         #endregion
-
-        #region Events
-        public event PropertyChangedEventHandler PropertyChanged;
-        #endregion
-
-        #region Public Methods
-        public void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
-    }
+ }
 }

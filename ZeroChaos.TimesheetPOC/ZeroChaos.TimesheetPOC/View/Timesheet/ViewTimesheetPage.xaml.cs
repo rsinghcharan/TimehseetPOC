@@ -65,7 +65,7 @@ namespace ZeroChaos.TimesheetPOC.Views.Timesheet
              var abc= lstView.ItemsSource as List<ViewTimesheetResponse>;
             if(abc.Last().timesheetID==timesheet.timesheetID)
             {
-                Application.Current.MainPage.DisplayAlert("last", "Last element Reached", "ok");
+                //Application.Current.MainPage.DisplayAlert("last", "Last element Reached", "ok");
             }
           
         }
@@ -73,7 +73,7 @@ namespace ZeroChaos.TimesheetPOC.Views.Timesheet
         //void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         //{
         //    App.UserSession.SideContentVisibility = (!App.UserSession.SideContentVisibility);
-        //    OnPropertyChanged("SideContentVisible");
+        //    RaisePropertyChanged("SideContentVisible");
         //}
     }
 }

@@ -20,15 +20,16 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
         public PlotModel PieModel
         {
             get { return _PieModel; }
-            set { _PieModel = value; OnPropertyChanged(); }
+            set { _PieModel = value; RaisePropertyChanged(); }
         }
         private GetSOWEngagementSpendSummaryResponse _SummaryDetails;
 
         public GetSOWEngagementSpendSummaryResponse SummaryDetails
         {
             get { return _SummaryDetails ?? (_SummaryDetails=new GetSOWEngagementSpendSummaryResponse()); }
-            set { _SummaryDetails = value; OnPropertyChanged(); }
+            set { _SummaryDetails = value; RaisePropertyChanged(); }
         }
+       
 
 
         public EngagementSpendSummaryViewModel()

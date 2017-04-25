@@ -62,7 +62,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
         public ObservableCollection<AccordionSource> Checking
         {
             get { return _Checking ?? (_Checking = new ObservableCollection<AccordionSource>()); }
-            set { _Checking = value; OnPropertyChanged(); }
+            set { _Checking = value; RaisePropertyChanged(); }
         }
         public List<AccordionSource> GetSampleData()
         {
@@ -152,7 +152,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                             }
 
                             App.UserSession.SideContentVisibility = (!App.UserSession.SideContentVisibility);
-                            OnPropertyChanged("SideContentVisible");
+                            RaisePropertyChanged("SideContentVisible");
                         };
                         lbl.GestureRecognizers.Add(tg);
                         Grid.SetRow(lbl, rowCount);

@@ -28,7 +28,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.CandidateCompare
             set
             {
                 candidateCompareData = value;
-                OnPropertyChanged();
+                RaisePropertyChanged();
             }
         }
         #endregion

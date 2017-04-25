@@ -37,7 +37,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                 {
                     _pages.Push(Detail);
                     _detail = value;
-                    OnPropertyChanged();
+                    RaisePropertyChanged();
                 }
             }
         }
@@ -46,14 +46,14 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
         public string Header
         {
             get { return _Header; }
-            set { _Header = value; OnPropertyChanged(); }
+            set { _Header = value; RaisePropertyChanged(); }
         }
         private string _RightButton;
 
         public string RightButton
         {
             get { return _RightButton; }
-            set { _RightButton = value;OnPropertyChanged(); }
+            set { _RightButton = value;RaisePropertyChanged(); }
         }
 
         public Task<Page> PopAsync()
@@ -63,7 +63,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             {
                 page = _pages.Pop();
                 _detail = page;
-                OnPropertyChanged("Detail");
+                RaisePropertyChanged("Detail");
             }
             return page != null ? Task.FromResult(page) : _navigation.PopAsync();
         }
@@ -116,7 +116,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             {
                 page = _pages.Pop();
                 _detail = page;
-                OnPropertyChanged("Detail");
+                RaisePropertyChanged("Detail");
             }
             return page != null ? Task.FromResult(page) : _navigation.PopAsync(animated);
         }
@@ -193,7 +193,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             _navigation = navigation;
         }
 
-        //protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        //protected virtual void RaisePropertyChanged([CallerMemberName] string propertyName = null)
         //{
         //    var handler = PropertyChanged;
         //    if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));

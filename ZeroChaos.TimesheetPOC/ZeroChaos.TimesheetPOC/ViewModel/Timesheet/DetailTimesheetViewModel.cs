@@ -44,7 +44,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
             set
             {
                 saveSubmitButtonVisibility = value;
-                OnPropertyChanged();
+                RaisePropertyChanged();
             }
         }
 
