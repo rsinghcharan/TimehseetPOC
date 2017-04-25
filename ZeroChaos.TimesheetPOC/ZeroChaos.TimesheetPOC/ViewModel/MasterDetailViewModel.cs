@@ -323,8 +323,8 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             //
             if (selectedaction == "Filter Timesheet")
             {
-                //var page = new RefineTimesheet();
-                //Detail = page;
+                var page = new RefineTimesheet();
+                Detail = page;
             }
 
         }

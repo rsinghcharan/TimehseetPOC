@@ -9,9 +9,11 @@
 	   	 	<Style x:Key="form-Text" TargetType="Entry">
 				<Setter Property="TranslationX" Value="10">
 				</Setter>
-				<Setter Property="TranslationY" Value="10">
+				<Setter Property="TranslationX" Value="10">
+				</Setter>
+				<Setter Property="HeightRequest" Value="35">
 				</Setter> 
-			<Setter Property="Margin" Value="10,0,10,0">
+			<Setter Property="Margin" Value="10,7,10,0">
 				</Setter> </Style> 
 			<Style x:Key="form-StackLayout" TargetType="StackLayout">
 			<Setter Property="Spacing" Value="1">
@@ -27,7 +29,7 @@
 	</ContentPage.Resources>
 	<ContentPage.Content>
 		<StackLayout VerticalOptions="FillAndExpand">
-			<ScrollView>
+			<ScrollView >
 		<Grid x:Name="grdFilter" VerticalOptions="FillAndExpand" RowSpacing="1" > 
 			<Grid.RowDefinitions>
 		        <RowDefinition x:Name="grdRowDivision" Height="auto" />
@@ -46,7 +48,7 @@
 		 <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions> 
-			<StackLayout Grid.Row="0"   VerticalOptions="Start" IsClippedToBounds="true"  Spacing="1" >
+			<StackLayout Grid.Row="0"    VerticalOptions="Start" IsClippedToBounds="true"  Spacing="1" >
              <Label Text="Division"  Style="{StaticResource form-label}"  />
 						
              <customControls:MyEntry x:Name="txtDivision" Text="" HorizontalOptions="FillAndExpand" Style="{StaticResource form-Text}"  BackgroundColor="#c1eaf6"   />
@@ -58,29 +60,29 @@
           </StackLayout>
 			<StackLayout Grid.Row="2" Style="{StaticResource form-StackLayout}" VerticalOptions="Start" IsClippedToBounds="true"  Spacing="1"  >
              <Label Text="Vendor Agreement" Style="{StaticResource form-label}"  />
-			 <customControls:MyEntry x:Name="txtClientName" Text="" HorizontalOptions="FillAndExpand" Style="{StaticResource form-Text}" BackgroundColor="#c1eaf6"   />
+			 <customControls:MyEntry   x:Name="txtClientName" Text="" HorizontalOptions="FillAndExpand" Style="{StaticResource form-Text}" BackgroundColor="#c1eaf6"   />
             
           </StackLayout>
 		   <StackLayout Grid.Row="3" Style="{StaticResource form-StackLayout}" VerticalOptions="Start" IsClippedToBounds="true" Spacing="1" >
              <Label Text="Timesheet Id" Style="{StaticResource form-label}"  />
-             <customControls:MyEntry x:Name="txtTimesheetId" Text="test1@test1.com12" HorizontalOptions="FillAndExpand"  BackgroundColor="#c1eaf6"  Style="{StaticResource form-Text}"  />
+             <customControls:MyEntry x:Name="txtTimesheetId" Text="{Binding TimesheetID}" HorizontalOptions="FillAndExpand"  BackgroundColor="#c1eaf6"  Style="{StaticResource form-Text}"  />
           </StackLayout> 
 		  <StackLayout Grid.Row="4" VerticalOptions="Start" IsClippedToBounds="true"  Spacing="1" >
              <Label Text="Project Name" Style="{StaticResource form-label}"  />
-             <customControls:MyEntry x:Name="txtProjectName" Text="" HorizontalOptions="FillAndExpand"  BackgroundColor="#c1eaf6" Style="{StaticResource form-Text}"   />
+             <customControls:MyEntry x:Name="txtProjectName" Text="{Binding ProjectName}" HorizontalOptions="FillAndExpand"  BackgroundColor="#c1eaf6" Style="{StaticResource form-Text}"   />
           </StackLayout> 
 			<StackLayout Grid.Row="5" Style="{StaticResource form-StackLayout}" VerticalOptions="Start" IsClippedToBounds="true" Spacing="1">
              <Label Text="Resource Name" Style="{StaticResource form-label}"  />
-             <customControls:MyEntry x:Name="txtResourceName" Text="" HorizontalOptions="FillAndExpand"  BackgroundColor="#c1eaf6" Style="{StaticResource form-Text}"  />
+             <customControls:MyEntry x:Name="txtResourceName" Text="{Binding ResourceName}" HorizontalOptions="FillAndExpand"  BackgroundColor="#c1eaf6" Style="{StaticResource form-Text}"  />
           </StackLayout> 
 			<StackLayout Grid.Row="6" Style="{StaticResource form-StackLayout}" VerticalOptions="Start" IsClippedToBounds="true" Spacing="1">
              <Label Text="Status" Style="{StaticResource form-label}"  />
-             <customControls:MyEntry x:Name="txtStatus" Text="" HorizontalOptions="FillAndExpand"  BackgroundColor="#c1eaf6" Style="{StaticResource form-Text}"  />
+             <customControls:MyEntry x:Name="txtStatus" Text="{Binding ResourceName}" HorizontalOptions="FillAndExpand"  BackgroundColor="#c1eaf6" Style="{StaticResource form-Text}"  />
           </StackLayout> 
 		  <StackLayout Grid.Row="7"  Style="{StaticResource form-StackLayout}" VerticalOptions="Start" IsClippedToBounds="true" Spacing="1">
              <Label Text="Period End" Style="{StaticResource form-label}"  />
-              <customControls:MyEntry x:Name="txtMinDate" Text="" HorizontalOptions="FillAndExpand"   Style="{StaticResource form-Text}"  BackgroundColor="#c1eaf6"/>
-              <customControls:MyEntry x:Name="txtMaxDate" Text="" HorizontalOptions="FillAndExpand"   Style="{StaticResource form-Text}"  BackgroundColor="#c1eaf6"  />
+              <customControls:MyEntry x:Name="txtMinDate" IsDate="true"  Text="{Binding MinSubmitDate}" HorizontalOptions="FillAndExpand"   Style="{StaticResource form-Text}"  BackgroundColor="#c1eaf6"/>
+              <customControls:MyEntry x:Name="txtMaxDate" IsDate="true"   Text="{Binding MaxSubmitDate}" HorizontalOptions="FillAndExpand"   Style="{StaticResource form-Text}"  BackgroundColor="#c1eaf6"  />
 			</StackLayout> 
 			<StackLayout Grid.Row="8" Style="{StaticResource form-StackLayout}" VerticalOptions="Start" IsClippedToBounds="true" Spacing="1">
              <Label Text="Pay Amount" Style="{StaticResource form-label}"  />
@@ -88,21 +90,21 @@
           </StackLayout>  
 			 <StackLayout Grid.Row="9" Style="{StaticResource form-StackLayout}" VerticalOptions="Start" IsClippedToBounds="true" Spacing="1">
              <Label Text="Submit Date" Style="{StaticResource form-label}"  />
-              <customControls:MyEntry x:Name="txtMinSubmitDate" Text="" HorizontalOptions="FillAndExpand"   Style="{StaticResource form-Text}"    BackgroundColor="#c1eaf6" Focused="textBoxFocuse"  />
-              <customControls:MyEntry x:Name="txtMaxSubmitDate" Text="" HorizontalOptions="FillAndExpand"   Style="{StaticResource form-Text}"   BackgroundColor="#c1eaf6" TextChanged="textBoxFocuse" />
-             
+              <customControls:MyEntry x:Name="txtMinSubmitDate"  Text="{Binding MinPeriodEnding}" HorizontalOptions="FillAndExpand"   Style="{StaticResource form-Text}"    BackgroundColor="#c1eaf6" IsDate="True"    />
+              <customControls:MyEntry x:Name="txtMaxSubmitDate"    Text="{Binding MaxPeriodEnding}" HorizontalOptions="FillAndExpand"   Style="{StaticResource form-Text}"   BackgroundColor="#c1eaf6"  IsDate="True" />
+           
 			</StackLayout> 
 			 <StackLayout Grid.Row="10" Style="{StaticResource form-StackLayout}" VerticalOptions="Start" IsClippedToBounds="true" Spacing="1">
              <Label Text="Sort By" Style="{StaticResource form-label}"  />
-             <customControls:MyEntry x:Name="txtSortBy" Text="" HorizontalOptions="FillAndExpand"   Style="{StaticResource form-Text}"  BackgroundColor="#c1eaf6"   />
-             <DatePicker x:Name="datePickervalue" IsEnabled="false" DateSelected="entryDateSelected" IsVisible="false"></DatePicker>
+             <customControls:MyEntry x:Name="txtSortBy"  HorizontalOptions="FillAndExpand" Text="{Binding SortColumnName}"   Style="{StaticResource form-Text}"  BackgroundColor="#c1eaf6"   />
+            
 					</StackLayout> 
 					
 		</Grid> 
 				 
 				</ScrollView>
 			<StackLayout  Spacing="0" x:Name="buttonBar" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="10,0,10,0" VerticalOptions="End">
-                    <ContentView  HorizontalOptions="FillAndExpand" HeightRequest="40">
+                    <ContentView  HorizontalOptions="FillAndExpand" HeightRequest="40" VerticalOptions="End">
                         <controls:CustomButton x:Name="btApply" Text="Apply" Type="Orange" HorizontalOptions="Fill"  StyleId="1"/>
                     </ContentView>
                     <ContentView  HorizontalOptions="FillAndExpand">
