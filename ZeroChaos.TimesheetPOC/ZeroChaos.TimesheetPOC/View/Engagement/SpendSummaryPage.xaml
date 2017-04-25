@@ -1,59 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ZeroChaos.TimesheetPOC.SpendSummaryPage">
-	<ContentPage.Padding>
-		<OnPlatform x:TypeArguments="Thickness">
-			<OnPlatform.iOS>0,20,0,0</OnPlatform.iOS>
-		</OnPlatform>
-	</ContentPage.Padding>
-
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="ZeroChaos.TimesheetPOC.SpendSummaryPage"
+    xmlns:vm="clr-namespace:ZeroChaos.TimesheetPOC.ViewModel"
+    xmlns:local="clr-namespace:ZeroChaos.TimesheetPOC.Controls">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.iOS>0,20,0,0</OnPlatform.iOS>
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.BindingContext>
+        <vm:EngagementSpendSummaryViewModel />
+    </ContentPage.BindingContext>
     <ScrollView>
+       
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="15" />
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="3" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <oxy:PlotView Model="{Binding PieModel}" Grid.Row="0" />
-            <!--<StackLayout HorizontalOptions="Center" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="3" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" BackgroundColor="Transparent" HeightRequest="100" WidthRequest="100" Grid.Row="0" Grid.RowSpan="2"/>
+                    <oxy:PlotView Model="{Binding PieModel}" Grid.Row="0" />
+                    <!--<StackLayout HorizontalOptions="Center" Grid.Row="1">
               <BoxView WidthRequest="15" HeightRequest="15" BackgroundColor="Red" />
               <Label Text="Distribution of Approved Budget" />
             </StackLayout>-->
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="1">
-                <StackLayout Orientation="Vertical" >
-                    <BoxView WidthRequest="12" HeightRequest="12" BackgroundColor="#007DCC"  />
-                </StackLayout>
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label x:Name="lblReleasedInvoicing" Text="Released for Invoicing" FontSize="Small" WidthRequest="250" />
-                </StackLayout>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="2">
-                <StackLayout Orientation="Vertical" >
-                    <BoxView WidthRequest="12" HeightRequest="12" BackgroundColor="#46BFBD" />
-                </StackLayout>
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                    <Label x:Name="lblApprovedBudget" Text="Distribution of Approved Budget" FontSize="Small" WidthRequest="250"/>
-                </StackLayout>
-            </StackLayout>
-            <StackLayout Grid.Row="3">
-                <BoxView WidthRequest=".5" HeightRequest=".5" BackgroundColor="Black">
-                </BoxView>
-            </StackLayout>
-            <StackLayout Grid.Row="4" Padding="15" BindingContext="{Binding SummaryDetails}">
-                <Label Text="Approved Budget" FontSize="Medium" />
-                <Label x:Name="approvedBudget" Text="{Binding ApprovedBudget.FieldValue}" FontSize="Small" />
-                <Label Text="Release For Invoicing" FontSize="Medium" />
-                <Label x:Name="releaseForInvoicing" Text="{Binding AmountReleasedForInvoicing.FieldValue}" FontSize="Small" />
-                <Label Text="Not Release For Invoicing" FontSize="Medium" />
-                <Label x:Name="notReleaseForInvoicing" Text="{Binding NotReleasedForInvoicing.FieldValue}" FontSize="Small" />
-                <Label Text="Total Invoiced" FontSize="Medium" />
-                <Label x:Name="totalInvoiced" Text="{Binding TotalInvoiced.FieldValue}" FontSize="Small" />
-                <Label Text="Amount Awaiting Approval" FontSize="Medium" />
-                <Label x:Name="awaitingApproaval" Text="{Binding AmountAwaitingApproval.FieldValue}" FontSize="Small" />
-                <Label Text="Available for Invoicing" FontSize="Medium" />
-                <Label x:Name="availableInvoicing" Text="{Binding RemainingAvailableForInvoicing.FieldValue}" FontSize="Small" />
-            </StackLayout>
-        </Grid>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="1">
+                        <StackLayout Orientation="Vertical" >
+                            <BoxView WidthRequest="12" HeightRequest="12" BackgroundColor="#007DCC"  />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                            <Label x:Name="lblReleasedInvoicing" Text="{Binding ReleaseforInvoiceLabel}" FontSize="Small" WidthRequest="270" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="2">
+                        <StackLayout Orientation="Vertical" >
+                            <BoxView WidthRequest="12" HeightRequest="12" BackgroundColor="#46BFBD" />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                            <Label x:Name="lblApprovedBudget" Text="{Binding DistributionLabel}" FontSize="Small" WidthRequest="270"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3">
+                        <BoxView WidthRequest=".5" HeightRequest=".5" BackgroundColor="Black">
+                        </BoxView>
+                    </StackLayout>
+                    <StackLayout Grid.Row="4" Padding="15" BindingContext="{Binding SummaryDetails}">
+                        <Label Text="Approved Budget" FontSize="Medium" IsVisible="{Binding ApprovedBudget.IsVisible}" />
+                        <Label x:Name="approvedBudget" Text="{Binding ApprovedBudget.FieldValue}" FontSize="Small" IsVisible="{Binding ApprovedBudget.IsVisible}" />
+
+                        <Label Text="Release For Invoicing" FontSize="Medium" IsVisible="{Binding AmountReleasedForInvoicing.IsVisible}" />
+                        <Label x:Name="releaseForInvoicing" Text="{Binding AmountReleasedForInvoicing.FieldValue}" FontSize="Small" IsVisible="{Binding AmountReleasedForInvoicing.IsVisible}"/>
+
+                        <Label Text="Not Release For Invoicing" FontSize="Medium" IsVisible="{Binding NotReleasedForInvoicing.IsVisible}" />
+                        <Label x:Name="notReleaseForInvoicing" Text="{Binding NotReleasedForInvoicing.FieldValue}" FontSize="Small" IsVisible="{Binding NotReleasedForInvoicing.IsVisible}"/>
+
+                        <Label Text="Total Invoiced" FontSize="Medium" IsVisible="{Binding TotalInvoiced.IsVisible}" />
+                        <Label x:Name="totalInvoiced" Text="{Binding TotalInvoiced.FieldValue}" FontSize="Small" IsVisible="{Binding TotalInvoiced.IsVisible}"/>
+
+                        <Label Text="Amount Awaiting Approval" FontSize="Medium" IsVisible="{Binding AmountAwaitingApproval.IsVisible}" />
+                        <Label x:Name="awaitingApproaval" Text="{Binding AmountAwaitingApproval.FieldValue}" FontSize="Small" IsVisible="{Binding AmountAwaitingApproval.IsVisible}" />
+
+                        <Label Text="Available for Invoicing" FontSize="Medium" IsVisible="{Binding RemainingAvailableForInvoicing.IsVisible}"/>
+                        <Label x:Name="availableInvoicing" Text="{Binding RemainingAvailableForInvoicing.FieldValue}" FontSize="Small" IsVisible="{Binding RemainingAvailableForInvoicing.IsVisible}" />
+                    </StackLayout>
+                </Grid>
+
+        
     </ScrollView>
 </ContentPage>

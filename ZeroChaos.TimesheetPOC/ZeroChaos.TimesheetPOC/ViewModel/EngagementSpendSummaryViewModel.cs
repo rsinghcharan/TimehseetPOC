@@ -16,7 +16,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
 	{
         private IServiceCaller service;
         private PlotModel _PieModel;
-
+        
         public PlotModel PieModel
         {
             get { return _PieModel; }
@@ -29,17 +29,42 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             get { return _SummaryDetails ?? (_SummaryDetails=new GetSOWEngagementSpendSummaryResponse()); }
             set { _SummaryDetails = value; RaisePropertyChanged(); }
         }
-       
+
+        private string _ReleaseforInvoiceLabel= "Released for Invoicing";
+
+        public string ReleaseforInvoiceLabel
+        {
+            get { return _ReleaseforInvoiceLabel; }
+            set { _ReleaseforInvoiceLabel = value; RaisePropertyChanged(); }
+        }
+        private string _DistributionLabel= "Distribution of Approved Budget";
+
+        public string DistributionLabel
+        {
+            get { return _DistributionLabel; }
+            set { _DistributionLabel = value; RaisePropertyChanged(); }
+        }
+        private bool _IsBusy;
+
+        public bool IsBusy
+        {
+            get { return _IsBusy; }
+            set { _IsBusy = value;RaisePropertyChanged(); }
+        }
 
 
         public EngagementSpendSummaryViewModel()
 		{
             service = new ServiceCaller();
             var request = new GetEngagementSpendSummaryRequest() {ClientID=5000,EngagementID= 48478,loggedonUser=App.UserSession.LoggedonUser };
+            IsBusy = true;
             service.CallHostService<GetEngagementSpendSummaryRequest, GetSOWEngagementSpendSummaryResponse>(request, "GetEngagementSpendSummaryRequest", val => 
             {
                 SummaryDetails = val;
-				PieModel = CreatePieChart();
+                ReleaseforInvoiceLabel = "Released for Invoicing: " + val.PercentageSpendUsed+"%";
+                DistributionLabel = "Distribution of Approved Budget: " + val.PercentageSpendRemaining+"%";
+                PieModel = CreatePieChart();
+                IsBusy = false;
             });
             
            

@@ -21,24 +21,21 @@ namespace ZeroChaos.TimesheetPOC.Controls
             get { return ContentFrame.Content; }
             set { ContentFrame.Content = value; }
         }
+        public static readonly BindableProperty IsBusyProperty = BindableProperty.Create<BusyIndicator, bool>(p => p.IsBusy, false,propertyChanged:(bindable, value, newValue) => {
+            var isbusy = (bool)newValue;
+            var main = bindable as BusyIndicator;
+            main.ContentFrame.IsEnabled = isbusy;
+            main.overlay.IsVisible = isbusy;
+            main.indicator.IsVisible = isbusy;
+            main.indicator.IsRunning = isbusy;
+        });
+        
        
 
         public bool IsBusy
         {
-            get { return overlay.IsVisible; }
-            set
-            {
-                if (value)
-                    ContentFrame.IsEnabled = false;
-                else
-                    ContentFrame.IsEnabled = true;
-
-
-                overlay.IsVisible = value;
-                indicator.IsVisible = value;
-                indicator.IsRunning = true;
-
-            }
+            get { return (bool)GetValue(IsBusyProperty); }
+            set { SetValue(IsBusyProperty, value); }
         }
 
     }

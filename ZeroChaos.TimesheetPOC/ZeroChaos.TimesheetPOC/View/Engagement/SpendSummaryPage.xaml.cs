@@ -11,8 +11,6 @@ namespace ZeroChaos.TimesheetPOC
 		public SpendSummaryPage()
 		{
 			InitializeComponent();
-			EngagementSpendSummaryViewModel cvm = new EngagementSpendSummaryViewModel();
-			this.BindingContext = cvm;
 		}
 	}
 }

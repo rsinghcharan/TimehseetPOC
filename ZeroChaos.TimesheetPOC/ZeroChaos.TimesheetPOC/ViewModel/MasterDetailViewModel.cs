@@ -132,9 +132,6 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                                 Header = "Spend Summary";
                                 RightButton = "";
                                 var page = new SpendSummaryPage();
-                                //var context = new EngagementSpendSummaryViewModel();
-                                //context.Test = "Updates test from master page";
-                                page.BindingContext = new EngagementSpendSummaryViewModel();
 								Detail = page;
                             }
                             else if (label.Text == "Manage Submissions")
