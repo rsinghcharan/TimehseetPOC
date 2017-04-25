@@ -6,12 +6,13 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using ZeroChaos.TimesheetPOC.Models.Response;
 
 namespace ZeroChaos.TimesheetPOC.ViewModel
 {
     public abstract class BaseViewModel: INotifyPropertyChanged
     {
-        #region
+        #region Properties
         private MasterDetailViewModel _MasterDetailViewModel;
 
         public MasterDetailViewModel MasterDetailViewModel
@@ -20,14 +21,16 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             set { _MasterDetailViewModel = value; }
         }
         #endregion
+
         #region Events
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
+        #region Public Methods
         public void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
+        #endregion
     }
 }

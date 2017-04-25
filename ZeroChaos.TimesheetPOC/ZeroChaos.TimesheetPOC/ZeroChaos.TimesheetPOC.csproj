@@ -50,12 +50,17 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Candidate\ActionDetails.cs" />
+    <Compile Include="Model\Candidate\PropertyAvailableDetails.cs" />
     <Compile Include="Model\DetailPage.cs" />
     <Compile Include="Model\DropDownItem.cs" />
     <Compile Include="Model\EnrollmentDetails.cs" />
     <Compile Include="Model\PickerDataSource.cs" />
+    <Compile Include="Model\Request\Candidate\CandidatesCompareRequest.cs" />
+    <Compile Include="Model\Request\Common\CustomizedField.cs" />
     <Compile Include="Model\Request\Common\DownloadAttachmentRequest.cs" />
     <Compile Include="Model\Request\Common\GetAttachmentsRequest.cs" />
+    <Compile Include="Model\Request\Engagement\GetEngagementSpendSummaryRequest.cs" />
     <Compile Include="Model\Request\LoginRequest.cs" />
     <Compile Include="Model\Request\RequestBase.cs" />
     <Compile Include="Model\Request\Timesheet\ApprovalManagerResponse.cs" />
@@ -67,8 +72,10 @@
     <Compile Include="Model\Request\Timesheet\TimesheetEndingDatesRequest.cs" />
     <Compile Include="Model\Request\Timesheet\TimesheetNotesRequest.cs" />
     <Compile Include="Model\Request\Timesheet\ViewTimesheetRequest.cs" />
+    <Compile Include="Model\Response\Candidate\CandidatesCompareResponse.cs" />
     <Compile Include="Model\Response\Common\DownloadAttachmentResponse.cs" />
     <Compile Include="Model\Response\Common\GetAttachmentResponse.cs" />
+    <Compile Include="Model\Response\Engagement\GetSOWEngagementSpendSummaryResponse.cs" />
     <Compile Include="Model\Response\LoginResponse.cs" />
     <Compile Include="Model\Response\ResponseBase.cs" />
     <Compile Include="Model\Request\Timesheet\TimesheetRequest.cs" />
@@ -87,6 +94,8 @@
     <Compile Include="Services\ServiceCaller.cs" />
     <Compile Include="ViewModel\AttachmentViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\CandidateCompare\CandidatesCompareViewModel.cs" />
+    <Compile Include="ViewModel\EngagementSpendSummaryViewModel.cs" />
     <Compile Include="ViewModel\MasterDetailControlViewModel.cs" />
     <Compile Include="ViewModel\MasterDetailViewModel.cs" />
     <Compile Include="ViewModel\Timesheet\DetailTimesheetViewModel.cs" />
@@ -102,6 +111,9 @@
     <Compile Include="View\Dashboard\GridTile.xaml.cs">
       <DependentUpon>GridTile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Engagement\SpendSummaryPage.xaml.cs">
+      <DependentUpon>SpendSummaryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Login\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -110,6 +122,9 @@
     </Compile>
     <Compile Include="View\MasterPages\MasterDetailControl.xaml.cs">
       <DependentUpon>MasterDetailControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Requisitions\ManageSubmissionPage.xaml.cs">
+      <DependentUpon>ManageSubmissionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SelectionPage.xaml.cs">
       <DependentUpon>SelectionPage.xaml</DependentUpon>
@@ -161,6 +176,14 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OxyPlot, Version=1.0.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\OxyPlot.Core.1.0.0\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10\OxyPlot.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OxyPlot.Xamarin.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\OxyPlot.Xamarin.Forms.1.0.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10\OxyPlot.Xamarin.Forms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -283,6 +306,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\Common\ViewAttachment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\Requisitions\ManageSubmissionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\Engagement\SpendSummaryPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

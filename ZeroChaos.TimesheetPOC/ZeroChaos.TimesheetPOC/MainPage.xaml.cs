@@ -29,11 +29,11 @@ namespace ZeroChaos.TimesheetPOC
 
             if (Convert.ToString(button.CommandParameter) == "USButton")
             {
-                App.UserSession.SelectedDataCenter = "http://devservices.zcdev.net/US-21.0/json/reply/";
+                App.UserSession.SelectedDataCenter = "http://devservices.zcdev.net/US-21.2/json/reply/";
             }
             else if (Convert.ToString(button.CommandParameter) == "EUButton")
             {
-                App.UserSession.SelectedDataCenter = "http://devservices.zcdev.net/EU-21.0/json/reply/";
+                App.UserSession.SelectedDataCenter = "http://devservices.zcdev.net/EU-21.2/json/reply/";
             }
             Application.Current.MainPage = new LoginPage();
            // Navigation.PushAsync(new LoginPage());

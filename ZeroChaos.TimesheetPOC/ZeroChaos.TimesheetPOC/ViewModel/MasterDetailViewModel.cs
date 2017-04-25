@@ -15,6 +15,7 @@ using ZeroChaos.TimesheetPOC.Views.Timesheet;
 using Zerochaos.Util.POC.Messages;
 using ZeroChaos.TimesheetPOC.Views.Login;
 using ZeroChaos.TimesheetPOC.Views.Common;
+using ZeroChaos.TimesheetPOC.ViewModel.CandidateCompare;
 
 
 
@@ -120,13 +121,13 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                                 RightButton = "...";
                                 var page = new ViewTimesheetPage();
                                 Header = "View Timesheet";
-								RightButton = "...";//string.Empty;
+                                RightButton = "...";//string.Empty;
                                 ViewTimesheetViewModel vm = new ViewTimesheetViewModel();
                                 vm.MasterDetailViewModel = this;
                                 page.BindingContext = vm;
                                 Detail = page;
                             }
-                            else if(label.Text== "View Engagement")
+                            else if (label.Text == "View Engagement")
                             {
                                 Header = "Spend Summary";
                                 RightButton = "";
@@ -134,6 +135,15 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                                 //var context = new EngagementSpendSummaryViewModel();
                                 //context.Test = "Updates test from master page";
                                 page.BindingContext = new EngagementSpendSummaryViewModel();
+                            }
+                            else if (label.Text == "Manage Submissions")
+                            {
+                                var page = new ManageSubmissionPage();
+                                Header = "Compare Candidates";
+                                RightButton = string.Empty;
+                                //var vm = new CandidatesCompareViewModel();
+                                //vm.MasterDetailViewModel = this;
+                                //  page.BindingContext = vm;
                                 Detail = page;
                             }
                             else if (label.Text == "Logout")
@@ -222,6 +232,11 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
         {
             var dummyData = new List<SimpleObject>();
             SimpleObject obj = new SimpleObject();
+            obj.HeaderText = "Submissions";
+            obj.ChildItemList.Add(new ChildItems { TextValue = "Manage Submissions", DataValue = "MS1" });
+            dummyData.Add(obj);
+
+            obj = new SimpleObject();
             obj.HeaderText = "Timesheet";
             obj.ChildItemList.Add(new ChildItems { TextValue = "View Timesheet", DataValue = "T1" });
             obj.ChildItemList.Add(new ChildItems { TextValue = "Create Timesheet", DataValue = "T2", BubbleCount = 5 });
@@ -306,8 +321,8 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
 			//Filter Timesheet 
 			//
 			if (selectedaction == "Filter Timesheet") { 
-				var page = new RefineTimesheet();
-				Detail = page;
+				//var page = new RefineTimesheet();
+				//Detail = page;
 			}
 
         }
