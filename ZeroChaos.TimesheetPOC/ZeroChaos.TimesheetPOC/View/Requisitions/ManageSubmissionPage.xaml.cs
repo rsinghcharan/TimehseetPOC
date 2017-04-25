@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
@@ -8,19 +9,30 @@ namespace ZeroChaos.TimesheetPOC
 {
     public partial class ManageSubmissionPage : ContentPage
     {
+        #region Private Members
         double columnWidth = 0;
-        double defaultWidth = 0;
         int noOfCandidates = 0;
+        #endregion
 
+        #region Constructors
         public ManageSubmissionPage()
         {
             InitializeComponent();
+            GenerateComparisionGrid();
+        }
+        #endregion
+
+        #region Public Methods
+        #endregion
+
+        #region Private Methods
+        private void GenerateComparisionGrid()
+        {
             var vm = new CandidatesCompareViewModel();
-            var defaultWidth = (Device.Idiom == TargetIdiom.Phone) ? 150 : 180;
-
-
+            var defaultWidth = (Device.Idiom == TargetIdiom.Phone) ? 150 : 180;            
             var rowHeight = (Device.Idiom == TargetIdiom.Phone) ? 60 : 120;
 
+            #region Generate Rows
             RowDefinitionCollection tempRowDefinitions = new RowDefinitionCollection
                 {
                     new RowDefinition { Height = 20 },
@@ -37,7 +49,9 @@ namespace ZeroChaos.TimesheetPOC
                 };
 
             compareGrid.RowDefinitions = tempRowDefinitions;
+            #endregion
 
+            #region Service call and data binding
             vm.GetCandidatesCompareData((res) =>
             {
                 noOfCandidates = res.Candidates.Count;
@@ -50,13 +64,11 @@ namespace ZeroChaos.TimesheetPOC
                     if (App.Current.MainPage.Width > App.Current.MainPage.Height)
                     {
                         columnWidth = (noOfCandidates < 5) ? App.Current.MainPage.Width / noOfCandidates : defaultWidth;
-
                     }
                     else
                     {
                         columnWidth = (noOfCandidates < 4) ? App.Current.MainPage.Width / noOfCandidates : defaultWidth;
                     }
-
                 }
 
                 // compareGrid.SetBinding(Grid.BindingContextProperty, new Binding("res"));
@@ -89,6 +101,7 @@ namespace ZeroChaos.TimesheetPOC
                     HorizontalTextAlignment = TextAlignment.Center,
                     TextColor = Color.White
                 };
+
                 Grid.SetRow(submissionStatusLabel, 2);
                 Grid.SetColumn(submissionStatusLabel, 0);
                 compareGrid.Children.Add(submissionStatusLabel);
@@ -414,7 +427,9 @@ namespace ZeroChaos.TimesheetPOC
                     compareGrid.Children.Add(activeSubmitsValueLabel);
                 }
             });
+            #endregion
         }
+        #endregion
     }
 }
 

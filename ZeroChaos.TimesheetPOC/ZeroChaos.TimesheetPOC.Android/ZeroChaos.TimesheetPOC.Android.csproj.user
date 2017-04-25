@@ -4,8 +4,8 @@
     <SelectedDevice>ZCMobileDemoDevice</SelectedDevice>
     <DefaultDevice>ZCMobileDemoDevice</DefaultDevice>
     <ProjectView>ShowAllFiles</ProjectView>
-    <SelectedDevice>AVD_for_Nexus_7_by_Google</SelectedDevice>
-    <DefaultDevice>AVD_for_Nexus_7_by_Google</DefaultDevice>
+    <SelectedDevice>Kitkatdevice</SelectedDevice>
+    <DefaultDevice>Kitkatdevice</DefaultDevice>
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
 </Project>
