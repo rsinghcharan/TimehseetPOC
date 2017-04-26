@@ -5,8 +5,8 @@
 	         xmlns:controls="clr-namespace:ZeroChaos.TimesheetPOC.Controls"
              x:Class="ZeroChaos.TimesheetPOC.Views.Timesheet.ViewTimesheetPage">
 
-
-    <ListView x:Name="lstView" HasUnevenRows="true" ItemsSource="{Binding Timesheets}" ItemAppearing="lstView_ItemAppearing">
+ 
+    <ListView x:Name="lstView" HasUnevenRows="true" ItemsSource="{Binding Path=Timesheets}" ItemAppearing="lstView_ItemAppearing">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>

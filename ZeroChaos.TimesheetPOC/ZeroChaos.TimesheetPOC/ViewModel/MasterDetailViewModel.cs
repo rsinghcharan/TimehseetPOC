@@ -120,10 +120,9 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                                 Header = "View Timesheet";
                                 RightButton = "...";
                                 var page = new ViewTimesheetPage();
-                                Header = "View Timesheet";
-                                RightButton = "...";//string.Empty;
                                 ViewTimesheetViewModel vm = new ViewTimesheetViewModel();
                                 vm.MasterDetailViewModel = this;
+                                App.ContentModel = vm;
                                 page.BindingContext = vm;
                                 vm.FilterTimesheet();
                                 Detail = page;

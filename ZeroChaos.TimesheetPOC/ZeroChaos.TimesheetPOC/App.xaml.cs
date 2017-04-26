@@ -15,6 +15,8 @@ namespace ZeroChaos.TimesheetPOC
     {
         public string RememberedUser = "RememberedUser";
         public static ZCMobileSystemConfiguration UserSession { get; set; }
+        public static object ContentModel { get; set; }
+
         public App()
         {
             InitializeComponent();
