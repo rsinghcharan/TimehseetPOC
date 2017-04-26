@@ -72,8 +72,8 @@ namespace ZeroChaos.TimesheetPOC
 						columnWidth = (noOfCandidates < 4) ? App.Current.MainPage.Width / noOfCandidates : defaultWidth;
 					}
 				}
-				Debug.WriteLine("res.Candidates ==" + res.Candidates.Count);
-				// compareGrid.SetBinding(Grid.BindingContextProperty, new Binding("res"));
+
+
 
 				for (int i = 0; i < noOfCandidates + 1; i++)
 				{
@@ -273,7 +273,8 @@ namespace ZeroChaos.TimesheetPOC
 				int gridColumns = 0;
 				for (int j = 0; j < noOfCandidates; j++)
 				{
-					compareScrollView.BindingContext = res.Candidates[j];
+					///Here we wants to set Binding Context based on the response we have in each iteration
+					//compareScrollView.BindingContext = res.Candidates[j];
 					gridColumns = j + 1;
 
 					BoxView moreInfoBoxView = new BoxView { Color = Color.FromHex("01446b") };
@@ -297,13 +298,14 @@ namespace ZeroChaos.TimesheetPOC
 					AbsoluteLayout candidateBoxView = new AbsoluteLayout { BackgroundColor = Color.FromHex("3c9ece"), HeightRequest = (Device.Idiom == TargetIdiom.Phone) ? 150 : 180, };
 					Label candidateName = new Label
 					{
+						Text = res.Candidates[j].Name,
 						FontSize = 20,
 						HorizontalOptions = LayoutOptions.CenterAndExpand,
 						VerticalOptions = LayoutOptions.StartAndExpand,
 						HorizontalTextAlignment = TextAlignment.Center,
 						TextColor = Color.White,
 					};
-					candidateName.SetBinding(Label.TextProperty, "Name");
+					//candidateName.SetBinding(Label.TextProperty, "Name");
 
 					AbsoluteLayout.SetLayoutBounds(candidateName, new Rectangle(0.5, 0, 0.8, 0.4));
 					AbsoluteLayout.SetLayoutFlags(candidateName, AbsoluteLayoutFlags.All);
@@ -329,13 +331,14 @@ namespace ZeroChaos.TimesheetPOC
 
 					Label submissionStatusValueLabel = new Label
 					{
+						Text = res.Candidates[j].SubmissionStatus,
 						FontSize = 16,
 						HorizontalOptions = LayoutOptions.Center,
 						VerticalOptions = LayoutOptions.Center,
 						VerticalTextAlignment = TextAlignment.Center,
 						TextColor = Color.Black
 					};
-					submissionStatusValueLabel.SetBinding(Label.TextProperty, "SubmissionStatus");
+					//submissionStatusValueLabel.SetBinding(Label.TextProperty, "SubmissionStatus");
 					Grid.SetRow(submissionStatusValueLabel, 2);
 					Grid.SetColumn(submissionStatusValueLabel, gridColumns);
 					compareGrid.Children.Add(submissionStatusValueLabel);
@@ -347,13 +350,14 @@ namespace ZeroChaos.TimesheetPOC
 
 					Label supplierNameValueLabel = new Label
 					{
+						Text = res.Candidates[j].SupplierName,
 						FontSize = 16,
 						HorizontalOptions = LayoutOptions.Center,
 						VerticalOptions = LayoutOptions.Center,
 						VerticalTextAlignment = TextAlignment.Center,
 						TextColor = Color.Black
 					};
-					supplierNameValueLabel.SetBinding(Label.TextProperty, "SupplierName");
+					//supplierNameValueLabel.SetBinding(Label.TextProperty, "SupplierName");
 					Grid.SetRow(supplierNameValueLabel, 3);
 					Grid.SetColumn(supplierNameValueLabel, gridColumns);
 					compareGrid.Children.Add(supplierNameValueLabel);
@@ -365,13 +369,14 @@ namespace ZeroChaos.TimesheetPOC
 
 					Label diffFromTargetRateValueLabel = new Label
 					{
+						Text = res.Candidates[j].TargetRateDifference,
 						FontSize = 16,
 						HorizontalOptions = LayoutOptions.Center,
 						VerticalOptions = LayoutOptions.Center,
 						VerticalTextAlignment = TextAlignment.Center,
 						TextColor = Color.Black
 					};
-					diffFromTargetRateValueLabel.SetBinding(Label.TextProperty, "TargetRateDifference");
+					//diffFromTargetRateValueLabel.SetBinding(Label.TextProperty, "TargetRateDifference");
 
 					Grid.SetRow(diffFromTargetRateValueLabel, 4);
 					Grid.SetColumn(diffFromTargetRateValueLabel, gridColumns);
@@ -384,13 +389,14 @@ namespace ZeroChaos.TimesheetPOC
 
 					Label competenciesValueLabel = new Label
 					{
+						Text = res.Candidates[j].CandidateCompantencies,
 						FontSize = 16,
 						HorizontalOptions = LayoutOptions.Center,
 						VerticalOptions = LayoutOptions.Center,
 						VerticalTextAlignment = TextAlignment.Center,
 						TextColor = Color.Black
 					};
-					competenciesValueLabel.SetBinding(Label.TextProperty, "CandidateCompantencies");
+					//competenciesValueLabel.SetBinding(Label.TextProperty, "CandidateCompantencies");
 					Grid.SetRow(competenciesValueLabel, 5);
 					Grid.SetColumn(competenciesValueLabel, gridColumns);
 					compareGrid.Children.Add(competenciesValueLabel);
@@ -402,13 +408,14 @@ namespace ZeroChaos.TimesheetPOC
 
 					Label cetificationsValueLabel = new Label
 					{
+						Text = res.Candidates[j].CandidateCertifications,
 						FontSize = 16,
 						HorizontalOptions = LayoutOptions.Center,
 						VerticalOptions = LayoutOptions.Center,
 						VerticalTextAlignment = TextAlignment.Center,
 						TextColor = Color.Black
 					};
-					cetificationsValueLabel.SetBinding(Label.TextProperty, "CandidateCertifications");
+					//cetificationsValueLabel.SetBinding(Label.TextProperty, "CandidateCertifications");
 					Grid.SetRow(cetificationsValueLabel, 6);
 					Grid.SetColumn(cetificationsValueLabel, gridColumns);
 					compareGrid.Children.Add(cetificationsValueLabel);
@@ -420,13 +427,14 @@ namespace ZeroChaos.TimesheetPOC
 
 					Label candidateSummaryValueLabel = new Label
 					{
+						Text = res.Candidates[j].Summary.FieldValue,
 						FontSize = 16,
 						HorizontalOptions = LayoutOptions.Center,
 						VerticalOptions = LayoutOptions.Center,
 						VerticalTextAlignment = TextAlignment.Center,
 						TextColor = Color.Black
 					};
-					candidateSummaryValueLabel.SetBinding(Label.TextProperty, "Summary.FieldValue");
+					//candidateSummaryValueLabel.SetBinding(Label.TextProperty, "Summary.FieldValue");
 					Grid.SetRow(candidateSummaryValueLabel, 7);
 					Grid.SetColumn(candidateSummaryValueLabel, gridColumns);
 					compareGrid.Children.Add(candidateSummaryValueLabel);
@@ -439,6 +447,7 @@ namespace ZeroChaos.TimesheetPOC
 					};
 					Label candidateLocationValueLabel = new Label
 					{
+						Text = res.Candidates[j].CandidateLocation,
 						FontSize = 16,
 						Margin = 2,
 						HorizontalOptions = LayoutOptions.Center,
@@ -446,7 +455,7 @@ namespace ZeroChaos.TimesheetPOC
 						VerticalTextAlignment = TextAlignment.Center,
 						TextColor = Color.Black
 					};
-					candidateLocationValueLabel.SetBinding(Label.TextProperty, "CandidateLocation");
+					//candidateLocationValueLabel.SetBinding(Label.TextProperty, "CandidateLocation");
 
 					Grid.SetRow(candidateLocationContainerBox, 8);
 					Grid.SetColumn(candidateLocationContainerBox, gridColumns);
@@ -462,13 +471,14 @@ namespace ZeroChaos.TimesheetPOC
 					compareGrid.Children.Add(availableValueBoxView);
 					Label availableValueLabel = new Label
 					{
+						Text = res.Candidates[j].Availability,
 						FontSize = 16,
 						HorizontalOptions = LayoutOptions.Center,
 						VerticalOptions = LayoutOptions.Center,
 						VerticalTextAlignment = TextAlignment.Center,
 						TextColor = Color.Black
 					};
-					availableValueLabel.SetBinding(Label.TextProperty, "Availability");
+					//availableValueLabel.SetBinding(Label.TextProperty, "Availability");
 					Grid.SetRow(availableValueLabel, 9);
 					Grid.SetColumn(availableValueLabel, gridColumns);
 					compareGrid.Children.Add(availableValueLabel);
@@ -480,13 +490,14 @@ namespace ZeroChaos.TimesheetPOC
 
 					Label activeSubmitsValueLabel = new Label
 					{
+						Text = res.Candidates[j].ActiveSubmits,
 						FontSize = 16,
 						HorizontalOptions = LayoutOptions.Center,
 						VerticalOptions = LayoutOptions.Center,
 						VerticalTextAlignment = TextAlignment.Center,
 						TextColor = Color.Black
 					};
-					activeSubmitsValueLabel.SetBinding(Label.TextProperty, "ActiveSubmits");
+					//activeSubmitsValueLabel.SetBinding(Label.TextProperty, "ActiveSubmits");
 					Grid.SetRow(activeSubmitsValueLabel, 10);
 					Grid.SetColumn(activeSubmitsValueLabel, gridColumns);
 					compareGrid.Children.Add(activeSubmitsValueLabel);
