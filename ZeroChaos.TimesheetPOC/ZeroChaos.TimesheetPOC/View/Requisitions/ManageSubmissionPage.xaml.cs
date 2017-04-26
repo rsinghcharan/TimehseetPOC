@@ -273,7 +273,9 @@ namespace ZeroChaos.TimesheetPOC
 				int gridColumns = 0;
 				for (int j = 0; j < noOfCandidates; j++)
 				{
-					///Here we wants to set Binding Context based on the response we have in each iteration
+					///Here we tried setting Binding Context based on the response we have in each iteration
+					//to make use of mvvm. however it consider last candidate for all columns generated.
+					//Please help us here.
 					//compareScrollView.BindingContext = res.Candidates[j];
 					gridColumns = j + 1;
 
