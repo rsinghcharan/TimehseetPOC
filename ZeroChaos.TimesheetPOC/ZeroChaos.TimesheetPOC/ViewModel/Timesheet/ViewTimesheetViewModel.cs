@@ -85,7 +85,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
                  if (r.resultSuccess)
                  { 
                      Timesheets = r.timesheets.ToObservableCollection();
-                     
+                     RaisePropertyChanged("Timesheets");
                  }
                  else
                  {
