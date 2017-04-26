@@ -105,7 +105,7 @@
 				</ScrollView>
 			<StackLayout  Spacing="0" x:Name="buttonBar" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="10,0,10,0" VerticalOptions="End">
                     <ContentView  HorizontalOptions="FillAndExpand" HeightRequest="40" VerticalOptions="End">
-                        <controls:CustomButton x:Name="btApply" Text="Apply" Type="Orange" HorizontalOptions="Fill"  StyleId="1"/>
+                    <controls:CustomButton x:Name="btApply" Text="Apply" Type="Orange" HorizontalOptions="Fill"  Command="{Binding FilterViewTimeSheet}"  StyleId="1"/>
                     </ContentView>
                     <ContentView  HorizontalOptions="FillAndExpand">
                         <controls:CustomButton x:Name="btnReset" Text="Reset"  HeightRequest="40"  HorizontalOptions="Fill"  StyleId="2" Type="Blue"/>

@@ -19,9 +19,8 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
     public class ViewTimesheetViewModel : BaseViewModel
     {
         #region Private Members
-        //private MasterDetailViewModel masterDetailViewModel;
+        private MasterDetailViewModel masterDetailViewModel;
         IServiceCaller service;
-        ViewTimesheetRequest request;
 
         #endregion
 
@@ -31,8 +30,17 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
         public ObservableCollection<ViewTimesheetResponse> Timesheets
         {
             get { return _viewTimesheetResponse ?? (_viewTimesheetResponse = new ObservableCollection<ViewTimesheetResponse>()); }
-            set { _viewTimesheetResponse = value; RaisePropertyChanged(); }
+            set { _viewTimesheetResponse = value; RaisePropertyChanged("Timesheets"); }
         }
+
+        private ViewTimesheetRequest _viewTimesheetListRequest;
+
+        public ViewTimesheetRequest ViewTimesheetListRequest
+        {
+            get { return _viewTimesheetListRequest ?? (_viewTimesheetListRequest = new ViewTimesheetRequest()); }
+            set { _viewTimesheetListRequest = value; }
+        }
+
 
         //public MasterDetailViewModel MasterDetailViewModel
         //{
@@ -44,7 +52,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
         #region Constructors
         public ViewTimesheetViewModel()
         {
-            FilterTimesheet();
+            // FilterTimesheet();
         }
         #endregion
 
@@ -65,20 +73,20 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
         public async void FilterTimesheet()
         {
             service = new ServiceCaller();
-            request = new ViewTimesheetRequest();
-            request.ContactID = (App.UserSession.CurrentUserInfo.UserTypeID == 2 ? App.UserSession.LoggedonUser.userID : 0);
-            request.ResourceID = (App.UserSession.CurrentUserInfo.UserTypeID == 1 ? App.UserSession.LoggedonUser.userID : 0);
-            request.loggedonUser = App.UserSession.LoggedonUser;
-            request.Offset = 0;
-            request.PageSize = 10;
+            //viewTimesheetRequest = new ViewTimesheetRequest();
+            ViewTimesheetListRequest.ContactID = (App.UserSession.CurrentUserInfo.UserTypeID == 2 ? App.UserSession.LoggedonUser.userID : 0);
+            ViewTimesheetListRequest.ResourceID = (App.UserSession.CurrentUserInfo.UserTypeID == 1 ? App.UserSession.LoggedonUser.userID : 0);
+            ViewTimesheetListRequest.loggedonUser = App.UserSession.LoggedonUser;
+            ViewTimesheetListRequest.Offset = 0;
+            ViewTimesheetListRequest.PageSize = 10;
 
-            await service.CallHostService<ViewTimesheetRequest, ViewTimesheetObjectResponse>(request, "FilterTimesheetsForSearchRequest", (r) =>
+            await service.CallHostService<ViewTimesheetRequest, ViewTimesheetObjectResponse>(ViewTimesheetListRequest, "FilterTimesheetsForSearchRequest", (r) =>
              {
                  if (r.resultSuccess)
-                 {
+                 { 
                      Timesheets = r.timesheets.ToObservableCollection();
-                     if (Timesheets != null && Timesheets.Count > 0)
-                         RaisePropertyChanged(() => Timesheets);
+
+                     RaisePropertyChanged("Timesheets");
                  }
                  else
                  {
@@ -87,6 +95,7 @@ namespace ZeroChaos.TimesheetPOC.ViewModel.Timesheet
 
              });
         }
+
 
         #endregion
 

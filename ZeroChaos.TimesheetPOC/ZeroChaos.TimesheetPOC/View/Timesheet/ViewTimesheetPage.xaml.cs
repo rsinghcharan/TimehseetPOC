@@ -1,22 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ZeroChaos.TimesheetPOC.IServices;
-using ZeroChaos.TimesheetPOC.Models.Request.Timesheet;
 using ZeroChaos.TimesheetPOC.Models.Response.Timesheet;
-using ZeroChaos.TimesheetPOC.Services;
-using ZeroChaos.TimesheetPOC.ViewModel;
 using ZeroChaos.TimesheetPOC.ViewModel.Timesheet;
-using System.Linq;
+
 namespace ZeroChaos.TimesheetPOC.Views.Timesheet
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ViewTimesheetPage : ContentPage
+    public partial class ViewTimesheetPage
     {
       
         public ViewTimesheetPage()
@@ -24,6 +16,10 @@ namespace ZeroChaos.TimesheetPOC.Views.Timesheet
             try
             {
                 InitializeComponent();
+                //Device.BeginInvokeOnMainThread(() =>
+                //{
+                //       lstView.re
+                //});
                 //Detail = new TimesheetDetailsPage();
                 //IServiceCaller service = new ServiceCaller();
                 ////var request = new LoginRequest { emailAddress = txtUserName.Text, password = txtPassword.Text };
@@ -40,8 +36,7 @@ namespace ZeroChaos.TimesheetPOC.Views.Timesheet
                 //    this.lstView.ItemsSource = r.timesheets;
 
                 //});
-                ViewTimesheetViewModel vtvm = new ViewTimesheetViewModel();
-                this.BindingContext = vtvm;
+
 
 
                 this.lstView.ItemSelected += (sender, e) =>

@@ -122,9 +122,10 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                                 var page = new ViewTimesheetPage();
                                 Header = "View Timesheet";
                                 RightButton = "...";//string.Empty;
-                                //ViewTimesheetViewModel vm = new ViewTimesheetViewModel();
-                                // vm.MasterDetailViewModel = this;
-                               // page.BindingContext = vm;
+                                ViewTimesheetViewModel vm = new ViewTimesheetViewModel();
+                                vm.MasterDetailViewModel = this;
+                                page.BindingContext = vm;
+                                vm.FilterTimesheet();
                                 Detail = page;
                             }
                             else if (label.Text == "View Engagement")
@@ -133,6 +134,10 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
                                 RightButton = "";
                                 var page = new SpendSummaryPage();
 								Detail = page;
+                                //var context = new EngagementSpendSummaryViewModel();
+                                //context.Test = "Updates test from master page";
+                                // page.BindingContext = new EngagementSpendSummaryViewModel();
+                                Detail = page;
                             }
                             else if (label.Text == "Manage Submissions")
                             {
@@ -321,6 +326,9 @@ namespace ZeroChaos.TimesheetPOC.ViewModel
             if (selectedaction == "Filter Timesheet")
             {
                 var page = new RefineTimesheet();
+                FilterTimesheetViewModel vm = new FilterTimesheetViewModel();
+                vm.MasterDetailViewModel = this;
+                page.BindingContext = vm;
                 Detail = page;
             }
 
