@@ -1,0 +1,24 @@
+﻿<Properties StartupConfiguration="{87C441EF-3B4C-4BAF-B89A-0BFC3D7B421D}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ZeroChaos.TimesheetPOC/ZeroChaos.TimesheetPOC/View/TestPage.xaml.cs">
+    <Files>
+      <File FileName="ZeroChaos.TimesheetPOC/ZeroChaos.TimesheetPOC/View/Timesheet/RefineTimesheet.xaml" Line="1" Column="1" />
+      <File FileName="ZeroChaos.TimesheetPOC/ZeroChaos.TimesheetPOC/View/Timesheet/ViewTimesheetPage.xaml.cs" Line="46" Column="46" />
+      <File FileName="ZeroChaos.TimesheetPOC/ZeroChaos.TimesheetPOC.iOS/Main.cs" Line="17" Column="59" />
+      <File FileName="ZeroChaos.TimesheetPOC/ZeroChaos.TimesheetPOC/ViewModel/EngagementSpendSummaryViewModel.cs" Line="62" Column="14" />
+      <File FileName="ZeroChaos.TimesheetPOC/ZeroChaos.TimesheetPOC/View/TestPage.xaml" Line="1" Column="1" />
+      <File FileName="ZeroChaos.TimesheetPOC/ZeroChaos.TimesheetPOC/View/TestPage.xaml.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/gmakwana/TimehseetPOC/ZeroChaos.TimesheetPOC/ZeroChaos.TimesheetPOC/Views/Common/ViewAttachment.xaml.cs" relfile="ZeroChaos.TimesheetPOC/ZeroChaos.TimesheetPOC/Views/Common/ViewAttachment.xaml.cs" line="43" column="1" />
+      <Breakpoint file="/Users/gmakwana/TimehseetPOC/ZeroChaos.TimesheetPOC/ZeroChaos.TimesheetPOC/View/Timesheet/ViewTimesheetPage.xaml.cs" relfile="ZeroChaos.TimesheetPOC/ZeroChaos.TimesheetPOC/View/Timesheet/ViewTimesheetPage.xaml.cs" line="18" column="1" />
+      <Breakpoint file="/Users/gmakwana/TimehseetPOC/ZeroChaos.TimesheetPOC/ZeroChaos.TimesheetPOC/ViewModel/Timesheet/FilterTimesheetViewModel.cs" relfile="ZeroChaos.TimesheetPOC/ZeroChaos.TimesheetPOC/ViewModel/Timesheet/FilterTimesheetViewModel.cs" line="152" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.ZeroChaos.TimesheetPOC.Android PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MonoDevelop.Ide.ItemProperties.ZeroChaos.TimesheetPOC.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.CA2AD2A9-8572-4EB7-897B-343549490F5F" />
+</Properties>
