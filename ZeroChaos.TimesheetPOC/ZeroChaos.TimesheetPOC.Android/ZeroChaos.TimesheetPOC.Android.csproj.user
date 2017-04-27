@@ -6,6 +6,6 @@
     <ProjectView>ShowAllFiles</ProjectView>
     <SelectedDevice>Kitkatdevice</SelectedDevice>
     <DefaultDevice>Kitkatdevice</DefaultDevice>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
 </Project>

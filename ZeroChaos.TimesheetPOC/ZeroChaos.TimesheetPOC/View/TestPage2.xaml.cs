@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ZeroChaos.TimesheetPOC.View
+namespace ZeroChaos.TimesheetPOC.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TestPage2 : ContentPage
